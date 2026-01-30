@@ -1,0 +1,95 @@
+.maindiv {
+    display: flex;
+}
+
+.line1 {
+    height: 350px;
+    width: 5px;
+    background-color: red;
+    transform: translateX(350px) translateY(50px) rotate(45deg);
+}
+
+.line2 {
+    height: 350px;
+    width: 5px;
+    background-color: red;
+    transform: translateX(425px) translateY(93px) rotate(16deg);
+}
+
+.line3 {
+    height: 350px;
+    width: 5px;
+    background-color: red;
+    transform: translateX(310px) translateY(100px) rotate(160deg);
+}
+
+.line4 {
+    height: 350px;
+    width: 5px;
+    background-color: red;
+    transform: translateX(400px) translateY(22px) rotate(119deg);
+}
+
+.line5 {
+    height: 350px;
+    width: 5px;
+    background-color: red;
+    transform: translateX(376px) translateY(142px) rotate(78deg);
+}
+
+.box {
+
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border: 1px solid black;
+    position: absolute;
+    animation: myAnimation 10s infinite;
+    transform: translateX(230px) translateY(345px);
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes myAnimation {
+    0% {
+        left: 0px;
+        top: 0px;
+        background-color: blue;
+
+    }
+
+    20% {
+        top: -255px;
+        left: 245px;
+        background-color: pink;
+    }
+
+    40% {
+        top: 90px;
+        left: 150px;
+        background-color: rgba(45, 58, 24);
+        transform: translateX(230px) translateY(350px) rotate(100deg);
+
+
+    }
+
+    60% {
+        top: -240px;
+        left: 30px;
+        background-color: green;
+        transform: translateX(230px) translateY(350px) rotate(200deg);
+    }
+
+    80% {
+        top: -70px;
+        left: 340px;
+        background-color: aqua;
+        transform: translateX(230px) translateY(350px) rotate(100deg);
+
+    }
+
+    100% {
+        top: 0px;
+        left: 0px;
+        background-color: blue;
+    }
+}
