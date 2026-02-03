@@ -1,0 +1,110 @@
+#image {
+    background-image: url(road.png);
+    background-size: 211vh 100vh;
+    background-repeat: no-repeat;
+}
+
+.car {
+    display: flex;
+}
+
+#car1 {
+    position: relative;
+    transform: translateX(20px) translateY(535px);
+    animation: car1 6s linear infinite;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes car1 {
+    from {
+        top: 0px;
+        left: 0px;
+    }
+
+    to {
+        top: 0px;
+        left: 1400px;
+    }
+
+}
+
+#car1 img {
+    height: 50px;
+    width: 100px;
+}
+
+#car2 {
+    position: relative;
+    transform: translateX(385px) translateY(560px);
+    animation: car2 6s linear infinite;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes car2 {
+    from {
+        top: 0px;
+        left: 0px;
+    }
+
+    to {
+        top: 0px;
+        left: 600px;
+    }
+
+}
+
+#car2 img {
+    height: 45px;
+    width: 90px;
+}
+
+#car3 {
+    position: relative;
+    transform: translateX(845px) translateY(532px);
+    animation: car3 6s linear infinite;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes car3 {
+
+    from {
+        top: 0px;
+        left: 0px;
+    }
+
+    to {
+        top: 0px;
+        left: -1060px;
+    }
+}
+
+#car3 img {
+    height: 90px;
+    width: 140px;
+}
+
+
+#car4 {
+    position: relative;
+    transform: translateX(920px) translateY(572px);
+    animation: car4 6s  linear infinite;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+}
+
+@keyframes car4 {
+
+    from {
+        top: 0px;
+        left: 0px;
+    }
+
+    to {
+        top: 0px;
+        left: -950px;
+    }
+}
+
+#car4 img {
+    height: 50px;
+    width: 100px;
+}
