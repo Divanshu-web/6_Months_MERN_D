@@ -24,15 +24,13 @@ console.log(answer)
 
 // 3. Make a function to find whether a entered text is String or Number.
 function text(n1){
-     if(n1==""){
-        console.log("String is empty")
-     }else if(!isNaN(n1)&& n1.trim()!==""){
+    if(!isNaN(n1)&& n1 !==""){
         console.log("Text is Number");
      }
      else {
       console.log("Text is String");
      }
-return n1
+return n1 
 }
-let solution = text("D")
+let solution = text("ygkj8")
 console.log("your input is:",solution)

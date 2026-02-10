@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mainborder{
+            border: 2px solid red;
+            margin: 20px;
+            padding-bottom: 60px;
+        }
+        .flower {
+            border: 2px solid red;
+            margin: 0px 50px 0px 50px;
+        }
+
+        .border {
+            border: 2px solid red;
+            margin: 40px;
+        }
+
+        #border {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mainborder">
+
+        <div id="border">
+            <div>
+            <!-- 1st flower  -->
+            <img id="box1" class="border" src="./flower1.png" alt="" height="200px" width="250px">
+            </div>
+        </div>
+        <div id="border">
+            <!-- 2nd flower  -->
+            <img onmouseover="image1()" class="flower" src="./flower2.png" alt="" onmouseout="come1()">
+
+            <!-- 3rd flower  -->
+            <img onmouseover="image2()" class="flower" src="./flower3.png" alt="" height="200px" width="240px"
+                onmouseout="come2()">
+
+            <!-- 4th flower  -->
+            <img onmouseover="image3()" class="flower" src="./flower4.png" alt="" height="200px" width="240px"
+                onmouseout="come3()">
+
+            <!-- 5th flower  -->
+            <img onmouseover="image4()" class="flower" src="./flower5.png" alt="" height="200px" onmouseout="come4()">
+        </div>
+    </div>
+    <script src="./26dayA.js"></script>
+</body>
+
+</html>
