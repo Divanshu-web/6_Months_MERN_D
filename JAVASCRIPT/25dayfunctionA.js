@@ -32,5 +32,6 @@ function text(n1){
      }
 return n1 
 }
-let solution = text("ygkj8")
-console.log("your input is:",solution)
+let val = "123"
+let solution = text(val)
+console.log("your input is:", solution)
