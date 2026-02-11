@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <img width="300px" id="img1" height="300px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoecEpTo29bKSCSrbTxAlGUWP_khdmlkEjzw&s" alt="">
+   
+    <br><br>
+    <img id="img2"  onmouseover="changeImg1()" onmouseout="backToNormal()" width="300px" height="300px" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnr5hGcxCJA24f4A4exhcxlna42r0ge8CD_A&s" alt="">
+    <img id="img3" onmouseover="changeImg2()" onmouseout="backToNormal()"  width="300px" height="300px" src="https://www.shutterstock.com/image-photo/stunning-closeup-original-multiple-cut-600nw-2639337153.jpg" alt="">
+    <img id="img4"  width="300px" height="300px" src="https://images.unsplash.com/photo-1530092285049-1c42085fd395?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmF0dXJlJTIwZmxvd2VyfGVufDB8fDB8fHww" alt="">
+    <img id="img5"  width="300px" height="300px" src="https://hips.hearstapps.com/hmg-prod/images/dahlia-1508785047.jpg?crop=1.00xw:0.669xh;0,0.0136xh" alt="">
+
+
+
+
+    <script>
+
+            let img1 = document.getElementById("img1")
+
+            function changeImg1(){
+                img1.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnr5hGcxCJA24f4A4exhcxlna42r0ge8CD_A&s'
+            }
+        
+            function changeImg2(){
+                img1.src = 'https://www.shutterstock.com/image-photo/stunning-closeup-original-multiple-cut-600nw-2639337153.jpg'
+            }
+
+            function backToNormal(){
+                img1.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoecEpTo29bKSCSrbTxAlGUWP_khdmlkEjzw&s"
+            }
+
+
+        function check(value){
+            return typeof value
+        }
+
+        let result = check("7")
+
+        if(result == "string"){
+            console.log("Entered value is String")
+        }
+        else if(result == "number"){
+            console.log("Entered value is Number")
+        }
+        else{
+            console.log("Invaid input!")
+        }
+
+
+
+    
+
+    </script>
+    
+</body>
+</html>

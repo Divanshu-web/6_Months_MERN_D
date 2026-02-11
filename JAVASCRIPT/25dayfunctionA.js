@@ -23,15 +23,18 @@ let answer = Number(2)
 console.log(answer)
 
 // 3. Make a function to find whether a entered text is String or Number.
-function text(n1){
-    if(!isNaN(n1)&& n1 !==""){
-        console.log("Text is Number");
-     }
-     else {
-      console.log("Text is String");
-     }
-return n1 
+function check(value){
+    
+return typeof value
 }
-let val = "123"
-let solution = text(val)
-console.log("your input is:", solution)
+let sol = check(10)
+
+if(sol == "string"){
+   console.log("Entered value is String")
+
+}else if (sol == "number"){
+      console.log("Entered value is Number")
+      
+}else{
+   console.log("Invalid input")
+}
