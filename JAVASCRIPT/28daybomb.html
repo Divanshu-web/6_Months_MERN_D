@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <!-- 1st Row -->
+        <div class="row">
+            <div class="col-12 bg-info d-flex justify-content-center flex-column align-items-center">
+                <h2>Guess The Movie</h2>
+
+                <ul>
+                    <li>Its a horror Movie.</li>
+                    <li>Its a bollywood Movie.</li>
+                    <li>It released in 2008.</li>
+                    <li>Staring Adah Sharma.</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <!-- 2nd Row -->
+        <div class="row">
+            <div class="col-3 bg-danger text-center">
+                <img src="https://pngimg.com/d/bomb_PNG16.png" height="300px" alt="" id="bomb1">
+            </div>
+            <div class="col-3 bg-primary text-center">
+                <img src="https://pngimg.com/d/bomb_PNG16.png" height="300px" alt="" id="bomb2">
+
+            </div>
+            <div class="col-3 bg-success text-center">
+                <img src="https://pngimg.com/d/bomb_PNG16.png" height="300px" alt="">
+
+            </div>
+            <div class="col-3 bg-warning text-center">
+                <img src="https://pngimg.com/d/bomb_PNG16.png" height="300px" alt="">
+
+            </div>
+        </div>
+
+        <!-- 3rd Row -->
+        <div class="row">
+            <div class="col-3 bg-info text-center">
+
+                <input type="text" class="form-control" oninput="changeInput1()" id="input1">
+
+            </div>
+
+
+            <div class="col-3 bg-secondary text-center">
+
+                <input type="text" class="form-control" id="input2" oninput="changeInput2()">
+
+            </div>
+            <div class="col-3 bg-danger text-center">
+
+                <input type="text" class="form-control" id="input3">
+            </div>
+            <div class="col-3 bg-primary text-center">
+
+                <input type="text" class="form-control">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="28daybomb.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

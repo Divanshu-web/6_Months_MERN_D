@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> Registration</title>
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+
+    .form-box{
+        background: white;
+        padding: 25px;
+        width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    input{
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .error{
+        color: red;
+        font-size: 13px;
+    }
+
+    
+
+    /* #button{
+        background-color: blue;
+        color: white;
+        font-size: 13px;
+        border-radius: 5px;
+        border-color: blue;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    } */
+</style>
+</head>
+<body>
+
+<div class="form-box">
+    <h2>Registration Form</h2>
+
+    <input type="text" id="name" placeholder="Enter Full Name">
+    <div id="nameError" class="error"></div>
+
+    <input type="email" id="email" placeholder="Enter Email">
+    <div id="emailError" class="error"></div>
+
+    <input type="text" id="phone" placeholder="Enter Phone Number">
+    <div id="phoneError" class="error"></div>
+
+    <input type="password" id="password" placeholder="Enter Password">
+    <div id="passError" class="error"></div>
+
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    <div id="confirmError" class="error"></div>
+
+    
+
+    <!-- <button type="button" id="button">Submit</button> -->
+</div>
+
+<script>
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("confirmPassword");
+
+    nameInput.addEventListener("input", function(){
+        if(nameInput.value.length < 3){
+              document.getElementById("nameError").style.color = "red"
+            document.getElementById("nameError").innerText = "Name must be at least 3 characters";
+        } else {
+              document.getElementById("nameError").style.color = "green"
+            document.getElementById("nameError").innerText = "Name is correct";
+        }
+    });
+
+    emailInput.addEventListener("input", function(){
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if(!emailInput.value.match(emailPattern)){
+             document.getElementById("emailError").style.color = "red"
+            document.getElementById("emailError").innerText = "Enter valid email";
+        } else {
+            document.getElementById("emailError").style.color = "green"
+            document.getElementById("emailError").innerText = "Email is correct";
+        }
+    });
+
+    phoneInput.addEventListener("input", function(){
+        const phonePattern = /^[0-9]{10}$/;
+        if(!phoneInput.value.match(phonePattern)){
+             document.getElementById("phoneError").style.color = "red"
+            document.getElementById("phoneError").innerText = "Enter valid 10-digit phone number";
+        } else {
+            document.getElementById("phoneError").style.color = "green"
+            document.getElementById("phoneError").innerText = "Phone no. is correct";
+        }
+    });
+
+    passwordInput.addEventListener("input", function(){
+        if(passwordInput.value.length < 6){
+             document.getElementById("passError").style.color = "red"
+            document.getElementById("passError").innerText = "Password must be at least 6 characters";
+        } else {
+            document.getElementById("passError").style.color = "green"
+            document.getElementById("passError").innerText = "Password is correct";
+        }
+    });
+
+    confirmInput.addEventListener("input", function(){
+        if(confirmInput.value !== passwordInput.value){
+             document.getElementById("confirmError").style.color = "red"
+            document.getElementById("confirmError").innerText = "Passwords do not match";
+        } else {
+            document.getElementById("confirmError").style.color = "green"
+            document.getElementById("confirmError").innerText = "Confirm Password is correct";
+        }
+    });
+</script>
+</body>
+</html>

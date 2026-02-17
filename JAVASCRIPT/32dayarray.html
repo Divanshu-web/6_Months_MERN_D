@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let students = ["Karl", 20, "UK", 2000, "Karl"]
+
+        console.log(students)
+
+        console.log(students[0], students[1])
+
+
+        // Push - add item at last
+        students.push(9876543211)
+        console.log(students)
+
+        // pop - delete last item
+        students.pop()
+        students.pop()
+        console.log(students)
+
+        // unshift - add item at starting of array
+        students.unshift("MERN")
+        console.log(students)
+
+        // shift - delete first element of array
+        students.shift()
+        console.log(students)
+
+        // length - find length of array
+        console.log(students.length)
+
+        
+        // slice - gets a new copy of selected elements
+        console.log(students.slice(1,3))
+        console.log(students)
+
+        
+        // splice - delete or replace any element in the array
+        console.log(students.splice(2, 1, "BMW", 20))
+        console.log(students)
+
+
+        
+
+    </script>
+</body>
+</html>

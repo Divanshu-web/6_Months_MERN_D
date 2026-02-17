@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+
+
+        //    let userName = prompt("Enter your name")
+        //    console.log(userName)
+
+        //    let num1 = Number(prompt("Enter num1 "))
+
+        //     let num2 = Number(prompt("Enter num2"))
+
+        //    console.log(num1+num2)
+
+
+        let totalCars = 100
+        let totalBikes = 50
+
+        //    I have 100 cars and 50 bikes
+
+        console.log("I have", totalCars, "cars and", totalBikes, "bikes")
+
+        console.log(`I have ${totalCars} cars and ${totalBikes} bikes.`)
+
+
+        let userName = prompt("Enter your name")
+
+        // session storage - temp
+        sessionStorage.setItem("name",userName)
+        sessionStorage.setItem("password",123)
+
+
+        console.log(sessionStorage.getItem("name"))
+
+        // localstorage - permanent
+        localStorage.setItem("userCourse","MERN Stack")
+        console.log(localStorage.getItem("userCourse"))
+
+
+    </script>
+</body>
+
+</html>

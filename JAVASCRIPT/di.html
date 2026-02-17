@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration</title>
+
+<style>
+    body{
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .form-box{
+        background: white;
+        padding: 25px;
+        width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    input{
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .error{
+        font-size: 13px;
+    }
+
+    button{
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    button:hover{
+        background-color: darkblue;
+    }
+
+    .output{
+        margin-top: 15px;
+        background: #e9f5ff;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="form-box">
+    <h2>Registration Form</h2>
+
+    <form id="registrationForm">
+
+        <input type="text" id="name" placeholder="Enter Full Name">
+        <div id="nameError" class="error"></div>
+
+        <input type="email" id="email" placeholder="Enter Email">
+        <div id="emailError" class="error"></div>
+
+        <input type="text" id="phone" placeholder="Enter Phone Number">
+        <div id="phoneError" class="error"></div>
+
+        <input type="password" id="password" placeholder="Enter Password">
+        <div id="passError" class="error"></div>
+
+        <input type="password" id="confirmPassword" placeholder="Confirm Password">
+        <div id="confirmError" class="error"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="outputData" class="output"></div>
+
+</div>
+
+<script>
+const form = document.getElementById("registrationForm");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const phoneInput = document.getElementById("phone");
+const passwordInput = document.getElementById("password");
+const confirmInput = document.getElementById("confirmPassword");
+
+form.addEventListener("submit", function(event){
+    event.preventDefault(); // Prevent page refresh
+
+    let valid = true;
+
+    // Name Validation
+    if(nameInput.value.length < 3){
+        nameError.innerText = "Name must be at least 3 characters";
+        nameError.style.color = "red";
+        valid = false;
+    } else {
+         nameError.style.color = "green";
+        nameError.innerText = "Name is correct";
+    }
+
+    // Email Validation
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if(!emailInput.value.match(emailPattern)){
+        emailError.innerText = "Enter valid email";
+        emailError.style.color = "red";
+        valid = false;
+    } else {
+         emailError.style.color = "green";
+        emailError.innerText = "Email is correct";
+    }
+
+    // Phone Validation
+    const phonePattern = /^[0-9]{10}$/;
+    if(!phoneInput.value.match(phonePattern)){
+        phoneError.innerText = "Enter valid 10-digit phone number";
+        phoneError.style.color = "red";
+        valid = false;
+    } else {
+        phoneError.style.color = "green";
+        phoneError.innerText = "Phone Number is Correct";
+    }
+
+    // Password Validation
+    if(passwordInput.value.length < 6){
+        passError.innerText = "Password must be at least 6 characters";
+        passError.style.color = "red";
+        valid = false;
+    } else {
+        passError.style.color = "green";
+        passError.innerText = "Password";
+    }
+
+    // Confirm Password
+    if(confirmInput.value !== passwordInput.value){
+        confirmError.innerText = "Passwords do not match";
+        confirmError.style.color = "red";
+        valid = false;
+    } else {
+        confirmError.style.color = "green";
+        confirmError.innerText = "Password Match";
+    }
+
+    // If All Valid → Show Data
+    if(valid){
+        document.getElementById("outputData").innerHTML = `
+            <strong>Submitted Data:</strong><br>
+            Name: ${nameInput.value} <br>
+            Email: ${emailInput.value} <br>
+            Phone: ${phoneInput.value} <br>
+            Password : ${passwordInput}
+        `;
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <script>
+        // let detail = ["John", 7, "Jalandhar", 500, 2000]
+
+        let detail = {
+            name : "John",
+            cars : 10,
+            address : "Jalandhar",
+            houseNo : 500,
+            birthYear : 2000
+        }
+
+        console.log(detail)
+        console.log(detail.houseNo)
+        console.log(detail.cars)
+
+        // update value 
+        detail.cars = 11
+
+        console.log(detail.cars)
+
+        // add new key
+        detail.fatherName = "MR. KARL"
+
+        console.log(detail)
+
+        // delete key
+        delete detail.houseNo
+
+        console.log(detail)
+
+
+    </script>
+</body>
+</html>

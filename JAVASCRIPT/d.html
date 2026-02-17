@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label> Name</label>
+        <input type="text" id="name">
+
+        <br><br>
+         <label>Age</label>
+        <input type="number" id="age">
+
+        <br><br>
+         <label>Email</label>
+        <input type="email" id="userEmail">
+
+        <br><br>
+           <label>Password</label>
+        <input type="password" id="password">
+
+        <br><br>
+        <button type="button" onclick="submitForm()">Submit Form</button>
+    </form>
+
+     <h1 id="myHeading2"></h1>
+     <h1 id="myHeading3"></h1>
+    <h1 id="myHeading"></h1>
+     <h1 id="myHeading4"></h1>
+    
+
+
+
+    <script>
+        function submitForm(){
+         
+
+            // let nameValue = document.getElementById("name").value
+
+            // let age = document.getElementById("userAge").value
+           
+          
+
+            // if(!nameValue){
+            //     console.log("Input name is required!")
+            //     document.getElementById("myHeading").innerText = "Input name is required!"
+            // }
+
+            // if(!age || age == undefined){
+            //     document.getElementById("myHeading").innerText += "Age is required!"
+                
+            // }
+
+            // ----------- Regular Expression
+            
+                
+
+                let emailValue = document.getElementById("userEmail").value
+
+                let pattern = /^[a-zA-Z0-9.-_]+\@+[a-z]+\.+[a-z]{2,3}$/
+
+                if(pattern.test(emailValue)){
+                    // console.log("Email pass!")
+                    document.getElementById("myHeading").style.color = "green"
+                    document.getElementById("myHeading").innerText = "Email pass!"
+
+                }
+                else{
+                    // console.log("Please write email according to pattern!")
+                    document.getElementById("myHeading").style.color = "red"
+
+                    document.getElementById("myHeading").innerText = "Please write email according to pattern!!"
+
+                }
+               
+                 let nameValue = document.getElementById("name").value
+              let pattern2 = /^[A-Za-z]{3,}$/;
+
+                if(pattern.test(nameValue)){
+                    // console.log("Email pass!")
+                    document.getElementById("myHeading2").style.color = "green"
+                    document.getElementById("myHeading2").innerText = "Name Pass"
+
+                }
+                else{
+                    // console.log("Please write email according to pattern!")
+                    document.getElementById("myHeading2").style.color = "red"
+
+                    document.getElementById("myHeading2").innerText = "name consist of atleast 3 characters!!"
+
+                }
+              
+            let ageValue = document.getElementById("age").value
+              let pattern3 = /^[0-9]+$/;;
+
+                if(pattern.test(ageValue)){
+                    // console.log("Email pass!")
+                    document.getElementById("myHeading3").style.color = "green"
+                    document.getElementById("myHeading3").innerText = "Age Pass"
+
+                }
+                else{
+                    // console.log("Please write email according to pattern!")
+                    document.getElementById("myHeading3").style.color = "red"
+
+                    document.getElementById("myHeading3").innerText = "age cannot be negative or 0!!"
+
+                }
+
+                 let passwordValue = document.getElementById("password").value
+              let pattern4 = /^[0-9]+$/;;
+
+                if(pattern.test(passwordValue)){
+                    // console.log("Email pass!")
+                    document.getElementById("myHeading4").style.color = "green"
+                    document.getElementById("myHeading4").innerText = "password Pass"
+
+                }
+                else{
+                    // console.log("Please write email according to pattern!")
+                    document.getElementById("myHeading4").style.color = "red"
+
+                    document.getElementById("myHeading4").innerText = "password mendskjfdg!!"
+
+                }
+       
+
+        }
+
+    </script>
+</body>
+</html>
