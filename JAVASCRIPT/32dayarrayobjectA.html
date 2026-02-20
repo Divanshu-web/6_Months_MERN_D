@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // ARRAY 
+
+        // Homework
+
+
+        let courses = ["JS", "HTML", "CSS", "React"];
+        console.log(courses)
+
+        
+
+        // Q1. Add "Node" at the end
+        // Push - add item at last
+        courses.push("Node")
+        console.log(courses)
+
+
+        // Q2. Remove first element
+        // shift - delete first element of array
+        courses.shift()
+        console.log(courses)
+
+
+        // Q3. Get only "HTML" and "CSS" (no change in original)
+        //  index 
+        console.log(courses[0], courses[1])
+        // slice - gets a new copy of selected elements
+        console.log(courses.slice(0, 2))
+
+
+        // Q4. Replace "CSS" with "Tailwind"
+        // splice - delete or replace any element in the array
+        console.log(courses.splice(1, 1, "Tailwind"))
+        console.log(courses)
+
+        // Q5. Check if "React" exists
+        if (courses.includes("React")) {
+            console.log("React exists in the array");
+        } else {
+            console.log("React does not exist");
+        }
+
+
+
+        // OBJECT 
+
+
+        let user = { name: "John", age: 22, city: "Delhi" };
+        // Q1. Access age
+        console.log(user.age)
+
+        // Q2. Update city to "Mumbai"
+        // update value 
+        user.city = "Mumbai"
+        console.log(user.city)
+
+        // Q3. Add email key
+        // add new key
+        user.email = "john@gmail.com"
+        console.log(user)
+
+        // Q4. Delete age
+        delete user.age
+        console.log(user)
+
+        // Q5. Get all keys
+        let keys = Object.keys(user);
+        console.log(keys);
+
+
+    </script>
+</body>
+
+</html>
