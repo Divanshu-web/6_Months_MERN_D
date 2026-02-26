@@ -1,0 +1,21 @@
+#body {
+     background-image: url("./image\ copy\ 2.png");
+     background-size: cover;
+     background-repeat: no-repeat;
+ }
+ .head{
+    font-size: 60px;
+     margin-bottom: 25px;
+ }
+ .one{
+    margin-top: 300px;
+ }
+ .padding{
+    padding-bottom: 180px;
+ }
+ .head2{
+    font-size: 45px;
+ }
+ .footer{
+    padding-top: 150px;
+ }

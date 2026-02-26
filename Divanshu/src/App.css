@@ -1,0 +1,44 @@
+*{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    #image{
+      background-image: url("./form\ image.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .form-box{
+      width: 100%;
+      max-width: 420px;
+      border-radius: 15px;
+      padding: 30px;
+    }
+
+    .google-btn{
+      border:1px solid #ddd;
+      background:#fff;
+    }
+
+    .google-btn:hover{
+      background:#f8f9fa;
+    }
+
+    .password-wrapper{
+      position: relative;
+    }
+
+    .password-wrapper svg{
+      position: absolute;
+      top: 38px;
+      right: 15px;
+      cursor: pointer;
+      color: gray;
+    }
