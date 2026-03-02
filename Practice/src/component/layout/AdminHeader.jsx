@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function AdminHeader() {
     return (
        <>
   {/* Navbar Start */}
@@ -22,14 +22,8 @@ export default function Header() {
     </button>
     <div className="collapse navbar-collapse" id="navbarCollapse">
       <div className="navbar-nav ms-auto p-4 p-lg-0">
-        <Link to={"/"} className="nav-item nav-link active">
-          Home
-        </Link>
-        <Link  to={"/about"} className="nav-item nav-link">
-          About
-        </Link>
-        <Link to={"/course"} className="nav-item nav-link">
-          Courses
+        <Link to={"/admin/home"} className="nav-item nav-link active">
+          Dashboard
         </Link>
         <div className="nav-item dropdown">
           <a
@@ -37,25 +31,22 @@ export default function Header() {
             className="nav-link dropdown-toggle"
   
           >
-            Pages
+            Category
           </a>
           <div className="dropdown-menu fade-down m-0">
-            <Link to={"/team"} className="dropdown-item">
-              Our Team
+            <Link to={"/admin/addcategory"} className="dropdown-item">
+              Add Category
             </Link>
-            <Link to={"/testimonial"} className="dropdown-item">
-              Testimonial
+            <Link to={"/admin/allcategory"} className="dropdown-item">
+              All Category
             </Link>
-            <a href="404.html" className="dropdown-item">
-              404 Page
-            </a>
           </div>
         </div>
-        <Link to={"/contact"} className="nav-item nav-link">
+        <Link to={"/admin/contact"} className="nav-item nav-link">
           Contact
         </Link>
       </div>
-      <Link to={"/login"} className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+      <Link to={"/admin/login"} className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
         Login
         <i className="fa fa-arrow-right ms-3" />
       </Link>

@@ -1,4 +1,4 @@
-export default function Contact () {
+export default function AdminContact () {
     return (
 
 <>
@@ -17,7 +17,7 @@ export default function Contact () {
               </li>
               <li className="breadcrumb-item">
                 <a className="text-white" href="#">
-                  Pages
+                  Admin
                 </a>
               </li>
               <li
