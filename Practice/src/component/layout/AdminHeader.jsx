@@ -1,8 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 export default function AdminHeader() {
+  const nav = useNavigate()
+    function logoutAdmin(){
+     
+        toast.success("Logout Successfully")
+        
+        setTimeout(() => {
+          nav("/")
+        }, 2000);
+    }
+
+
     return (
+
        <>
+       <ToastContainer></ToastContainer>
   {/* Navbar Start */}
   <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
     <a
@@ -46,10 +60,10 @@ export default function AdminHeader() {
           Contact
         </Link>
       </div>
-      <Link to={"/admin/login"} className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
-        Login
+      <button onClick={logoutAdmin} className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+        Login Out
         <i className="fa fa-arrow-right ms-3" />
-      </Link>
+      </button>
     </div>
   </nav>
   {/* Navbar End */}

@@ -1,6 +1,16 @@
 // import React from 'react'
 
+import { useState } from "react"
+
 function AdminLogin() {
+  const[email,setemail]=useState("")
+  const[password,setpassword]=useState("")
+
+  function handleForm(e){
+e.preventDefault()
+console.log(email)
+console.log(password)
+  }
   return (
     <>
   {/* Header Start */}
@@ -45,7 +55,7 @@ function AdminLogin() {
       </div>
       <div className="row g-4 justify-content-center">
         <div className="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-          <form>
+          <form onSubmit={handleForm}>
             <div className="row g-3">
               <div className="col-12">
                 <div className="form-floating">
@@ -54,6 +64,8 @@ function AdminLogin() {
                     className="form-control"
                     id="email"
                     placeholder="Your Email"
+                    value={email}
+                    onInput={(e)=>{setemail(e.target.value)}}
                   />
                   <label htmlFor="email">Your Email</label>
                 </div>
@@ -65,6 +77,8 @@ function AdminLogin() {
                     className="form-control"
                     id="subject"
                     placeholder="Subject"
+                    value={password}
+                    onInput={(e)=>{setpassword(e.target.value)}}
                   />
                   <label htmlFor="subject">Password</label>
                 </div>

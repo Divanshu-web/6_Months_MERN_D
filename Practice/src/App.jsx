@@ -17,6 +17,7 @@ import AddCategory from './component/admin/AddCategory'
 import AllCategory from './component/admin/AllCategory'
 import AdminContact from './component/admin/AdminContact'
 import AdminLogin from './component/admin/AdminLogin'
+import Demo from './component/pages/Demo'
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -33,6 +34,7 @@ function App() {
       <Route path='/team' element={<Team/>}></Route>
       <Route path='/testimonial' element={<Testimonial/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
+      <Route path='/demo' element={<Demo/>}></Route>
       </Route>
 
       <Route path='/admin' element={<AdminMasterLayout/>}>

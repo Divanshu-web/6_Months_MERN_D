@@ -54,11 +54,24 @@ export default function Header() {
         <Link to={"/contact"} className="nav-item nav-link">
           Contact
         </Link>
+        <Link to={"/demo"} className="nav-item nav-link">
+          Demo
+        </Link>
       </div>
+
+      {!sessionStorage.getItem("email")?
       <Link to={"/login"} className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
         Login
         <i className="fa fa-arrow-right ms-3" />
       </Link>
+
+      :
+
+      <Link to={"/"} className="btn btn-primary py-4 px-lg-5 d-none d-lg-block">
+        Logout
+        <i className="fa fa-arrow-right ms-3" />
+      </Link>
+}
     </div>
   </nav>
   {/* Navbar End */}
