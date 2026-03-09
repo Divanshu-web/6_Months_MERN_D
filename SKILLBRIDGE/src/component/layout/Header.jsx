@@ -116,12 +116,27 @@ function Header() {
             Contact Us
           </Link>
         </div>
+
+          {sessionStorage.getItem("email")?
+         <Link
+          to={"/"}
+          className="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0"
+        >
+         Logout
+        </Link>
+
+        :
+
         <Link
           to={"/login"}
           className="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0"
         >
          Login
-        </Link>
+        </Link>}
+
+
+
+
       </div>
     </nav>
     {/* Carousel Start */}

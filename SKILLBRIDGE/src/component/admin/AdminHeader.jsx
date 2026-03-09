@@ -1,7 +1,17 @@
 // import React from 'react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { toast, ToastContainer } from "react-toastify"
 
 function AdminHeader() {
+  const nav = useNavigate()
+
+  function logoutAdmin(){
+    toast.success("Logout Successfully")
+
+     setTimeout(() => {
+        nav("/")
+     }, 2000);
+  }
   return (
     <>
   {/* Topbar Start */}
@@ -54,6 +64,7 @@ function AdminHeader() {
     </div>
   </div>
   {/* Topbar End */}
+  <ToastContainer></ToastContainer>
   {/* Navbar & Hero Start */}
   <div className="container-fluid position-relative p-0">
     <nav className="navbar navbar-expand-lg navbar-light bg-white px-4 px-lg-5 py-3 py-lg-0">
@@ -83,13 +94,45 @@ function AdminHeader() {
           <Link to={"/service"} className="nav-item nav-link">
             Services
           </Link> */}
+
+              <div className="nav-item dropdown">
+            <a
+              href="#"
+              className="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+            >
+              Category
+            </a>
+            <div className="dropdown-menu m-0">
+              <Link to={"/admin/addcategory"} className="dropdown-item">
+                Add Category
+              </Link>
+              <Link to={"/admin/managecategory"} className="dropdown-item">
+               Manage Category
+              </Link>
+              {/* <Link to={"/admin/digitalmarketing"} className="dropdown-item">
+                Digital Marketing
+              </Link>
+              <Link to={"/admin/fashiondesigning"} className="dropdown-item">
+               FashionDesigning
+              </Link>
+              <Link to={"/admin/videoediting"} className="dropdown-item">
+                Video Editing
+              </Link> */}
+              {/* <a href="404.html" className="dropdown-item">
+                404 Page
+              </a> */}
+            </div>
+          </div>
+
+
           <div className="nav-item dropdown">
             <a
               href="#"
               className="nav-link dropdown-toggle"
               data-bs-toggle="dropdown"
             >
-              Skills Category
+              Skills
             </a>
             <div className="dropdown-menu m-0">
               <Link to={"/admin/beauty"} className="dropdown-item">
@@ -116,12 +159,12 @@ function AdminHeader() {
             Contact Us
           </Link>
         </div>
-        <a
+        <button onClick={logoutAdmin}
           href="#"
           className="btn btn-primary rounded-pill text-white py-2 px-4 flex-wrap flex-sm-shrink-0"
         >
          Logout
-        </a>
+        </button>
       </div>
     </nav>
     {/* Carousel Start */}

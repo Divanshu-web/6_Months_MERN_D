@@ -21,6 +21,8 @@ import FashionDesigning from './component/adminpages/FashionDesigning'
 import VideoEditing from './component/adminpages/VideoEditing'
 import AdminContact from './component/adminpages/AdminContact'
 import Login from './component/pages/Login'
+import AddCategory from './component/adminpages/AddCategory'
+import ManageCategory from './component/adminpages/ManageCategory'
 
 
 function App() {
@@ -51,6 +53,8 @@ function App() {
           <Route path='/admin/fashiondesigning' element={<FashionDesigning/>}></Route>
           <Route path='/admin/videoediting' element={<VideoEditing/>}></Route>
           <Route path='/admin/contact' element={<AdminContact/>}></Route>
+          <Route path='/admin/addcategory' element={<AddCategory/>}></Route>
+          <Route path='/admin/managecategory' element={<ManageCategory/>}></Route>
 
 
           </Route>

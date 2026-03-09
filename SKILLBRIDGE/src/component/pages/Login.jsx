@@ -1,17 +1,37 @@
 // import React from 'react'
 
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { toast, ToastContainer } from "react-toastify"
 
 function Login() {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const nav = useNavigate()
 
     function handleForm(e){
-   e.preventDefault()
+    e.preventDefault()
 
    if(email == "" || password == ""){
     console.log("All fields are required!")
+    toast.error("All fields are required!")
+   }
+   else if(email == "admin@gmail.com" && password == "123"){
+    console.log("Login Successfully")
+    toast.success("Login Successfully")
+
+    sessionStorage.setItem("email", email)
+    
+    setTimeout(() => {
+        nav("/admin/home")
+    }, 2000);
+
+
+   }
+   else {
+    console.log("Invalid Credentials")
+    toast.warning("Invalid Credentials")
    }
     }
 
@@ -41,6 +61,7 @@ function Login() {
                 </div>
             </div>
             {/* Header End */}
+            <ToastContainer></ToastContainer>
             {/* Contact Start */}
             <div className="container-fluid contact py-5">
                 <div className="container py-5">

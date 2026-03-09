@@ -28,14 +28,14 @@ function Home() {
           <div className="service-item rounded">
             <div className="service-img rounded-top">
               <img
-                src="./assets/img/service-1.jpg"
+                src="../../assets/img/pexels-olly-3771106.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
             </div>
             <div className="service-content rounded-bottom bg-light p-4">
               <div className="service-content-inner">
-                <h5 className="mb-4">Message Therapy</h5>
+                <h5 className="mb-4">Cooking Class</h5>
                 <p className="mb-4">
                   Dolor, sit amet consectetur adipisicing elit. Soluta inventore
                   cum accusamus, dolor qui ullam

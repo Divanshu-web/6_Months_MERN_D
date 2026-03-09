@@ -52,7 +52,7 @@ function AdminHome() {
           <div className="service-item rounded">
             <div className="service-img rounded-top">
               <img
-                src="./assets/img/service-1.jpg"
+                src="../../../assets/img/service-1.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -81,7 +81,7 @@ function AdminHome() {
           <div className="service-item rounded">
             <div className="service-img rounded-top">
               <img
-                src="./assets/img/service-2.jpg"
+               src="../../assets/img/service-2.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -110,7 +110,7 @@ function AdminHome() {
           <div className="service-item rounded">
             <div className="service-img rounded-top">
               <img
-                src="./assets/img/service-3.jpg"
+               src="../../assets/img/service-3.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -139,7 +139,7 @@ function AdminHome() {
           <div className="service-item rounded">
             <div className="service-img rounded-top">
               <img
-                src="./assets/img/service-4.jpg"
+               src="../../assets/img/service-4.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -168,7 +168,7 @@ function AdminHome() {
           <div className="service-item rounded">
             <div className="service-img rounded-top">
               <img
-                src="./assets/img/service-5.jpg"
+               src="../../assets/img/service-5.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -197,7 +197,7 @@ function AdminHome() {
           <div className="service-item rounded">
             <div className="service-img rounded-top">
               <img
-                src="./assets/img/service-6.jpg"
+               src="../../assets/img/service-6.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -226,7 +226,7 @@ function AdminHome() {
           <div className="service-item rounded">
             <div className="service-img rounded-top">
               <img
-                src="./assets/img/service-7.jpg"
+               src="../../assets/img/service-7.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -255,7 +255,7 @@ function AdminHome() {
           <div className="service-item rounded">
             <div className="service-img rounded-top">
               <img
-                src="./assets/img/service-8.jpg"
+               src="../../assets/img/service-8.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -296,14 +296,14 @@ function AdminHome() {
         <div className="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
           <div className="about-img pb-5 ps-5">
             <img
-              src="./assets/img/about-1.jpg"
+             src="../../assets/img/about-1.jpg"
               className="img-fluid rounded w-100"
               style={{ objectFit: "cover" }}
               alt="Image"
             />
             <div className="about-img-inner">
               <img
-                src="./assets/img/about-2.jpg"
+                src="../../assets/img/about-2.jpg"
                 className="img-fluid rounded-circle w-100 h-100"
                 alt="Image"
               />
@@ -599,7 +599,7 @@ function AdminHome() {
               <div className="col-sm-6">
                 <div className="video h-100">
                   <img
-                    src="./assets/img/video-img.jpg"
+                   src="../../assets/img/video-img.jpg"
                     className="img-fluid rounded w-100 h-100"
                     style={{ objectFit: "cover" }}
                     alt=""
@@ -762,7 +762,7 @@ function AdminHome() {
           <div className="team-item rounded">
             <div className="team-img rounded-top h-100">
               <img
-                src="./assets/img/team-1.jpg"
+               src="../../assets/img/team-1.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -806,7 +806,7 @@ function AdminHome() {
           <div className="team-item rounded">
             <div className="team-img rounded-top h-100">
               <img
-                src="./assets/img/team-2.jpg"
+               src="../../assets/img/team-2.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -850,7 +850,7 @@ function AdminHome() {
           <div className="team-item rounded">
             <div className="team-img rounded-top h-100">
               <img
-                src="./assets/img/team-3.jpg"
+               src="../../assets/img/team-3.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -894,7 +894,7 @@ function AdminHome() {
           <div className="team-item rounded">
             <div className="team-img rounded-top h-100">
               <img
-                src="./assets/img/team-4.jpg"
+               src="../../assets/img/team-4.jpg"
                 className="img-fluid rounded-top w-100"
                 alt=""
               />
@@ -952,7 +952,7 @@ function AdminHome() {
           <div className="testimonial-inner p-5">
             <div className="testimonial-inner-img mb-4">
               <img
-                src="./assets/img/testimonial-img.jpg"
+               src="../../assets/img/testimonial-img.jpg"
                 className="img-fluid rounded-circle"
                 alt=""
               />
@@ -980,7 +980,7 @@ function AdminHome() {
           <div className="testimonial-inner p-5">
             <div className="testimonial-inner-img mb-4">
               <img
-                src="./assets/img/testimonial-img.jpg"
+               src="../../assets/img/testimonial-img.jpg"
                 className="img-fluid rounded-circle"
                 alt=""
               />
@@ -1008,7 +1008,7 @@ function AdminHome() {
           <div className="testimonial-inner p-5">
             <div className="testimonial-inner-img mb-4">
               <img
-                src="./assets/img/testimonial-img.jpg"
+               src="../../assets/img/testimonial-img.jpg"
                 className="img-fluid rounded-circle"
                 alt=""
               />
@@ -1061,7 +1061,7 @@ function AdminHome() {
           <div className="blog-item rounded">
             <div className="blog-img">
               <img
-                src="./assets/img/blog-1.jpg"
+               src="../../assets/img/blog-1.jpg"
                 className="img-fluid w-100"
                 alt="Image"
               />
@@ -1098,7 +1098,7 @@ function AdminHome() {
           <div className="blog-item rounded">
             <div className="blog-img">
               <img
-                src="./assets/img/blog-2.jpg"
+               src="../../assets/img/blog-2.jpg"
                 className="img-fluid w-100"
                 alt="Image"
               />
@@ -1135,7 +1135,7 @@ function AdminHome() {
           <div className="blog-item rounded">
             <div className="blog-img">
               <img
-                src="./assets/img/blog-3.jpg"
+               src="../../assets/img/blog-3.jpg"
                 className="img-fluid w-100"
                 alt="Image"
               />
