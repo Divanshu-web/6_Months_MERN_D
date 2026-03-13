@@ -110,7 +110,7 @@ function AddCategory() {
                                                 // }
                                                 // }
                                             />
-                                            <label htmlFor="email">Your Email</label>
+                                            <label htmlFor="email" className="text-dark">Your Email</label>
                                         </div>
                                     </div>
 
@@ -125,7 +125,7 @@ function AddCategory() {
                                                 // onInput={(e) => {
                                                 //     setPassword(e.target.value) }}
                                             />
-                                            <label htmlFor="password">Password</label>
+                                            <label htmlFor="password" className="text-dark">Password</label>
                                         </div>
                                     </div>
 

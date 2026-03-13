@@ -2,10 +2,12 @@
 
 function Service() {
   return (
-    <>
+     <>
     <div className="container-xxl py-5 bg-dark hero-header mb-5">
   <div className="container text-center my-5 pt-5 pb-4">
-    <h1 className="display-3 text-white mb-3 animated slideInDown">Services</h1>
+    <h1 className="display-3 text-white mb-3 animated slideInDown">
+   Set Monthly Budget Page
+    </h1>
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb justify-content-center text-uppercase">
         <li className="breadcrumb-item">
@@ -15,123 +17,127 @@ function Service() {
           <a href="#">Pages</a>
         </li>
         <li className="breadcrumb-item text-white active" aria-current="page">
-          Service
+           Set Monthly Budget Page
         </li>
       </ol>
     </nav>
   </div>
 </div>
 
-  {/* Service Start */}
+  {/* Contact Start */}
   <div className="container-xxl py-5">
     <div className="container">
       <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
         <h5 className="section-title ff-secondary text-center text-primary fw-normal">
-          Our Services
+         Set Monthly Budget Page
         </h5>
-        <h1 className="mb-5">Explore Our Services</h1>
+        <h1 className="mb-5"> Set Monthly Budget For Any Query</h1>
       </div>
       <div className="row g-4">
-        <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-          <div className="service-item rounded pt-3">
-            <div className="p-4">
-              <i className="fa fa-3x fa-user-tie text-primary mb-4" />
-              <h5>Master Chefs</h5>
+        <div className="col-12">
+          <div className="row gy-4">
+            <div className="col-md-4">
+              <h5 className="section-title ff-secondary fw-normal text-start text-primary">
+                Booking
+              </h5>
               <p>
-                Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita
-                amet diam
+                <i className="fa fa-envelope-open text-primary me-2" />
+                book@example.com
+              </p>
+            </div>
+            <div className="col-md-4">
+              <h5 className="section-title ff-secondary fw-normal text-start text-primary">
+                General
+              </h5>
+              <p>
+                <i className="fa fa-envelope-open text-primary me-2" />
+                info@example.com
+              </p>
+            </div>
+            <div className="col-md-4">
+              <h5 className="section-title ff-secondary fw-normal text-start text-primary">
+                Technical
+              </h5>
+              <p>
+                <i className="fa fa-envelope-open text-primary me-2" />
+                tech@example.com
               </p>
             </div>
           </div>
         </div>
-        <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div className="service-item rounded pt-3">
-            <div className="p-4">
-              <i className="fa fa-3x fa-utensils text-primary mb-4" />
-              <h5>Quality Food</h5>
-              <p>
-                Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita
-                amet diam
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div className="service-item rounded pt-3">
-            <div className="p-4">
-              <i className="fa fa-3x fa-cart-plus text-primary mb-4" />
-              <h5>Online Order</h5>
-              <p>
-                Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita
-                amet diam
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-          <div className="service-item rounded pt-3">
-            <div className="p-4">
-              <i className="fa fa-3x fa-headset text-primary mb-4" />
-              <h5>24/7 Service</h5>
-              <p>
-                Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita
-                amet diam
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-          <div className="service-item rounded pt-3">
-            <div className="p-4">
-              <i className="fa fa-3x fa-user-tie text-primary mb-4" />
-              <h5>Master Chefs</h5>
-              <p>
-                Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita
-                amet diam
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-          <div className="service-item rounded pt-3">
-            <div className="p-4">
-              <i className="fa fa-3x fa-utensils text-primary mb-4" />
-              <h5>Quality Food</h5>
-              <p>
-                Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita
-                amet diam
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-          <div className="service-item rounded pt-3">
-            <div className="p-4">
-              <i className="fa fa-3x fa-cart-plus text-primary mb-4" />
-              <h5>Online Order</h5>
-              <p>
-                Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita
-                amet diam
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-          <div className="service-item rounded pt-3">
-            <div className="p-4">
-              <i className="fa fa-3x fa-headset text-primary mb-4" />
-              <h5>24/7 Service</h5>
-              <p>
-                Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita
-                amet diam
-              </p>
-            </div>
+        {/* <div className="col-md-6 wow fadeIn" data-wow-delay="0.1s">
+          <iframe
+            className="position-relative rounded w-100 h-100"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+            frameBorder={0}
+            style={{ minHeight: 350, border: 0 }}
+            allowFullScreen=""
+            aria-hidden="false"
+            tabIndex={0}
+          />
+        </div> */}
+        <div className="col-md-12">
+          <div className="wow fadeInUp" data-wow-delay="0.2s">
+            <form>
+              <div className="row g-3">
+                {/* <div className="col-md-6">
+                  <div className="form-floating">
+                    <input
+                      type="date"
+                      className="form-control"
+                      id="date"
+                      placeholder="Date"
+                    />
+                    <label htmlFor="date">Date</label>
+                  </div>
+                </div>
+                <div className="col-md-6">
+                  <div className="form-floating">
+                    <input
+                      type="amout"
+                      className="form-control"
+                      id="amout"
+                      placeholder="Amout"
+                    />
+                    <label htmlFor="amout">Amout</label>
+                  </div>
+                </div> */}
+                <div className="col-12">
+                  <div className="form-floating">
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="Monthly Budget"
+                      placeholder="Monthly Budget"
+                    />
+                    <label htmlFor="Monthly Budget">Monthly Budget</label>
+                  </div>
+                </div>
+                <div className="col-12">
+                  <div className="form-floating">
+                    <textarea
+                      className="form-control"
+                      placeholder="Leave a message here"
+                      id="Descreption"
+                      style={{ height: 150 }}
+                      defaultValue={""}
+                    />
+                    <label htmlFor="descreption">Descreption</label>
+                  </div>
+                </div>
+                <div className="col-12">
+                  <button className="btn btn-primary w-100 py-3" type="submit">
+                    MONTHLY BUDGET
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-  {/* Service End */}
+  {/* Contact End */}
 </>
 
   )

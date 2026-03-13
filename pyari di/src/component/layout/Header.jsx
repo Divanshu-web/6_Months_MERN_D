@@ -9,8 +9,8 @@ export default function Header(){
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
       <a href="" className="navbar-brand p-0">
         <h1 className="text-primary m-0">
-          <i className="fa fa-utensils me-3" />
-          Restoran
+          {/* <i className="fa fa-utensils me-3" /> */}
+         Expense Tracker & Budget Analysis
         </h1>
         {/* <img src="img/logo.png" alt="Logo"> */}
       </a>
@@ -25,18 +25,18 @@ export default function Header(){
       <div className="collapse navbar-collapse" id="navbarCollapse">
         <div className="navbar-nav ms-auto py-0 pe-4">
           <Link to={"/"} className="nav-item nav-link active">
-            Home
+            Add Expense Form
           </Link>
           <Link to={"/about"} className="nav-item nav-link">
-            About
+             Expense List
           </Link>
           <Link to={"/service"} className="nav-item nav-link">
-            Service
+            Set Monthly Budget 
           </Link>
           <Link to={"/menu"} className="nav-item nav-link">
-            Menu
+           Budget Prediction
           </Link>
-          <div className="nav-item dropdown">
+          {/* <div className="nav-item dropdown">
             <a
               href="#"
               className="nav-link dropdown-toggle"
@@ -58,11 +58,11 @@ export default function Header(){
           </div>
           <Link to={"/contact"} className="nav-item nav-link">
             Contact
-          </Link>
+          </Link> */}
         </div>
-        <a href="" className="btn btn-primary py-2 px-4">
+        {/* <a href="" className="btn btn-primary py-2 px-4">
           Book A Table
-        </a>
+        </a> */}
       </div>
     </nav>
   </div>

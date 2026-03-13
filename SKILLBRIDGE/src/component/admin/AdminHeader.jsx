@@ -86,7 +86,7 @@ function AdminHeader() {
       <div className="collapse navbar-collapse" id="navbarCollapse">
         <div className="navbar-nav ms-auto py-0">
           <Link to={"/admin/home"} className="nav-item nav-link active">
-            Home
+            Dashboard
           </Link>
           {/* <Link to={"/about"} className="nav-item nav-link">
             About
