@@ -54,9 +54,10 @@ function Home() {
               <div className="service-item rounded">
                 <div className="service-img rounded-top">
                   <img
-                    src="./assets/img/service-2.jpg"
+                    src="./assets/img/animation1.jpg"
                     className="img-fluid rounded-top w-100"
                     alt=""
+
                   />
                 </div>
                 <div className="service-content rounded-bottom bg-light p-4">
@@ -82,7 +83,7 @@ function Home() {
               <div className="service-item rounded">
                 <div className="service-img rounded-top">
                   <img
-                    src="./assets/img/service-3.jpg"
+                    src="./assets/img/beauty.jpg"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />
@@ -110,7 +111,7 @@ function Home() {
               <div className="service-item rounded">
                 <div className="service-img rounded-top">
                   <img
-                    src="./assets/img/service-4.jpg"
+                    src="./assets/img/fashion.jpg"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />
@@ -138,7 +139,7 @@ function Home() {
               <div className="service-item rounded">
                 <div className="service-img rounded-top">
                   <img
-                    src="./assets/img/service-5.jpg"
+                    src="./assets/img/digitalmarketing.jpg"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />
@@ -166,7 +167,7 @@ function Home() {
               <div className="service-item rounded">
                 <div className="service-img rounded-top">
                   <img
-                    src="./assets/img/service-6.jpg"
+                    src="./assets/img/videoediting.jpg"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />
@@ -194,7 +195,7 @@ function Home() {
               <div className="service-item rounded">
                 <div className="service-img rounded-top">
                   <img
-                    src="./assets/img/service-7.jpg"
+                    src="./assets/img/interiordesign.jpg"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />
@@ -222,7 +223,7 @@ function Home() {
               <div className="service-item rounded">
                 <div className="service-img rounded-top">
                   <img
-                    src="./assets/img/service-8.jpg"
+                    src="./assets/img/dumble.jpg"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />
@@ -719,7 +720,7 @@ function Home() {
               <div className="team-item rounded">
                 <div className="team-img rounded-top h-100">
                   <img
-                    src="./assets/img/team-1.jpg"
+                    src="./assets/img/sir1.png"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />
@@ -763,7 +764,7 @@ function Home() {
               <div className="team-item rounded">
                 <div className="team-img rounded-top h-100">
                   <img
-                    src="./assets/img/team-2.jpg"
+                    src="./assets/img/mam1.png"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />
@@ -807,7 +808,7 @@ function Home() {
               <div className="team-item rounded">
                 <div className="team-img rounded-top h-100">
                   <img
-                    src="./assets/img/team-3.jpg"
+                    src="./assets/img/mam2.png"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />
@@ -851,7 +852,7 @@ function Home() {
               <div className="team-item rounded">
                 <div className="team-img rounded-top h-100">
                   <img
-                    src="./assets/img/team-4.jpg"
+                    src="./assets/img/sir2.png"
                     className="img-fluid rounded-top w-100"
                     alt=""
                   />

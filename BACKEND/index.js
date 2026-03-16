@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const port = 3000
-
+app.use(express.json());
+app.use(express.urlencoded());
 
 
 
@@ -154,7 +155,36 @@ app.get('/filter-flights', (req, res) => {
 
 })
 
+app.post('/flights/add', (req, res)=>{
+  const incomingData = req.body;
 
+  if(!incomingData.airline || !incomingData.from || !incomingData.to || !incomingData.price || !incomingData.seats){
+    return res.json({
+      status: 400, 
+      success: false,
+      message: "Incomplete data"
+    })
+  }
+
+
+  const newflights = {
+    id: flights.length + 1,
+    airline: incomingData.airline,
+    from: incomingData.from,
+    to: incomingData.to,
+    price: incomingData.price,
+    seats: incomingData.seats
+  }
+
+  flights.push(newflights);
+
+  res.json({
+    status: 200,
+    success: true,
+    message: "Movie saved successfully",
+    data : flights
+  })
+})
 
 
 
