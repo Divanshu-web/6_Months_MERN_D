@@ -132,6 +132,9 @@ function Home() {
                 </div>
               </div>
             </div>
+
+            
+
             <div
               className="col-md-6 col-lg-4 col-xl-3 wow fadeInUp"
               data-wow-delay="0.1s"
@@ -263,7 +266,7 @@ function Home() {
             <div className="col-lg-5 wow fadeInLeft" data-wow-delay="0.2s">
               <div className="about-img pb-5 ps-5">
                 <img
-                  src="./assets/img/about-1.jpg"
+                  src="./assets/img/skill.avif"
                   className="img-fluid rounded w-100"
                   style={{ objectFit: "cover" }}
                   alt="Image"
@@ -340,7 +343,7 @@ function Home() {
                     </div>
                   </div>
                   <div className="feature-content d-flex flex-column">
-                    <h5 className="mb-4">Licensed Therapist</h5>
+                    <h5 className="mb-4">Licensed Trainer</h5>
                     <p className="mb-0">
                       Dolor, sit amet consectetur adipisicing elit. Soluta inventore
                       cum accusamus,
@@ -361,7 +364,7 @@ function Home() {
                     </div>
                   </div>
                   <div className="feature-content d-flex flex-column">
-                    <h5 className="mb-4">Personalized Treatment</h5>
+                    <h5 className="mb-4">Personalized Attention</h5>
                     <p className="mb-0">
                       Dolor, sit amet consectetur adipisicing elit. Soluta inventore
                       cum accusamus,
@@ -382,7 +385,7 @@ function Home() {
                     </div>
                   </div>
                   <div className="feature-content d-flex flex-column">
-                    <h5 className="mb-4">Therapy Goals</h5>
+                    <h5 className="mb-4">Skill Goals</h5>
                     <p className="mb-0">
                       Dolor, sit amet consectetur adipisicing elit. Soluta inventore
                       cum accusamus,
@@ -445,7 +448,7 @@ function Home() {
                     </div>
                   </div>
                   <div className="feature-content d-flex flex-column">
-                    <h5 className="mb-4">Experienced Stuff</h5>
+                    <h5 className="mb-4">Experienced Staff</h5>
                     <p className="mb-0">
                       Dolor, sit amet consectetur adipisicing elit. Soluta inventore
                       cum accusamus,
@@ -1019,7 +1022,7 @@ function Home() {
               <div className="blog-item rounded">
                 <div className="blog-img">
                   <img
-                    src="./assets/img/blog-1.jpg"
+                    src="./assets/img/home1.jpg"
                     className="img-fluid w-100"
                     alt="Image"
                   />
@@ -1056,7 +1059,7 @@ function Home() {
               <div className="blog-item rounded">
                 <div className="blog-img">
                   <img
-                    src="./assets/img/blog-2.jpg"
+                    src="./assets/img/home2.jpg"
                     className="img-fluid w-100"
                     alt="Image"
                   />
@@ -1093,7 +1096,7 @@ function Home() {
               <div className="blog-item rounded">
                 <div className="blog-img">
                   <img
-                    src="./assets/img/blog-3.jpg"
+                    src="./assets/img/home3.jpg"
                     className="img-fluid w-100"
                     alt="Image"
                   />
