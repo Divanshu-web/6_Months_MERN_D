@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 
-//middleware to parse json data, otherwise re.body is undefined
+//middleware to parse json data, otherwise req.body is undefined
 app.use(express.json());
 app.use(express.urlencoded());
 
