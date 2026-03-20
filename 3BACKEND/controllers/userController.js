@@ -10,6 +10,7 @@ const getAllUsers = (req, res)=>{
 }
 
 
+
 const addUser = (req, res)=>{
   const incomingData = req.body;
   console.log(incomingData);
@@ -53,14 +54,16 @@ const fetchSingleUser = (req, res) => {
         {
             status: 200,
             success: true,
-            message: "users data fetched successfully",
+            message: "users data fetched hoi successfully",
             data: users
         }
     );
 }
 
 const searchUsers = (req, res) => {
+  console.log("hoi")
     const query = req.query.q?.toLowerCase();
+
 
     if (!query) {
         return res.json({
@@ -85,11 +88,31 @@ const searchUsers = (req, res) => {
 };
 
 
+const addUserToDB = async (req, res) => {
+  const user = new user({
+    name: "Rahul Sharma",
+email: "rahul@gmail.com",
+phone: "9876543210",
+age: 25,
+location: "Delhi",
+skillsOffered: "Web Development",
+skillsWanted: "UI/UX Design",
+experienceLevel: "Expert"
+  })
+
+  await user.save();
+  res.send("Data saved");
+}
+
+
+
+
 module.exports = {
     getAllUsers,
     addUser,
     fetchSingleUser,
-    searchUsers
+    searchUsers,
+    addUserToDB
 }
 
 

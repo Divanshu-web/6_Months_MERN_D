@@ -6,8 +6,11 @@ const UserControllers = require('../controllers/userController')
 
 router.get('/all', UserControllers.getAllUsers)
 router.post('/add', UserControllers.addUser)
-router.get('/:id', UserControllers.fetchSingleUser)
-router.get("/search",UserControllers.searchUsers);
+router.get('/search',UserControllers.searchUsers)
+router.get('/fetch/:id', UserControllers.fetchSingleUser)
+
+router.get('/addToDB', UserControllers.addUserToDB)
 
 
-module.exports = router;
+
+module.exports = router;  

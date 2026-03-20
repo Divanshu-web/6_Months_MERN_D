@@ -113,3 +113,17 @@ const user = [
 ]
 
 module.exports = user
+
+
+// const mongoose = require('mongoose');
+// const { Schema } = mongoose;
+
+// const userSchema = new Schema({
+//   name: {type: String, default: "Div"}, 
+//   email: String,
+//   phone : String
+// });
+
+
+// const user = mongoose.model('user', userSchema);
+// module.exports = user;

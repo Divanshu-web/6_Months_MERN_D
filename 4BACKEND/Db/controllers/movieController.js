@@ -48,8 +48,6 @@ const addMovieToDB = async (req, res) => {
   await movie.save();
   res.send("Data saved");
 }
-
-
 module.exports = {
     getAllMovies,
     addMovie,
