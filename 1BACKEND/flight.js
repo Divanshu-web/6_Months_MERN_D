@@ -12,7 +12,7 @@ const movies = [
   { id: 4, title: "The Godfather", genre: "Crime", year: 1972},
   { id: 5, title: "Avengers: Endgame", genre: "Action", year: 2019},
   { id: 6, title: "Parasite", genre: "Thriller", year: 2019}
-];
+]; 
 
 app.get('/movies/all', (req, res)=>{
   res.json({
@@ -55,6 +55,6 @@ app.get('/',(req,res)=>{
     res.status(200).send('Server is running');
 })
 
-app.listen(3000,(req,res)=>{
+app.listen(3000,()=>{
     console.log('server is running');
 })
