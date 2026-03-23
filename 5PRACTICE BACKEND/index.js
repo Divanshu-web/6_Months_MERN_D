@@ -1,10 +1,14 @@
 const express = require('express');
 const app = express();
 
+const connectDB = require('./config/db.js')
+
+
 //middleware to parse json data, otherwise req.body is undefined
 app.use(express.json());
 app.use(express.urlencoded());
 
+connectDB();
 
 const logger = require('./middlewares/logger')
 app.use(logger);
