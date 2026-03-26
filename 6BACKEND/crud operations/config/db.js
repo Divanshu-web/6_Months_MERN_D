@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const connectDB = () =>  {
     try{
-        mongoose.connect('mongodb://localhost:27017/MOVIES');
+        mongoose.connect('mongodb://localhost:27017/6BACKEND');
         console.log("DB connected successfully!!");
     }
     catch(err){
