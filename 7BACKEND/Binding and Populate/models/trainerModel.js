@@ -7,7 +7,7 @@ const trainerSchema = new Schema({
     email: { type: String, default: "", required: true },
     profileImage : { type: String, default: ""},
     chats : { type: String, default: ""},
-    userType : {type: Number , default: 3},
+    userId : {type: mongoose.Schema.Types.ObjectId, default: null , ref: "user"},
     skills :  {type : String, default: ""},
     experience : {type : String, default: ""},
     

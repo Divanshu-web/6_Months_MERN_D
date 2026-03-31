@@ -8,7 +8,7 @@ const addTrainerToDB = async (req, res) => {
     const { email } = incomingData;
     const { profileImage } = incomingData;
     const { chats } = incomingData;
-    const { userType } = incomingData;
+    const { userId } = incomingData;
     const { skills } = incomingData;
     const { experience } = incomingData;
 
@@ -21,7 +21,7 @@ const addTrainerToDB = async (req, res) => {
       email,
       profileImage,
       chats,
-      userType, 
+      userId, 
       skills, 
       experience 
     });
@@ -46,7 +46,7 @@ const addTrainerToDB = async (req, res) => {
 
 // TO GET ALL MOVIES
 const getAllTrainer = async (req, res) => {
-  const dbData = await trainer.find({isDelete: false});
+  const dbData = await trainer.find({isDelete: false}).populate("userId");
   const totalDocs = await trainer.countDocuments({isDelete: false});
   res.json({
     status: 200,
