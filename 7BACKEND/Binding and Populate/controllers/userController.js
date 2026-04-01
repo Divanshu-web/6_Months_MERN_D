@@ -75,7 +75,7 @@ const addUserToDB = async (req, res) => {
             })
             await userData.save();
 
-            res.json({
+            res.json({2
                 status: 201,
                 success: true,
                 message: "user Saved",
