@@ -5,9 +5,9 @@ const router = express.Router();
 const userController = require('../controllers/userController')
 
 router.get('/all', userController.getAllUser)
-router.get('/single/:id', userController.getSingleUser)
+router.get('/single', userController.getSingleUser)
 router.post('/add', userController.addUserToDB)
-router.post('/update/:id', userController.updateUser)
+router.post('/update', userController.updateUser)
 router.post('/deleteSoft', userController.deleteSoft)
 
 module.exports = router;

@@ -115,6 +115,9 @@ function Header() {
           <Link to={"/contact"} className="nav-item nav-link">
             Contact Us
           </Link>
+          <Link to={"/register"} className="nav-item nav-link">
+            Register
+          </Link>
         </div>
 
           {sessionStorage.getItem("email")?

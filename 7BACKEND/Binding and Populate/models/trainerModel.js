@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const trainerSchema = new Schema({
+const learnerMentorSchema = new Schema({
     autoId: { type: Number, default: 0 },
-    name: { type: String, default: "", required: true },
-    email: { type: String, default: "", required: true },
     profileImage : { type: String, default: ""},
-    chats : { type: String, default: ""},
     userId : {type: mongoose.Schema.Types.ObjectId, default: null , ref: "user"},
     skills :  {type : String, default: ""},
     experience : {type : String, default: ""},
+    contact : {type : Number, default: ""},
+    profession : {type : Number, default: ""},
     
     isDelete: {type: Boolean, default: false},
     isBlock :  {type: Boolean, default: false},
@@ -17,4 +16,4 @@ const trainerSchema = new Schema({
     updatedAt: {type: Date}
 });
 
-module.exports = mongoose.model('trainer', trainerSchema);
+module.exports = mongoose.model('learnerMentor', learnerMentorSchema);

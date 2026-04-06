@@ -1,0 +1,283 @@
+{
+  "info": {
+    "_postman_id": "a4a28714-691b-47f9-b9d1-ba94818b9271",
+    "name": "BACKENDTEST",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53095720",
+    "_collection_link": "https://go.postman.co/collection/53095720-a4a28714-691b-47f9-b9d1-ba94818b9271?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "ADD",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "title",
+              "value": "UI / UX",
+              "type": "text",
+              "uuid": "2b3672c6-7767-4d5a-aa2b-bbe4924c6bd0"
+            },
+            {
+              "key": "descryption",
+              "value": "get tasks",
+              "type": "text",
+              "uuid": "b1331168-011c-4280-94d0-07f3e25bddb5"
+            },
+            {
+              "key": "status",
+              "value": "pending",
+              "type": "text",
+              "uuid": "efc6d7fc-01eb-497d-8df6-8563544a37d1"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASEURL}}/api/task/add",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "api",
+            "task",
+            "add"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ALL",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{BASEURL}}/api/task/all",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "api",
+            "task",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UPDATE",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "_id",
+              "value": "69d09e20a06c21a944948644",
+              "type": "text",
+              "uuid": "262045c7-b214-4b48-bf8e-3d13ff529069"
+            },
+            {
+              "key": "title",
+              "value": "PYTHON",
+              "type": "text",
+              "uuid": "266709fa-7e8c-4747-8c36-7ad0c1183607"
+            },
+            {
+              "key": "descryption",
+              "value": "Get All Tasks",
+              "type": "text",
+              "uuid": "db3e2b2c-a623-48ec-ac5f-659e45cf6cce"
+            },
+            {
+              "key": "status",
+              "value": "Completed",
+              "type": "text",
+              "uuid": "863762e8-0a0d-47da-9570-6414c8da98db"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASEURL}}/api/task/update",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "api",
+            "task",
+            "update"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "_id",
+              "value": "69d09e20a06c21a944948644",
+              "type": "text",
+              "uuid": "f8d297c0-7629-493f-a150-f047d7657acd"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASEURL}}/api/task/delete",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "api",
+            "task",
+            "delete"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "divu33@gmail.com",
+              "type": "text",
+              "uuid": "2eb13de3-a797-4d4c-b665-abc060cdfe87"
+            },
+            {
+              "key": "password",
+              "value": "123",
+              "type": "text",
+              "uuid": "1e9c70a2-29f2-4c46-a850-226512c1f8d9"
+            },
+            {
+              "key": "name",
+              "value": "divu",
+              "type": "text",
+              "uuid": "8e330aac-8cf3-413e-89dd-620fa2edef5c"
+            },
+            {
+              "key": "phone",
+              "value": "1234567890",
+              "type": "text",
+              "uuid": "d99d64ed-3eb0-4ef3-b197-2678101301ba"
+            },
+            {
+              "key": "address",
+              "value": "Punjab",
+              "type": "text",
+              "uuid": "758b15b9-ef8f-410a-9779-92b109af0089"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASEURL}}/customer/register?name=divu33&email=divu33@gmail.com&password=123&phone=3214567890&address=jalandhar",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "customer",
+            "register"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "divu33"
+            },
+            {
+              "key": "email",
+              "value": "divu33@gmail.com"
+            },
+            {
+              "key": "password",
+              "value": "123"
+            },
+            {
+              "key": "phone",
+              "value": "3214567890"
+            },
+            {
+              "key": "address",
+              "value": "jalandhar"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "urlencoded",
+          "urlencoded": [
+            {
+              "key": "email",
+              "value": "divu33@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "123",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{BASEURL}}/customer/login?email=divu33@gmail.com&password=123",
+          "host": [
+            "{{BASEURL}}"
+          ],
+          "path": [
+            "customer",
+            "login"
+          ],
+          "query": [
+            {
+              "key": "name",
+              "value": "divu33",
+              "disabled": true
+            },
+            {
+              "key": "email",
+              "value": "divu33@gmail.com"
+            },
+            {
+              "key": "password",
+              "value": "123"
+            },
+            {
+              "key": "phone",
+              "value": "3214567890",
+              "disabled": true
+            },
+            {
+              "key": "address",
+              "value": "jalandhar",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

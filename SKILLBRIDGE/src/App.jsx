@@ -20,9 +20,10 @@ import DigitalMarketing from './component/adminpages/DigitalMarketing'
 import FashionDesigning from './component/adminpages/FashionDesigning'
 import VideoEditing from './component/adminpages/VideoEditing'
 import AdminContact from './component/adminpages/AdminContact'
-import Login from './component/pages/Login'
+import Login from './component/auth/Login'
 import AddCategory from './component/adminpages/AddCategory'
 import ManageCategory from './component/adminpages/ManageCategory'
+import Register from './component/auth/Register'
 
 
 function App() {
@@ -42,6 +43,7 @@ function App() {
             <Route path='/testimonial' element={<Testimonial />}></Route>
             <Route path='/error404' element={<Error404/>}></Route>
             <Route path='/login' element={<Login/>}></Route>
+            <Route path='/register' element={<Register/>}></Route>
 
           </Route>
 

@@ -1,136 +1,434 @@
-const trainer = require('../models/trainerModel')
+// const trainer = require('../models/trainerModel')
 
-// TO CREATE A MOVIE
-const addTrainerToDB = async (req, res) => {
-  try {
-    const incomingData = req.body || {};
-    const { name } = incomingData;
-    const { email } = incomingData;
-    const { profileImage } = incomingData;
-    const { chats } = incomingData;
-    const { userId } = incomingData;
-    const { skills } = incomingData;
-    const { experience } = incomingData;
+// // TO CREATE A MOVIE
+// const user = require('../models/userModel')
 
-
-    const totalDocs = await trainer.countDocuments({});
-
-    const trainerData = new trainer({
-      autoId: totalDocs + 1,
-      name,
-      email,
-      profileImage,
-      chats,
-      userId, 
-      skills, 
-      experience 
-    });
-
-    await trainerData.save()
-
-    res.json({
-      status: 201,
-      success: true,
-      message: "trainer Created",
-      data: trainerData
-    })
-
-  } catch (err) {
-    res.json({
-      status: 500,
-      success: false,
-      message: err.message || "Internal Server Error"
-    })
-  }
-}
-
-// TO GET ALL MOVIES
-const getAllTrainer = async (req, res) => {
-  const dbData = await trainer.find({isDelete: false}).populate("userId");
-  const totalDocs = await trainer.countDocuments({isDelete: false});
-  res.json({
-    status: 200,
-    total: totalDocs,
-    success: true,
-    message: "trainer fetched",
-    data: dbData
-  })
-}
+// // TO CREATE A MOVIE
+// // const addUserToDB = async (req, res) => {
+// //   try {
+// //     const incomingData = req.body || {};
+// //     const { name } = incomingData;
+// //     const { email } = incomingData;
+// //     const { profileImage } = incomingData;
+// //     const { chats } = incomingData;
+// //     const { userType } = incomingData;
 
 
-// TO GET SINGLE MOVIE
-const getSingleTrainer = async (req, res) => {
-  const trainerId = req.params.id;
-  const trainers = await trainer.find({ _id: trainerId , isDelete: false});
+// //     const totalDocs = await user.countDocuments({});
 
-  res.json({
-    status: 200,
-    success: true,
-    message: "trainer fetched",
-    data: trainers
-  })
-}
+// //     const userData = new user({
+// //       autoId: totalDocs + 1,
+// //       name,
+// //       email,
+// //       profileImage,
+// //       chats,
+// //       userType
+// //     });
+
+// //     await userData.save()
+
+// //     res.json({
+// //       status: 201,
+// //       success: true,
+// //       message: "user Created",
+// //       data: userData
+// //     })
+
+// //   } catch (err) {
+// //     res.json({
+// //       status: 500,
+// //       success: false,
+// //       message: err.message || "Internal Server Error"
+// //     })
+// //   }
+// // }
+
+// const addUserToDB = async (req, res) => {
+//     try {
+//         const incomingData = req.body || {};
+//         let validation = "";
+//         if (!incomingData.name) validation += 'name is Required';
+//         if (!incomingData.email) validation += 'email is Required';
+//         if (!incomingData.password) validation += 'password is Required';
+//         if (!!validation) {
+//             res.json({
+//                 status: 400,
+//                 success: false,
+//                 message: validation
+//             })
+//         }
+//         else {
+//             const existingData = await user.findOne({ name: incomingData.name })
+//             if (!!existingData) {
+//                 return res.json({
+//                     status: 400,
+//                     success: false,
+//                     message: "user already exists"
+//                 })
+//             }
+//             const userData = new user({
+//                 name: incomingData.name,
+//                 email: incomingData.email,
+//                 password: incomingData.password,
+//             })
+//             await userData.save();
+
+//             res.json({
+//                 status: 201,
+//                 success: true,
+//                 message: "user Saved",
+//                 data: userData
+//             })
+//         }
+//     } catch (err) {
+//         return res.json({
+//             status: 500,
+//             success: false,
+//             message: "Internal Server Error: " + err.message
+//         })
+//     }
+// }
 
 
-// UPDATE
-const updateTrainer = async (req, res) => {
-  const trainerId = req.params.id;
-  const incomingData = req.body;
-  const updatedTrainer = await trainer.findByIdAndUpdate(trainerId, incomingData, { new: true });
+// // // TO GET ALL MOVIES
 
-  res.json({
-    success: true,
-    message: "Data Updated",
-    data: updatedTrainer
-  })
-}
+// // const getAllUser = async (req, res) => {
+// //   const dbData = await user.find({isDelete: false});
+// //   const totalDocs = await user.countDocuments({isDelete: false});
+// //   res.json({
+// //     status: 200,
+// //     total: totalDocs,
+// //     success: true,
+// //     message: "user fetched",
+// //     data: dbData
+// //   })
+// // }
 
-
-// DELETE - 
-// SOFT DELETE
-const deleteSoft = async (req, res) => {
-   try {
-    const trainerId = req.body.id;
-
-    if(!trainerId){
-       return res.json({
-        status: 400,
-        success: false,
-        message: "trainer id is required"
-      })
-    }
-
-    const deleteTrainer = await trainer.findByIdAndUpdate(trainerId, {isDelete : true}, { new: true });
-
-    if(!deleteTrainer){
-      return res.json({
-        status: 400,
-        success: false,
-        message: "trainer not found"
-      })
-    }
-
-    res.json({
-      status: 200,
-      success: true,
-      message: "trainer deleted successfully",
-      data: deleteTrainer
-    })
+// // READ OPERATION
 
 
-  } catch (err) {
-    return res.json({
-      status: 500,
-      success: false,
-      message: err.message || "Internal Server Error"
-    })
-  }
-}
 
-module.exports = {
-  getAllTrainer,
-  addTrainerToDB,
-  getSingleTrainer,
-  updateTrainer,
-  deleteSoft
-}
+// // To GET ALL DOCUMENTS
+// const getAllUser = async (req, res) => {
+//     try {
+//         const dbData = await user.find({isDelete : false});// to retrive all the documents
+//         const totalDocs = await user.countDocuments({isDelete: false});
+//         res.json({
+//             status: 200,
+//             success: true,
+//             message: "Products loaded successfully",
+//             total: totalDocs,
+//             data: dbData
+//         })
+//     } catch (err) {
+//         res.json({
+//             status: 500,
+//             success: false,
+//             message: "Internal Server Error: " + err,
+//         })
+//     }
+// }
+
+// // // TO GET SINGLE MOVIE
+// // const getSingleUser = async (req, res) => {
+// //   const userId = req.params.id;
+// //   const users = await user.find({ _id: userId , isDelete: false});
+
+// //   res.json({
+// //     status: 200,
+// //     success: true,
+// //     message: "user fetched",
+// //     data: users
+// //   })
+// // }
+
+// const getSingleUser = async (req, res) => {
+//     try {
+//         const userId = req.body?._id || { }  ;
+
+//         if (!userId) {
+//             res.json({
+//                 status: 400,
+//                 success: false,
+//                 message: "_id is required"
+//             })
+//         }
+
+//         const userdata = await user.findOne({ _id: userId, isDelete :false })
+
+//         if (!userdata) {
+//             res.json({
+//                 status: 404,
+//                 success: false,
+//                 message: "user not found"
+//             })
+//         } else {
+//             res.json({
+//                 status: 200,
+//                 success: true,
+//                 message: "user fetched",
+//                 data: userdata
+//             })
+//         }
+//     } catch (err) {
+//         res.json({
+//             status: 500,
+//             success: false,
+//             message: "Internal Server Error: " + err,
+//         })
+//     }
+// }
+
+
+// // // UPDATE
+// // const updateUser = async (req, res) => {
+// //   const userId = req.params.id;
+// //   const incomingData = req.body;
+// //   const updatedUser = await user.findByIdAndUpdate(userId, incomingData, { new: true });
+
+// //   res.json({
+// //     success: true,
+// //     message: "Data Updated",
+// //     data: updatedUser
+// //   })
+// // }
+
+
+// // const updateUser = async (req, res) => {
+// //     try {
+// //         const userId = req.body?._id;
+// //         const incomingData = req.body;
+
+// //         if (!userId) {
+// //             res.json({
+// //                 status: 400,
+// //                 success: false,
+// //                 message: "_id is required"
+// //             })
+// //         }
+
+// //         const usernew = await user.findOne({ _id: userId });
+
+// //         if (!usernew) {
+// //             res.json({
+// //                 status: 404,
+// //                 success: false,
+// //                 message: "No such user exists"
+// //             })
+// //         } else {
+// //             if (incomingData.name) {
+// //                 user.name = incomingData.name
+// //             }
+// //             if (incomingData.email) {
+// //                 user.email = incomingData.email
+// //             }
+// //             if (incomingData.password) {
+// //                 user.password = incomingData.password
+// //             }
+
+// //             usernew.updatedAt = Date.now()
+// //             let savedData = await usernew.save();
+
+// //             res.json({
+// //                 status: 200,
+// //                 success: true,
+// //                 message: "user Updated",
+// //                 data: savedData
+// //             })
+
+// //         }
+// //     } catch (err) {
+// //         res.json({
+// //             status: 500,
+// //             success: false,
+// //             message: "ISE: " + err.message
+// //         })
+// //     }
+// // }
+
+// const updateUser = async (req, res) => {
+//     try {
+//         const userId = req.body?._id;
+//         const incomingData = req.body;
+
+//         if (!userId) {
+//             res.json({
+//                 status: 400,
+//                 success: false,
+//                 message: "_id is required"
+//             })
+//         }
+
+//         const usernew = await user.findOne({ _id: userId ,});
+
+//         if (!usernew) {
+//             res.json({
+//                 status: 404,
+//                 success: false,
+//                 message: "No such usernew exists"
+//             })
+//         } else {
+//             if (incomingData.name) {
+//                 usernew.name = incomingData.name
+//             }
+//             if (incomingData.email) {
+//                 usernew.email = incomingData.email
+//             }
+//             if (incomingData.password) {
+//                 usernew.password = incomingData.password
+//             }
+
+//             usernew.updatedAt = Date.now()
+//             let savedData = await usernew.save();
+
+//             res.json({
+//                 status: 200,
+//                 success: true,
+//                 message: "usernew Updated",
+//                 data: savedData
+//             })
+
+//         }
+//     } catch (err) {
+//         res.json({
+//             status: 500,
+//             success: false,
+//             message: "ISE: " + err.message
+//         })
+//     }
+// }
+
+
+// // DELETE - 
+// // SOFT DELETE
+// // const deleteSoft = async (req, res) => {
+// //    try {
+// //     const userId = req.body.id;
+
+// //     if(!userId){
+// //        return res.json({
+// //         status: 400,
+// //         success: false,
+// //         message: "user id is required"
+// //       })
+// //     }
+
+// //     const deleteUser = await user.findByIdAndUpdate(userId, {isDelete : true}, { new: true });
+
+// //     if(!deleteUser){
+// //       return res.json({
+// //         status: 400,
+// //         success: false,
+// //         message: "user not found"
+// //       })
+// //     }
+
+// //     res.json({
+// //       status: 200,
+// //       success: true,
+// //       message: "user deleted successfully",
+// //       data: deleteUser
+// //     })
+
+
+// //   } catch (err) {
+// //     return res.json({
+// //       status: 500,
+// //       success: false,
+// //       message: err.message || "Internal Server Error"
+// //     })
+// //   }
+// // }
+
+
+// // const deleteSoft = async (req, res) => {
+// //     try {
+// //         const userId = req.body?._id;
+
+// //         if (!userId) {
+// //             res.json({
+// //                 status: 400,
+// //                 success: false,
+// //                 message: "_id is required"
+// //             })
+// //         }
+
+// //         const user = await user.findOne({ _id: userId })
+
+// //         if (!user) {
+// //             res.json({
+// //                 status: 404,
+// //                 success: false,
+// //                 message: "No such user"
+// //             })
+// //         }
+
+// //         user.isDelete = true
+
+// //         await user.save()
+
+// //         res.json({
+// //             status: 200,
+// //             success: true,
+// //             message: "user removed"
+// //         })
+
+// //     } catch (err) {
+// //         res.json({
+// //             status: 500,
+// //             success: false,
+// //             message: "ISE: " + err.message
+// //         })
+// //     }
+
+// // }
+
+// const deleteSoft = async (req, res) => {
+//     try {
+//         const userId = req.body?._id;
+
+//         if (!userId) {
+//             res.json({
+//                 status: 400,
+//                 success: false,
+//                 message: "_id is required"
+//             })
+//         }
+
+//         const userdata = await user.findOne({ _id: userId })
+
+//         if (!userdata) {
+//             res.json({
+//                 status: 404,
+//                 success: false,
+//                 message: "No such task"
+//             })
+//         }
+
+//         userdata.isDelete = true
+
+//         await userdata.save()
+
+//         res.json({
+//             status: 200,
+//             success: true,
+//             message: "user removed"
+//         })
+
+//     } catch (err) {
+//         res.json({
+//             status: 500,
+//             success: false, 
+//             message: "ISE: " + err.message
+//         })
+//     }
+
+// }
+
+// module.exports = {
+//   getAllUser,
+//   addUserToDB,
+//   getSingleUser,
+//   updateUser,
+//   deleteSoft
+// }
