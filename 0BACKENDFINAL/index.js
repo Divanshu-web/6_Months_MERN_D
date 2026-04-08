@@ -15,8 +15,8 @@ connectDb()
 const apiRoutes = require('./server/routes/apiRoutes')
 app.use('/api', apiRoutes);
 
-const customerRoutes = require('./server/routes/customerRoutes')
-app.use('/customer', customerRoutes);
+const learnerMentorRoutes = require('./server/routes/learnerMentorRoutes')
+app.use('/learnerMentor', learnerMentorRoutes);
 
 // default route
 app.get('/', (req, res)=>{

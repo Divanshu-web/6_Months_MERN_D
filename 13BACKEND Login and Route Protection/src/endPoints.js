@@ -1,0 +1,5 @@
+export const BASE_URL = "http://localhost:3000/"
+
+
+export const REGISTER = "customer/register"
+export const LOGIN = "api/login"
