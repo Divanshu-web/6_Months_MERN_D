@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 
 const learnerMentorSchema = new mongoose.Schema({
-    name: { type: String, default: "" },
-    email: { type: String, default: "" },
-    phone: { type: Number, default: 0 },
-    address: { type: String, default: "" },
+    autoId:{type: Number, default: 0},
     userId: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
-    
+    contact: { type: Number, default: 0 },
+    profession: { type: String, default: "" },
+    skills: { type: String, default: "" },
+    experience: { type: Number, default: 0 },
+    profileImage: { type: String, default: "" },
 
     isDelete: { type: Boolean, default: false },
     isBlock: { type: Boolean, default: false },

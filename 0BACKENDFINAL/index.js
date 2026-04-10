@@ -6,6 +6,7 @@ seed();
 
 // body - parser for req.body
 app.use(express.urlencoded());
+app.use(express.json());
 
 // connection to DB
 const connectDb = require('./server/config/db')
@@ -17,6 +18,9 @@ app.use('/api', apiRoutes);
 
 const learnerMentorRoutes = require('./server/routes/learnerMentorRoutes')
 app.use('/learnerMentor', learnerMentorRoutes);
+
+const skillRoutes = require('./server/routes/skillRoutes')
+app.use('/skill', skillRoutes);
 
 // default route
 app.get('/', (req, res)=>{
