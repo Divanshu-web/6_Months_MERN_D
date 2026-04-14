@@ -1,11 +1,15 @@
-const skillModel = require('./skillModel')
+const progressModel = require('./progressModel')
 
-const addSkillToDB = async (req, res) => {
+const addProgressToDB = async (req, res) => {
     try {
         const incomingData = req.body || {};
         let validation = "";
-        if (!incomingData.skillName) validation += 'skillName is Required';
-        if (!req.file) validation += 'thumbnail is Required';
+        if (!incomingData.mentorId) validation += 'mentorId is Required';
+        if (!incomingData.sessiontId) validation += 'sessiontId is Required';
+        if (!incomingData.learnerId) validation += 'learnerId is Required';
+        if (!incomingData.percentage) validation += 'percentage is Required';
+        if (!incomingData.remarks) validation += 'remarks is Required';
+
 
         if (!!validation) {
             res.json({
@@ -14,32 +18,26 @@ const addSkillToDB = async (req, res) => {
                 message: validation
             })
         }
-        else {
-            const existingData = await skillModel.findOne({ skillName: incomingData.skillName })
-            if (!!existingData) {
-                return res.json({
-                    status: 400,
-                    success: false,
-                    message: "skill already exists"
-                })
-            }
 
-            let totalDocs = await skillModel.countDocuments({});
+            let totalDocs = await progressModel.countDocuments({});
 
-            const skillData = new skill({
+            const progressData = new progress({
                 autoId: totalDocs + 1,
-                skillName: incomingData.skillName,
-                thumbnail: 'skill/' + req.file.filename,
+                mentorId: incomingData.mentorId,
+                sessionId: incomingData.sessionId,
+                learnerId: incomingData.learnerId,
+                percentageId: incomingData.percentageId,
+                remarksId: incomingData.remarksId,
+               
             })
-            await skillData.save();
+            await progressData.save();
 
             res.json({
                 status: 201,
                 success: true,
-                message: "skill Saved",
-                data: skillData
+                message: "progress Saved",
+                data: progressData
             })
-        }
     } catch (err) {
         return res.json({
             status: 500,
@@ -53,14 +51,14 @@ const addSkillToDB = async (req, res) => {
 // READ OPERATION
 
 // To GET ALL DOCUMENTS
-const getAllSkill = async (req, res) => {
+const getAllProgress = async (req, res) => {
     try {
-        const dbData = await skillModel.find({ isDelete: false });// to retrive all the documents
-        const totalDocs = await skillModel.countDocuments({ isDelete: false });
+        const dbData = await progressModel.find({ isDelete: false }).populate("sessionId").populate("learnerId").populate("mentorId");// to retrive all the documents
+        const totalDocs = await progressModel.countDocuments({ isDelete: false });
         res.json({
             status: 200,
             success: true,
-            message: "skill loaded successfully",
+            message: "progress loaded successfully",
             total: totalDocs,
             data: dbData
         })
@@ -74,11 +72,11 @@ const getAllSkill = async (req, res) => {
 }
 
 // // TO GET SINGLE MOVIE
-const getSingleSkill = async (req, res) => {
+const getSingleProgress = async (req, res) => {
     try {
-        const skillId = req.body?._id || {};
+        const progressId = req.body?._id || {};
 
-        if (!skillId) {
+        if (!progressId) {
             res.json({
                 status: 400,
                 success: false,
@@ -86,20 +84,20 @@ const getSingleSkill = async (req, res) => {
             })
         }
 
-        const skilldata = await skillModel.findOne({ _id: skillId, isDelete: false })
+        const progressdata = await progressModel.findOne({ _id: progressId, isDelete: false })
 
-        if (!skilldata) {
+        if (!progressdata) {
             res.json({
                 status: 404,
                 success: false,
-                message: "skill not found"
+                message: "progress not found"
             })
         } else {
             res.json({
                 status: 200,
                 success: true,
-                message: "skill fetched",
-                data: skilldata
+                message: "progress fetched",
+                data: progressdata
             })
         }
     } catch (err) {
@@ -114,12 +112,12 @@ const getSingleSkill = async (req, res) => {
 
 // UPDATE
 
-const updateSkill = async (req, res) => {
+const updateProgress = async (req, res) => {
     try {
-        const skillId = req.body?._id;
-        const incomingData = req.body;
+        const progressId = req.body?._id;
+        const incomingData = req.body; 
 
-        if (!skillId) {
+        if (!progressId) {
             res.json({
                 status: 400,
                 success: false,
@@ -127,32 +125,29 @@ const updateSkill = async (req, res) => {
             })
         }
 
-        const skillnew = await skillModel.findOne({ _id: skillId, });
+        const progressnew = await progressModel.findOne({ _id: progressId, });
 
-        if (!skillnew) {
+        if (!progressnew) {
             res.json({
                 status: 404,
                 success: false,
-                message: "No such skillnew exists"
+                message: "No such progressnew exists"
             })
         } else {
-            if (incomingData.skillName) {
-                skillnew.skillName = incomingData.skillName
+            if (incomingData.percentage) {
+                progressnew.percentage = incomingData.percentage
             }
-            if (incomingData.status) {
-                skillnew.status = incomingData.status
-            }
-            if (req.file) {
-                skillnew.thumbnail = 'thumbnail/' + req.file.filename
+            if (incomingData.remarks) {
+                progressnew.remarks = incomingData.remarks
             }
 
-            skillnew.updatedAt = Date.now()
-            let savedData = await skillnew.save();
+            progressnew.updatedAt = Date.now()
+            let savedData = await progressnew.save();
 
             res.json({
                 status: 200,
                 success: true,
-                message: "skillnew Updated",
+                message: "progressnew Updated",
                 data: savedData
             })
 
@@ -171,9 +166,9 @@ const updateSkill = async (req, res) => {
 
 const deleteSoft = async (req, res) => {
     try {
-        const skillId = req.body?._id;
+        const progressId = req.body?._id;
 
-        if (!skillId) {
+        if (!progressId) {
             res.json({
                 status: 400,
                 success: false,
@@ -181,9 +176,9 @@ const deleteSoft = async (req, res) => {
             })
         }
 
-        const skilldata = await skillModel.findOne({ _id: skillId })
+        const progressdata = await progressModel.findOne({ _id: progressId })
 
-        if (!skilldata) {
+        if (!progressdata) {
             res.json({
                 status: 404,
                 success: false,
@@ -191,14 +186,14 @@ const deleteSoft = async (req, res) => {
             })
         }
 
-        skilldata.isDelete = true
+        progressdata.isDelete = true
 
-        await skilldata.save()
+        await progressdata.save()
 
         res.json({
             status: 200,
             success: true,
-            message: "skill removed"
+            message: "progress removed"
         })
 
     } catch (err) {
@@ -212,9 +207,9 @@ const deleteSoft = async (req, res) => {
 }
 
 module.exports = {
-    addSkillToDB,
-    getAllSkill,
-    getSingleSkill,
-    updateSkill,
+    addProgressToDB,
+    getAllProgress,
+    getSingleProgress,
+    updateProgress,
     deleteSoft
 }

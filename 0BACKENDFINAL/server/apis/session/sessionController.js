@@ -5,10 +5,19 @@ const addSessionToDB = async (req, res) => {
         const incomingData = req.body || {};
         let validation = "";
         if (!incomingData.sessionName) validation += 'sessionName is Required';
+        if (!incomingData.skillId) validation += 'skillId is Required';
         if (!incomingData.descryption) validation += 'descryption is Required';
         if (!incomingData.price) validation += 'price is Required';
+        if (!incomingData.date) validation += 'date is Required';
+        // if (!incomingData.time) validation += 'time is Required';
         if (!req.file) validation += 'thumbnail is Required';
-        if (!incomingData.duration) validation += 'price is Required';
+        if (!incomingData.learnerMentorId) validation += 'learnerMentorId is Required';
+
+        if (!incomingData.duration) validation += 'duration is Required';
+        if (!incomingData.sessionType) validation += 'sessionType is Required';
+        if (!incomingData.meetingLink) validation += 'meetingLink is Required';
+        if (!incomingData.youtubeLink) validation += 'youtubeLink is Required';
+        if (!incomingData.isPaid) validation += 'isPaid is Required';
 
 
         if (!!validation) {
@@ -19,29 +28,42 @@ const addSessionToDB = async (req, res) => {
             })
         }
         else {
-            const existingData = await skillModel.findOne({ skillName: incomingData.skillName })
+            const existingData = await sessionModel.findOne({ sessionName: incomingData.sessionName })
             if (!!existingData) {
                 return res.json({
                     status: 400,
                     success: false,
-                    message: "skill already exists"
+                    message: "session already exists"
                 })
             }
 
-            let totalDocs = await skillModel.countDocuments({});
+            let totalDocs = await sessionModel.countDocuments({});
 
-            const skillData = new skill({
+            const sessionData = new session({
                 autoId: totalDocs + 1,
-                skillName: incomingData.skillName,
-                thumbnail: 'skill/' + req.file.filename,
+
+                sessionName: incomingData.sessionName,
+                skillId: incomingData.skillId,
+                descryption: incomingData.descryption,
+                price: incomingData.price,
+                date: incomingData.date,
+                // time: incomingData.time,
+                thumbnail: 'session/' + req.file.filename,
+                learnerMentorId: incomingData.learnerMentorId,
+                duration: incomingData.duration,
+                sessionType: incomingData.sessionType,
+                meetingLink: incomingData.meetingLink,
+                youtubeLink: incomingData.youtubeLink,
+                isPaid: incomingData.isPaid,
+
             })
-            await skillData.save();
+            await sessionData.save();
 
             res.json({
                 status: 201,
                 success: true,
-                message: "skill Saved",
-                data: skillData
+                message: "session Saved",
+                data: sessionData
             })
         }
     } catch (err) {
@@ -57,14 +79,14 @@ const addSessionToDB = async (req, res) => {
 // READ OPERATION
 
 // To GET ALL DOCUMENTS
-const getAllSkill = async (req, res) => {
+const getAllSession = async (req, res) => {
     try {
-        const dbData = await skillModel.find({ isDelete: false });// to retrive all the documents
-        const totalDocs = await skillModel.countDocuments({ isDelete: false });
+        const dbData = await sessionModel.find({ isDelete: false }).populate("skillId").populate("learnerMentorId");// to retrive all the documents
+        const totalDocs = await sessionModel.countDocuments({ isDelete: false });
         res.json({
             status: 200,
             success: true,
-            message: "skill loaded successfully",
+            message: "session loaded successfully",
             total: totalDocs,
             data: dbData
         })
@@ -78,11 +100,11 @@ const getAllSkill = async (req, res) => {
 }
 
 // // TO GET SINGLE MOVIE
-const getSingleskill = async (req, res) => {
+const getSingleSession = async (req, res) => {
     try {
-        const skillId = req.body?._id || {};
+        const sessionId = req.body?._id || {};
 
-        if (!skillId) {
+        if (!sessionId) {
             res.json({
                 status: 400,
                 success: false,
@@ -90,20 +112,20 @@ const getSingleskill = async (req, res) => {
             })
         }
 
-        const skilldata = await skillModel.findOne({ _id: skillId, isDelete: false })
+        const sessiondata = await sessionModel.findOne({ _id: sessionId, isDelete: false })
 
-        if (!skilldata) {
+        if (!sessiondata) {
             res.json({
                 status: 404,
                 success: false,
-                message: "skill not found"
+                message: "session not found"
             })
         } else {
             res.json({
                 status: 200,
                 success: true,
-                message: "skill fetched",
-                data: skilldata
+                message: "session fetched",
+                data: sessiondata
             })
         }
     } catch (err) {
@@ -118,12 +140,12 @@ const getSingleskill = async (req, res) => {
 
 // UPDATE
 
-const updateskill = async (req, res) => {
+const updateSession = async (req, res) => {
     try {
-        const skillId = req.body?._id;
+        const sessionId = req.body?._id;
         const incomingData = req.body;
 
-        if (!skillId) {
+        if (!sessionId) {
             res.json({
                 status: 400,
                 success: false,
@@ -131,32 +153,53 @@ const updateskill = async (req, res) => {
             })
         }
 
-        const skillnew = await skillModel.findOne({ _id: skillId, });
+        const sessionnew = await sessionModel.findOne({ _id: sessionId, });
 
-        if (!skillnew) {
+        if (!sessionnew) {
             res.json({
                 status: 404,
                 success: false,
-                message: "No such skillnew exists"
+                message: "No such session new exists"
             })
         } else {
-            if (incomingData.skillName) {
-                skillnew.skillName = incomingData.skillName
+            if (incomingData.sessionName) {
+                sessionnew.sessionName = incomingData.sessionName
             }
-            if (incomingData.status) {
-                skillnew.status = incomingData.status
+            if (incomingData.date) {
+                sessionnew.date = incomingData.date
+            }
+            if (incomingData.descryption) {
+                sessionnew.date = incomingData.descryption
+            }
+            if (incomingData.price) {
+                sessionnew.price = incomingData.price
             }
             if (req.file) {
-                skillnew.thumbnail = 'thumbnail/' + req.file.filename
+                sessionnew.thumbnail = 'session/' + req.file.filename
+            }
+            if (incomingData.duration) {
+                sessionnew.duration = incomingData.duration
+            }
+            if (incomingData.sessionType) {
+                sessionnew.sessionType = incomingData.sessionType
+            }
+            if (incomingData.meetingLink) {
+                sessionnew.meetingLink = incomingData.meetingLink
+            }
+            if (incomingData.youtubeLink) {
+                sessionnew.youtubeLink = incomingData.youtubeLink
+            }
+            if (incomingData.isPaid) {
+                sessionnew.isPaid = incomingData.isPaid
             }
 
-            skillnew.updatedAt = Date.now()
-            let savedData = await skillnew.save();
+            sessionnew.updatedAt = Date.now()
+            let savedData = await sessionnew.save();
 
             res.json({
                 status: 200,
                 success: true,
-                message: "skillnew Updated",
+                message: "sessionnew Updated",
                 data: savedData
             })
 
@@ -175,9 +218,9 @@ const updateskill = async (req, res) => {
 
 const deleteSoft = async (req, res) => {
     try {
-        const skillId = req.body?._id;
+        const sessionId = req.body?._id;
 
-        if (!skillId) {
+        if (!sessionId) {
             res.json({
                 status: 400,
                 success: false,
@@ -185,9 +228,9 @@ const deleteSoft = async (req, res) => {
             })
         }
 
-        const skilldata = await skillModel.findOne({ _id: skillId })
+        const sessiondata = await sessionModel.findOne({ _id: sessionId })
 
-        if (!skilldata) {
+        if (!sessiondata) {
             res.json({
                 status: 404,
                 success: false,
@@ -195,14 +238,14 @@ const deleteSoft = async (req, res) => {
             })
         }
 
-        skilldata.isDelete = true
+        sessiondata.isDelete = true
 
-        await skilldata.save()
+        await sessiondata.save()
 
         res.json({
             status: 200,
             success: true,
-            message: "skill removed"
+            message: "session removed"
         })
 
     } catch (err) {
@@ -216,9 +259,9 @@ const deleteSoft = async (req, res) => {
 }
 
 module.exports = {
-    addSkillToDB,
-    getAllSkill,
-    getSingleskill,
-    updateskill,
+    addSessionToDB,
+    getAllSession,
+    getSingleSession,
+    updateSession,
     deleteSoft
 }

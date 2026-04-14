@@ -1,11 +1,15 @@
-const skillModel = require('./skillModel')
+const paymentModel = require('./paymentModel')
 
-const addSkillToDB = async (req, res) => {
+const addPaymentToDB = async (req, res) => {
     try {
         const incomingData = req.body || {};
         let validation = "";
-        if (!incomingData.skillName) validation += 'skillName is Required';
-        if (!req.file) validation += 'thumbnail is Required';
+         if (!incomingData.requesttId) validation += 'requesttId is Required';
+        if (!incomingData.amount) validation += 'amount is Required';
+       
+        if (!incomingData.paymentMethod) validation += 'paymentMethod is Required';
+        if (!incomingData.paymentStatus) validation += 'paymentStatus is Required';
+
 
         if (!!validation) {
             res.json({
@@ -14,32 +18,26 @@ const addSkillToDB = async (req, res) => {
                 message: validation
             })
         }
-        else {
-            const existingData = await skillModel.findOne({ skillName: incomingData.skillName })
-            if (!!existingData) {
-                return res.json({
-                    status: 400,
-                    success: false,
-                    message: "skill already exists"
-                })
-            }
 
-            let totalDocs = await skillModel.countDocuments({});
+            let totalDocs = await paymentModel.countDocuments({});
 
-            const skillData = new skill({
+            const paymentModel = new payment({
                 autoId: totalDocs + 1,
-                skillName: incomingData.skillName,
-                thumbnail: 'skill/' + req.file.filename,
+               
+                requestId: incomingData.requestId,
+                amount: incomingData.amount,
+                paymentMethod: incomingData.paymentMethod,
+                paymentStatus: incomingData.paymentStatus,
+               
             })
-            await skillData.save();
+            await paymentData.save();
 
             res.json({
                 status: 201,
                 success: true,
-                message: "skill Saved",
-                data: skillData
+                message: "payment Saved",
+                data: paymentData
             })
-        }
     } catch (err) {
         return res.json({
             status: 500,
@@ -53,14 +51,14 @@ const addSkillToDB = async (req, res) => {
 // READ OPERATION
 
 // To GET ALL DOCUMENTS
-const getAllSkill = async (req, res) => {
+const getAllPayment = async (req, res) => {
     try {
-        const dbData = await skillModel.find({ isDelete: false });// to retrive all the documents
-        const totalDocs = await skillModel.countDocuments({ isDelete: false });
+        const dbData = await paymentModel.find({ isDelete: false }).populate("requestId")// to retrive all the documents
+        const totalDocs = await paymentModel.countDocuments({ isDelete: false });
         res.json({
             status: 200,
             success: true,
-            message: "skill loaded successfully",
+            message: "payment loaded successfully",
             total: totalDocs,
             data: dbData
         })
@@ -74,11 +72,11 @@ const getAllSkill = async (req, res) => {
 }
 
 // // TO GET SINGLE MOVIE
-const getSingleSkill = async (req, res) => {
+const getSinglePayment = async (req, res) => {
     try {
-        const skillId = req.body?._id || {};
+        const paymentId = req.body?._id || {};
 
-        if (!skillId) {
+        if (!paymentId) {
             res.json({
                 status: 400,
                 success: false,
@@ -86,20 +84,20 @@ const getSingleSkill = async (req, res) => {
             })
         }
 
-        const skilldata = await skillModel.findOne({ _id: skillId, isDelete: false })
+        const paymentdata = await paymentModel.findOne({ _id: paymentId, isDelete: false })
 
-        if (!skilldata) {
+        if (!paymentdata) {
             res.json({
                 status: 404,
                 success: false,
-                message: "skill not found"
+                message: "payment not found"
             })
         } else {
             res.json({
                 status: 200,
                 success: true,
-                message: "skill fetched",
-                data: skilldata
+                message: "payment fetched",
+                data: paymentdata
             })
         }
     } catch (err) {
@@ -114,12 +112,12 @@ const getSingleSkill = async (req, res) => {
 
 // UPDATE
 
-const updateSkill = async (req, res) => {
+const updatePayment = async (req, res) => {
     try {
-        const skillId = req.body?._id;
-        const incomingData = req.body;
+        const paymentId = req.body?._id;
+        const incomingData = req.body; 
 
-        if (!skillId) {
+        if (!paymentId) {
             res.json({
                 status: 400,
                 success: false,
@@ -127,32 +125,29 @@ const updateSkill = async (req, res) => {
             })
         }
 
-        const skillnew = await skillModel.findOne({ _id: skillId, });
+        const paymentnew = await paymentModel.findOne({ _id: paymentId, });
 
-        if (!skillnew) {
+        if (!paymentnew) {
             res.json({
                 status: 404,
                 success: false,
-                message: "No such skillnew exists"
+                message: "No such paymentnew exists"
             })
         } else {
-            if (incomingData.skillName) {
-                skillnew.skillName = incomingData.skillName
+            if (incomingData.percentage) {
+                paymentnew.percentage = incomingData.percentage
             }
-            if (incomingData.status) {
-                skillnew.status = incomingData.status
-            }
-            if (req.file) {
-                skillnew.thumbnail = 'thumbnail/' + req.file.filename
+            if (incomingData.remarks) {
+                paymentnew.remarks = incomingData.remarks
             }
 
-            skillnew.updatedAt = Date.now()
-            let savedData = await skillnew.save();
+            paymentnew.updatedAt = Date.now()
+            let savedData = await paymentnew.save();
 
             res.json({
                 status: 200,
                 success: true,
-                message: "skillnew Updated",
+                message: "paymentnew Updated",
                 data: savedData
             })
 
@@ -171,9 +166,9 @@ const updateSkill = async (req, res) => {
 
 const deleteSoft = async (req, res) => {
     try {
-        const skillId = req.body?._id;
+        const paymentId = req.body?._id;
 
-        if (!skillId) {
+        if (!paymentId) {
             res.json({
                 status: 400,
                 success: false,
@@ -181,9 +176,9 @@ const deleteSoft = async (req, res) => {
             })
         }
 
-        const skilldata = await skillModel.findOne({ _id: skillId })
+        const paymentdata = await paymentModel.findOne({ _id: paymentId })
 
-        if (!skilldata) {
+        if (!paymentdata) {
             res.json({
                 status: 404,
                 success: false,
@@ -191,14 +186,14 @@ const deleteSoft = async (req, res) => {
             })
         }
 
-        skilldata.isDelete = true
+        paymentdata.isDelete = true
 
-        await skilldata.save()
+        await paymentdata.save()
 
         res.json({
             status: 200,
             success: true,
-            message: "skill removed"
+            message: "payment removed"
         })
 
     } catch (err) {
@@ -212,9 +207,9 @@ const deleteSoft = async (req, res) => {
 }
 
 module.exports = {
-    addSkillToDB,
-    getAllSkill,
-    getSingleSkill,
-    updateSkill,
+    addPaymentToDB,
+    getAllPayment,
+    getSinglePayment,
+    updatePayment,
     deleteSoft
 }

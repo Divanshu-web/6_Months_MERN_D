@@ -1,6 +1,6 @@
 const multer= require('multer')
 const router = require('express').Router()
-const skillController = require('../apis/skill/skillController')
+const sessionController = require('../apis/session/sessionController')
 // const userController = require('../apis/user/userController')
 router.get('/', (req, res)=>{
     res.send("Welcom")
@@ -8,7 +8,7 @@ router.get('/', (req, res)=>{
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'server/public/skill')
+    cb(null, 'server/public/session')
   },        
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
@@ -23,11 +23,11 @@ const upload = multer({ storage: storage })
 // router.post('/login', userController.login);
 
 
-router.post('/add', skillController.addSkillToDB)
-router.get('/all', skillController.getAllSkill)
-router.get('/single', skillController.getSingleSkill)
-router.post('/update', upload.single('profileImage'), skillController.updateSkill)
-router.post('/deleteSoft', skillController.deleteSoft)
+router.post('/add', sessionController.addSessionToDB)
+router.get('/all', sessionController.getAllSession)
+router.get('/single', sessionController.getSingleSession)
+router.post('/update', upload.single('profileImage'), sessionController.updateSession)
+router.post('/deleteSoft', sessionController.deleteSoft)
 
 
 module.exports = router;

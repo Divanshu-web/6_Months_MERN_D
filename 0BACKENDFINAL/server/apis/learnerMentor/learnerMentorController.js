@@ -84,7 +84,7 @@ const register = async (req, res) => {
 // To GET ALL DOCUMENTS
 const getAllLearnerMentor = async (req, res) => {
     try {
-        const dbData = await learnerMentorModel.find({isDelete : false});// to retrive all the documents
+        const dbData = await learnerMentorModel.find({isDelete : false}).populate("userId");// to retrive all the documents
         const totalDocs = await learnerMentorModel.countDocuments({isDelete: false});
         res.json({
             status: 200,

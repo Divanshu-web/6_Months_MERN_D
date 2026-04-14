@@ -22,6 +22,24 @@ app.use('/learnerMentor', learnerMentorRoutes);
 const skillRoutes = require('./server/routes/skillRoutes')
 app.use('/skill', skillRoutes);
 
+const sessionRoutes = require('./server/routes/sessionRoutes')
+app.use('/session', sessionRoutes);
+
+const requestRoutes = require('./server/routes/requestRoutes')
+app.use('/request', requestRoutes);
+
+const chatRoutes = require('./server/routes/chatRoutes')
+app.use('/chat', chatRoutes);
+
+const progressRoutes = require('./server/routes/progressRoutes')
+app.use('/progress', progressRoutes);
+
+const reviewRoutes = require('./server/routes/reviewRoutes')
+app.use('/review', reviewRoutes);
+
+const paymentRoutes = require('./server/routes/paymentRoutes')
+app.use('/payment', paymentRoutes);
+
 // default route
 app.get('/', (req, res)=>{
     res.send("Welcome to server")

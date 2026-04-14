@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
-const learnerMentorSchema = new mongoose.Schema({
+const sessionSchema = new mongoose.Schema({
     autoId: { type: Number, default: 0 }, 
     sessionName: { type: String, default: "" },
     skillId: { type: mongoose.Schema.Types.ObjectId, ref: 'skill' },
+    sessionDate:{ type:Date , defaulut:"null" },
     descryption: { type: String, default: "" },
     price: { type: Number, default: 0 },
     thumbnail: { type: String, default: "" },
@@ -22,4 +23,4 @@ const learnerMentorSchema = new mongoose.Schema({
     updatedAt: { type: Date, default: null }
 })
 
-module.exports = mongoose.model('learnerMentor', learnerMentorSchema)
+module.exports = mongoose.model('session', sessionSchema)

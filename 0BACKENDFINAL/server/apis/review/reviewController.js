@@ -1,11 +1,15 @@
-const skillModel = require('./skillModel')
+const reviewModel = require('./reviewModel')
 
-const addSkillToDB = async (req, res) => {
+const addReviewToDB = async (req, res) => {
     try {
         const incomingData = req.body || {};
         let validation = "";
-        if (!incomingData.skillName) validation += 'skillName is Required';
-        if (!req.file) validation += 'thumbnail is Required';
+        if (!incomingData.mentorId) validation += 'mentorId is Required';
+        if (!incomingData.requesttId) validation += 'requesttId is Required';
+        if (!incomingData.learnerId) validation += 'learnerId is Required';
+        if (!incomingData.rating) validation += 'rating is Required';
+        if (!incomingData.comment) validation += 'comment is Required';
+
 
         if (!!validation) {
             res.json({
@@ -14,32 +18,26 @@ const addSkillToDB = async (req, res) => {
                 message: validation
             })
         }
-        else {
-            const existingData = await skillModel.findOne({ skillName: incomingData.skillName })
-            if (!!existingData) {
-                return res.json({
-                    status: 400,
-                    success: false,
-                    message: "skill already exists"
-                })
-            }
 
-            let totalDocs = await skillModel.countDocuments({});
+            let totalDocs = await reviewModel.countDocuments({});
 
-            const skillData = new skill({
+            const reviewData = new review({
                 autoId: totalDocs + 1,
-                skillName: incomingData.skillName,
-                thumbnail: 'skill/' + req.file.filename,
+                mentorId: incomingData.mentorId,
+                requestId: incomingData.requestId,
+                learnerId: incomingData.learnerId,
+                rating: incomingData.rating,
+                comment: incomingData.comment,
+               
             })
-            await skillData.save();
+            await reviewData.save();
 
             res.json({
                 status: 201,
                 success: true,
-                message: "skill Saved",
-                data: skillData
+                message: "review Saved",
+                data: reviewData
             })
-        }
     } catch (err) {
         return res.json({
             status: 500,
@@ -53,14 +51,14 @@ const addSkillToDB = async (req, res) => {
 // READ OPERATION
 
 // To GET ALL DOCUMENTS
-const getAllSkill = async (req, res) => {
+const getAllReview = async (req, res) => {
     try {
-        const dbData = await skillModel.find({ isDelete: false });// to retrive all the documents
-        const totalDocs = await skillModel.countDocuments({ isDelete: false });
+        const dbData = await reviewModel.find({ isDelete: false }).populate("requestId").populate("learnerId").populate("mentorId");// to retrive all the documents
+        const totalDocs = await reviewModel.countDocuments({ isDelete: false });
         res.json({
             status: 200,
             success: true,
-            message: "skill loaded successfully",
+            message: "review loaded successfully",
             total: totalDocs,
             data: dbData
         })
@@ -74,11 +72,11 @@ const getAllSkill = async (req, res) => {
 }
 
 // // TO GET SINGLE MOVIE
-const getSingleSkill = async (req, res) => {
+const getSingleReview = async (req, res) => {
     try {
-        const skillId = req.body?._id || {};
+        const reviewId = req.body?._id || {};
 
-        if (!skillId) {
+        if (!reviewId) {
             res.json({
                 status: 400,
                 success: false,
@@ -86,20 +84,20 @@ const getSingleSkill = async (req, res) => {
             })
         }
 
-        const skilldata = await skillModel.findOne({ _id: skillId, isDelete: false })
+        const reviewdata = await reviewModel.findOne({ _id: reviewId, isDelete: false })
 
-        if (!skilldata) {
+        if (!reviewdata) {
             res.json({
                 status: 404,
                 success: false,
-                message: "skill not found"
+                message: "review not found"
             })
         } else {
             res.json({
                 status: 200,
                 success: true,
-                message: "skill fetched",
-                data: skilldata
+                message: "review fetched",
+                data: reviewdata
             })
         }
     } catch (err) {
@@ -114,12 +112,12 @@ const getSingleSkill = async (req, res) => {
 
 // UPDATE
 
-const updateSkill = async (req, res) => {
+const updateReview = async (req, res) => {
     try {
-        const skillId = req.body?._id;
-        const incomingData = req.body;
+        const reviewId = req.body?._id;
+        const incomingData = req.body; 
 
-        if (!skillId) {
+        if (!reviewId) {
             res.json({
                 status: 400,
                 success: false,
@@ -127,32 +125,29 @@ const updateSkill = async (req, res) => {
             })
         }
 
-        const skillnew = await skillModel.findOne({ _id: skillId, });
+        const reviewnew = await reviewModel.findOne({ _id: reviewId, });
 
-        if (!skillnew) {
+        if (!reviewnew) {
             res.json({
                 status: 404,
                 success: false,
-                message: "No such skillnew exists"
+                message: "No such reviewnew exists"
             })
         } else {
-            if (incomingData.skillName) {
-                skillnew.skillName = incomingData.skillName
+            if (incomingData.percentage) {
+                reviewnew.percentage = incomingData.percentage
             }
-            if (incomingData.status) {
-                skillnew.status = incomingData.status
-            }
-            if (req.file) {
-                skillnew.thumbnail = 'thumbnail/' + req.file.filename
+            if (incomingData.remarks) {
+                reviewnew.remarks = incomingData.remarks
             }
 
-            skillnew.updatedAt = Date.now()
-            let savedData = await skillnew.save();
+            reviewnew.updatedAt = Date.now()
+            let savedData = await reviewnew.save();
 
             res.json({
                 status: 200,
                 success: true,
-                message: "skillnew Updated",
+                message: "reviewnew Updated",
                 data: savedData
             })
 
@@ -171,9 +166,9 @@ const updateSkill = async (req, res) => {
 
 const deleteSoft = async (req, res) => {
     try {
-        const skillId = req.body?._id;
+        const reviewId = req.body?._id;
 
-        if (!skillId) {
+        if (!reviewId) {
             res.json({
                 status: 400,
                 success: false,
@@ -181,9 +176,9 @@ const deleteSoft = async (req, res) => {
             })
         }
 
-        const skilldata = await skillModel.findOne({ _id: skillId })
+        const reviewdata = await reviewModel.findOne({ _id: reviewId })
 
-        if (!skilldata) {
+        if (!reviewdata) {
             res.json({
                 status: 404,
                 success: false,
@@ -191,14 +186,14 @@ const deleteSoft = async (req, res) => {
             })
         }
 
-        skilldata.isDelete = true
+        reviewdata.isDelete = true
 
-        await skilldata.save()
+        await reviewdata.save()
 
         res.json({
             status: 200,
             success: true,
-            message: "skill removed"
+            message: "review removed"
         })
 
     } catch (err) {
@@ -212,9 +207,9 @@ const deleteSoft = async (req, res) => {
 }
 
 module.exports = {
-    addSkillToDB,
-    getAllSkill,
-    getSingleSkill,
-    updateSkill,
+    addReviewToDB,
+    getAllReview,
+    getSingleReview,
+    updateReview,
     deleteSoft
 }
