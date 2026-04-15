@@ -3,37 +3,82 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
+import { login } from "../../services/userService";
+
 
 function Login() {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    const getEmail = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const getPassword = (e) => {
+        setPassword(e.target.value)
+    }
+
     const nav = useNavigate()
 
-    function handleForm(e){
-    e.preventDefault()
+    // function handleForm(e) {
+    //     e.preventDefault()
 
-   if(email == "" || password == ""){
-    console.log("All fields are required!")
-    toast.error("All fields are required!")
-   }
-   else if(email == "admin@gmail.com" && password == "123"){
-    console.log("Login Successfully")
-    toast.success("Login Successfully")
+    //     if (email == "" || password == "") {
+    //         console.log("All fields are required!")
+    //         toast.error("All fields are required!")
+    //     }
+    //     else if (email == "admin@gmail.com" && password == "123") {
+    //         console.log("Login Successfully")
+    //         toast.success("Login Successfully")
 
-    sessionStorage.setItem("email", email)
-    
-    setTimeout(() => {
-        nav("/admin/home")
-    }, 2000);
+    //         sessionStorage.setItem("email", email)
+
+    //         setTimeout(() => {
+    //             nav("/admin/home")
+    //         }, 2000);
 
 
-   }
-   else {
-    console.log("Invalid Credentials")
-    toast.warning("Invalid Credentials")
-   }
+    //     }
+    //     else {
+    //         console.log("Invalid Credentials")
+    //         toast.warning("Invalid Credentials")
+    //     }
+    // }
+
+    const submit = async (e) => {
+        e.preventDefault()
+        try {
+            let formData = {
+                email: email,
+                password: password
+            }
+
+            let res = await login(formData);
+
+            if (res.data.success) {
+                toast.success(res.data.message)
+                localStorage.setItem("userType", res.data.data.userType)
+                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("isLoggedIn", true)
+                localStorage.setItem("email", res.data.data.email)
+
+                if(res.data.data.userType == 1){
+                    nav('/admin/home')
+                }else if(res.data.data.userType == 2){
+                    nav('/')
+                }else{
+                    toast.error("Invalid UserType")
+                }
+            } else {
+                toast.error(res.data.message)
+            }
+
+        } catch (err) {
+            console.log(err)
+        }
     }
+
 
     return (
         <>
@@ -69,7 +114,7 @@ function Login() {
                         <div className="sub-style mb-4">
                             <h4 className="sub-title text-white px-3 mb-0">Login Here</h4>
                         </div>
-                       
+
                     </div>
                     <div className="row g-4 align-items-center d-flex justify-content-center">
                         <div
@@ -77,8 +122,8 @@ function Login() {
                             data-wow-delay="0.1s"
                         >
                             <h2 className="display-5 text-white mb-2 text-center ">Login</h2>
-                           
-                            <form onSubmit={handleForm}>
+
+                            <form onSubmit={submit}>
                                 <div className="row g-3">
 
                                     <div className="col-12">
@@ -88,11 +133,12 @@ function Login() {
                                                 className="form-control bg-transparent border border-white"
                                                 id="email"
                                                 placeholder="Your Email"
-                                                 value={email}
-                                                onInput={(e) => {
-                                                    setEmail(e.target.value)
-                                                }
-                                                }
+                                                value={email}
+                                                // onInput={(e) => {
+                                                //     setEmail(e.target.value)
+                                                // }
+                                                // }
+                                                onChange={getEmail}
                                             />
                                             <label htmlFor="email" className="text-dark">Your Email</label>
                                         </div>
@@ -106,15 +152,17 @@ function Login() {
                                                 id="password"
                                                 placeholder="Password"
                                                 value={password}
-                                                onInput={(e) => {
-                                                    setPassword(e.target.value) }}
+                                                // onInput={(e) => {
+                                                //     setPassword(e.target.value)
+                                                // }}
+                                                onChange={getPassword}
                                             />
                                             <label htmlFor="password" className="text-dark">Password</label>
                                         </div>
                                     </div>
 
                                     <div className="col-12">
-                                        <button className="btn btn-light text-primary w-100 py-3">
+                                        <button className="btn btn-light text-primary w-100 py-3" type="submit">
                                             Login
                                         </button>
                                     </div>

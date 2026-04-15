@@ -24,6 +24,7 @@ import Login from './component/auth/Login'
 import AddCategory from './component/adminpages/AddCategory'
 import ManageCategory from './component/adminpages/ManageCategory'
 import Register from './component/auth/Register'
+import { ToastContainer } from 'react-toastify'
 
 
 function App() {
@@ -63,6 +64,20 @@ function App() {
       
         </Routes>
       </BrowserRouter>
+
+      <ToastContainer   
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+ 
+      />
 
     </>
   )

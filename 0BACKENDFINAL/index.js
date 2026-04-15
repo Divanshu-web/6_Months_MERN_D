@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
 
+const cors = require('cors')
+app.use(cors());
+
+
 const seed = require('./server/config/seeder')
 seed();
 
@@ -41,12 +45,12 @@ const paymentRoutes = require('./server/routes/paymentRoutes')
 app.use('/payment', paymentRoutes);
 
 // default route
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
     res.send("Welcome to server")
 })
 
 // for app listening
-app.listen(3000, ()=>{
+app.listen(3000, () => {
     console.log("I am listening to port 3000");
 })
 
