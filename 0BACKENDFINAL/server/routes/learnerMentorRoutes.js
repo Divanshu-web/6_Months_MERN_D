@@ -12,19 +12,29 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, file.fieldname + '-' + uniqueSuffix)
+    cb(null, file.fieldname + '-' + uniqueSuffix + file.originalname)
   }
 })
 
-const upload = multer({ storage: storage })
+const cloudStorage = multer.memoryStorage() // stores the file in RAM  - req.file.buffer
 
-router.post('/register', upload.single('profileImage') , learnerMentorController.register)
+// const upload = multer({ storage: storage })
+const cloudUpload = multer({ storage: cloudStorage })
+
+
+// router.post('/register', upload.single('profileImage') , learnerMentorController.register)
+router.post('/register', cloudUpload.single('profileImage'), learnerMentorController.register)
+
+
 
 router.post('/login', userController.login);
 
+router.use(require('../middleware/tokenChecker'))
+
+
 router.get('/all', learnerMentorController.getAllLearnerMentor)
 router.get('/single', learnerMentorController.getSingleLearnerMentor)
-router.post('/update', upload.single('profileImage'), learnerMentorController.updateLearnerMentor)
+router.post('/update', cloudUpload.single('profileImage'), learnerMentorController.updateLearnerMentor)
 router.post('/deleteSoft', learnerMentorController.deleteSoft)
 
 

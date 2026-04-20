@@ -1,10 +1,13 @@
 const learnerMentorModel = require('./learnerMentorModel')
 const userModel = require('../user/userModel')
 const bcrypt = require('bcrypt')
+const { uploadImg } = require('../../utilities/helper');
 const saltRounds = 10;
 
 const register = async (req, res) => {
     try {
+        console.log(req.body);
+        console.log(req.file);
         const incomingData = req.body || {};
         let validation = ""
 
@@ -23,16 +26,30 @@ const register = async (req, res) => {
                 success: false,
                 message: "Validation Error: ", validation
             })
-        }else{
-            let existingData = await userModel.findOne({email: incomingData.email})
+        } else {
+            let existingData = await userModel.findOne({ email: incomingData.email })
 
-            if(existingData){
+            if (existingData) {
                 return res.json({
-                status: 400,
-                success: false,
-                message: "User already exists"
-            })
+                    status: 400,
+                    success: false,
+                    message: "User already exists"
+                })
             }
+
+              let image = 'no_image.jpg'
+            try{
+                let imageUrl = await uploadImg(req.file.buffer, `profile/${Date.now()}`)
+                image = imageUrl
+            }catch(err){
+                res.json({
+                    status: 500,
+                    success: false,
+                    message:" Failed to upload image in cloud: ", err
+                })
+            }
+
+
 
             let totalDocs = await userModel.countDocuments({});
             // console.log("total: ", totalDocs)
@@ -48,16 +65,16 @@ const register = async (req, res) => {
 
             let savedUser = await data.save();
 
-             let totalDocsLM = await learnerMentorModel.countDocuments({});
+            let totalDocsLM = await learnerMentorModel.countDocuments({});
 
-             let learnerMentorData = new learnerMentorModel({
+            let learnerMentorData = new learnerMentorModel({
                 autoId: totalDocsLM + 1,
-                userId : savedUser._id,
+                userId: savedUser._id,
                 contact: incomingData.contact,
                 profession: incomingData.profession,
                 skills: incomingData.skills,
                 experience: incomingData.experience,
-                profileImage: 'learnerMentor/' + req.file.filename,
+                profileImage: image
             })
 
             let savedLearnerMentor = await learnerMentorData.save();
@@ -84,8 +101,8 @@ const register = async (req, res) => {
 // To GET ALL DOCUMENTS
 const getAllLearnerMentor = async (req, res) => {
     try {
-        const dbData = await learnerMentorModel.find({isDelete : false}).populate("userId");// to retrive all the documents
-        const totalDocs = await learnerMentorModel.countDocuments({isDelete: false});
+        const dbData = await learnerMentorModel.find({ isDelete: false }).populate("userId");// to retrive all the documents
+        const totalDocs = await learnerMentorModel.countDocuments({ isDelete: false });
         res.json({
             status: 200,
             success: true,
@@ -104,7 +121,7 @@ const getAllLearnerMentor = async (req, res) => {
 
 const getSingleLearnerMentor = async (req, res) => {
     try {
-        const learnerMentorId = req.body?._id || { }  ;
+        const learnerMentorId = req.body?._id || {};
 
         if (!learnerMentorId) {
             res.json({
@@ -114,7 +131,7 @@ const getSingleLearnerMentor = async (req, res) => {
             })
         }
 
-        const learnerMentor = await learnerMentorModel.findOne({ _id: learnerMentorId, isDelete :false })
+        const learnerMentor = await learnerMentorModel.findOne({ _id: learnerMentorId, isDelete: false })
 
         if (!learnerMentor) {
             res.json({
@@ -155,7 +172,7 @@ const updateLearnerMentor = async (req, res) => {
             })
         }
 
-        const learnerMentornew = await learnerMentorModel.findOne({ _id: learnerMentorId ,});
+        const learnerMentornew = await learnerMentorModel.findOne({ _id: learnerMentorId, });
 
         if (!learnerMentornew) {
             res.json({
@@ -238,7 +255,7 @@ const deleteSoft = async (req, res) => {
     } catch (err) {
         res.json({
             status: 500,
-            success: false, 
+            success: false,
             message: "ISE: " + err.message
         })
     }
@@ -246,9 +263,9 @@ const deleteSoft = async (req, res) => {
 }
 
 module.exports = {
-  register,
-  getAllLearnerMentor,
-  getSingleLearnerMentor,
-  updateLearnerMentor,
-  deleteSoft
+    register,
+    getAllLearnerMentor,
+    getSingleLearnerMentor,
+    updateLearnerMentor,
+    deleteSoft
 }

@@ -26,7 +26,7 @@ const addSkillToDB = async (req, res) => {
 
             let totalDocs = await skillModel.countDocuments({});
 
-            const skillData = new skill({
+            const skillData = new skillModel({
                 autoId: totalDocs + 1,
                 skillName: incomingData.skillName,
                 thumbnail: 'skill/' + req.file.filename,

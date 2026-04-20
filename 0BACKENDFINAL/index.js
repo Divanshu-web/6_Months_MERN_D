@@ -1,9 +1,17 @@
 const express = require('express');
 const app = express();
 
+require('dotenv').config() // .env -> process.env
+
+const port = process.env.PORT
+console.log("PORT: ", process.env.PORT);
+console.log("DB: ", process.env.DB_KEY);
+
+
 const cors = require('cors')
 app.use(cors());
 
+app.use(express.static('server/public'))
 
 const seed = require('./server/config/seeder')
 seed();

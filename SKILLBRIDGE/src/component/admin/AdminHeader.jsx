@@ -101,14 +101,14 @@ function AdminHeader() {
               className="nav-link dropdown-toggle"
               data-bs-toggle="dropdown"
             >
-              Category
+              Skills
             </a>
             <div className="dropdown-menu m-0">
-              <Link to={"/admin/addcategory"} className="dropdown-item">
-                Add Category
+              <Link to={"/admin/addskills"} className="dropdown-item">
+                Add Skills
               </Link>
-              <Link to={"/admin/managecategory"} className="dropdown-item">
-               Manage Category
+              <Link to={"/admin/manageskills"} className="dropdown-item">
+               Manage Skills
               </Link>
               {/* <Link to={"/admin/digitalmarketing"} className="dropdown-item">
                 Digital Marketing
@@ -132,7 +132,7 @@ function AdminHeader() {
               className="nav-link dropdown-toggle"
               data-bs-toggle="dropdown"
             >
-              Skills
+             Many Skills 
             </a>
             <div className="dropdown-menu m-0">
               <Link to={"/admin/beauty"} className="dropdown-item">

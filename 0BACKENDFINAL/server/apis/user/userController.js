@@ -1,5 +1,7 @@
 const userModel = require('./userModel')
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+
 
 const login = async (req, res) => {
     try {
@@ -34,9 +36,22 @@ const login = async (req, res) => {
             let isMatch = bcrypt.compareSync(incomingData.password, user.password)
 
             if (isMatch) {
+
+                 let payload = {
+                    _id: user._id,
+                    email: user.email,
+                    name: user.name,
+                    contact: user.contact,
+                    userType: user.userType,
+                }
+
+                const token = jwt.sign(payload, process.env.JWT_SECRET)
+
+
                 res.json({
                     status: 200,
                     success: true,
+                    token: token,
                     message: "Login Success",
                     data: user
                 })

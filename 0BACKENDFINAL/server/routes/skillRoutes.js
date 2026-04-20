@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
   },        
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, file.fieldname + '-' + uniqueSuffix)
+    cb(null, file.fieldname + '-' + uniqueSuffix + file.originalname)
   }
 })
 
@@ -23,9 +23,9 @@ const upload = multer({ storage: storage })
 // router.post('/login', userController.login);
 
 
-router.post('/add', skillController.addSkillToDB)
-router.get('/all', skillController.getAllSkill)
-router.get('/single', skillController.getSingleSkill)
+router.post('/add',upload.single('thumbnail'), skillController.addSkillToDB)
+router.post('/all', skillController.getAllSkill)
+router.post('/single', skillController.getSingleSkill)
 router.post('/update', upload.single('profileImage'), skillController.updateSkill)
 router.post('/deleteSoft', skillController.deleteSoft)
 
