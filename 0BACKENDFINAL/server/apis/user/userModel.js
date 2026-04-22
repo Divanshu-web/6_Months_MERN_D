@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     email: {type: String, default: ""},
     contact: {type: Number, default: 0},
     password: {type: String, default: ""},
-    userType: {type: Number, default: 2}, // 1 = Admin, 2 = Customer
+    userType: {type: Number, default: 2}, // 1 = Admin, 2 = Learner Mentor
 
 
     isDelete: {type: Boolean, default: false},

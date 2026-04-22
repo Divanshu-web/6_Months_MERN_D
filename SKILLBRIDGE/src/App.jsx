@@ -26,6 +26,8 @@ import ManageSkills from './component/adminpages/ManageSkills'
 import Register from './component/auth/Register'
 import { ToastContainer } from 'react-toastify'
 import UpdateSkills from './component/adminpages/UpdateSkill'
+import AddLearnerMentor from './component/adminpages/AddLearnerMentor'
+import ManageLearnerMentor from './component/adminpages/ManageLearnerMentor'
 
 
 function App() {
@@ -43,31 +45,34 @@ function App() {
             <Route path='/blog' element={<Blog />}></Route>
             <Route path='/team' element={<Team />}></Route>
             <Route path='/testimonial' element={<Testimonial />}></Route>
-            <Route path='/error404' element={<Error404/>}></Route>
-            <Route path='/login' element={<Login/>}></Route>
-            <Route path='/register' element={<Register/>}></Route>
+            <Route path='/error404' element={<Error404 />}></Route>
+            <Route path='/login' element={<Login />}></Route>
+            <Route path='/register' element={<Register />}></Route>
 
           </Route>
 
-          <Route path='/admin' element={<AdminMasterLayout/>}>
-          <Route path='/admin/home' element={<AdminHome/>}></Route>
-          <Route path='/admin/beauty' element={<Beauty_and_Makeup/>}></Route>
-          <Route path='/admin/animation' element={<Animation/>}></Route>
-          <Route path='/admin/digitalmarketing' element={<DigitalMarketing/>}></Route>
-          <Route path='/admin/fashiondesigning' element={<FashionDesigning/>}></Route>
-          <Route path='/admin/videoediting' element={<VideoEditing/>}></Route>
-          <Route path='/admin/contact' element={<AdminContact/>}></Route>
-          <Route path='/admin/addskills' element={<AddSkills/>}></Route>
-          <Route path='/admin/manageskills' element={<ManageSkills/>}></Route>
-          <Route path='/admin/updateskills/:_id' element={<UpdateSkills/>}></Route>
+          <Route path='/admin' element={<AdminMasterLayout />}>
+            <Route path='/admin/home' element={<AdminHome />}></Route>
+            <Route path='/admin/beauty' element={<Beauty_and_Makeup />}></Route>
+            <Route path='/admin/animation' element={<Animation />}></Route>
+            <Route path='/admin/digitalmarketing' element={<DigitalMarketing />}></Route>
+            <Route path='/admin/fashiondesigning' element={<FashionDesigning />}></Route>
+            <Route path='/admin/videoediting' element={<VideoEditing />}></Route>
+            <Route path='/admin/contact' element={<AdminContact />}></Route>
+            <Route path='/admin/addskills' element={<AddSkills />}></Route>
+            <Route path='/admin/manageskills' element={<ManageSkills />}></Route>
+            <Route path='/admin/updateskills/:_id' element={<UpdateSkills />}></Route>
+            <Route path='/admin/addlearnermentor' element={<AddLearnerMentor />}></Route>
+            <Route path='/admin/managelearnermentor' element={<ManageLearnerMentor />}></Route>
+
 
 
           </Route>
-      
+
         </Routes>
       </BrowserRouter>
 
-      <ToastContainer   
+      <ToastContainer
         position="top-right"
         autoClose={5000}
         hideProgressBar={false}
@@ -78,7 +83,7 @@ function App() {
         draggable
         pauseOnHover
         theme="light"
- 
+
       />
 
     </>

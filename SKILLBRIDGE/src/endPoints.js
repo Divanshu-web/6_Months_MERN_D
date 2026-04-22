@@ -10,3 +10,4 @@ export const ALL_SKILLS = "skill/all"
 export const SINGLE_SKILLS = "skill/single"
 export const UPDATE_SKILLS = "skill/update"
 export const DELETE_SKILLS = "skill/deleteSoft"
+

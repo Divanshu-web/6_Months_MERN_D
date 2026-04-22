@@ -159,7 +159,8 @@ function Register() {
                   <div className="col-lg-12 col-xl-6">
                     <div className="form-floating">
                       <input
-                        type="number"
+                        type="contact"
+                        maxLength={10}
                         className="form-control bg-transparent border border-white"
                         id="Contact"
                         placeholder="Contact" value={contact}

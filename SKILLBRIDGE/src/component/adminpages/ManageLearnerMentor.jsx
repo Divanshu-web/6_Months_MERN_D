@@ -38,7 +38,6 @@ function ManageSkills() {
 
             // console.log(result.isConfirmed)
             if (result.isConfirmed) {
-                console.log( _id)
                 let res = await deleteSkills({ _id: _id })
                 if (res.data.success) {
                     toast.success(res.data.message);
@@ -120,49 +119,7 @@ function ManageSkills() {
                                 </a>
                                 .
                             </p>
-                            {/* <form>
-                                <div className="row g-3">
-
-                                    <div className="col-12">
-                                        <div className="form-floating">
-                                            <input
-                                                type="email"
-                                                className="form-control bg-transparent border border-white"
-                                                id="email"
-                                                placeholder="Your Email"
-                                                //  value={email}
-                                                // onInput={(e) => {
-                                                //     setEmail(e.target.value)
-                                                // }
-                                                // }
-                                            />
-                                            <label htmlFor="email">Your Email</label>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-12">
-                                        <div className="form-floating">
-                                            <input
-                                                type="password"
-                                                className="form-control bg-transparent border border-white"
-                                                id="password"
-                                                placeholder="Password"
-                                                // value={password}
-                                                // onInput={(e) => {
-                                                //     setPassword(e.target.value) }}
-                                            />
-                                            <label htmlFor="password">Password</label>
-                                        </div>
-                                    </div>
-
-                                    <div className="col-12">
-                                        <button className="btn btn-light text-primary w-100 py-3">
-                                            Add Category
-                                        </button>
-                                    </div>
-                                </div>
-                            </form> */}
-
+                        
                             <div className="container-xxl py-5">
                                 <div className="container">
 
@@ -188,9 +145,7 @@ function ManageSkills() {
                                                             <td>{skill.skillName}</td>
                                                             <td>
                                                                 <img src={BASE_URL + skill.thumbnail} style={{ height: "70px", width: "70px", borderRadius: "50%" }} alt="thumbnail" /></td>
-                                                            <td>
-                                                               {skill.status == 1 ? "Pending" : "Completed"}
-                                                                </td>
+                                                            <td>{skill.status}</td>
                                                             <td>{new Date(skill.createdAt).toLocaleString()}</td>
                                                             <td>{skill.updatedAt ? new Date(skill.updatedAt).toLocaleString() : '----'}</td>
                                                             <td>
@@ -200,7 +155,7 @@ function ManageSkills() {
                                                                     </button>
                                                                 </Link>
 
-                                                                <button className="btn btn-sm" onClick={() => deleteP(skill._id)}>
+                                                                <button className="btn btn-sm" onClick={() => delete (skill._id)}>
                                                                     <i className="bi bi-trash2-fill"></i>
                                                                 </button>
 

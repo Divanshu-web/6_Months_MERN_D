@@ -5,7 +5,7 @@ const learnerMentorSchema = new mongoose.Schema({
     userId: {type: mongoose.Schema.Types.ObjectId, ref: 'user'},
     contact: { type: Number, default: 0 },
     profession: { type: String, default: "" },
-    skills: { type: String, default: "" },
+    skills: [{ type: String, default: "" }],
     experience: { type: Number, default: 0 },
     profileImage: { type: String, default: "" },
 

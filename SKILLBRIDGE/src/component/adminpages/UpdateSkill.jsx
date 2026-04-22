@@ -1,9 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { addSkills, singleSkills, updateSkills } from "../../services/skillService";
-import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import { useNavigate, useParams } from "react-router-dom";
 
 function UpdateSkills() {
+
+    let params = useParams()
+    const _id = params._id 
 
 
     const [skillName, setskillName] = useState("")
@@ -17,10 +20,10 @@ function UpdateSkills() {
             let res = await singleSkills({ _id: _id })
 
             if (res.data.success) {
-                setskillName(res.data?.data?.name)
-                setThumbail(res.data?.data?.thumbnail)
+                setskillName(res.data?.data?.skillName)
+                setThumbnail(res.data?.data?.thumbnail)
                 setStatus(res.data?.data?.status)
-                w
+                
 
                 console.log("Response: ", res.data.data)
             } else {
@@ -42,6 +45,7 @@ function UpdateSkills() {
         try {
             e.preventDefault();
             let formData = {
+                _id,
                 skillName,
                 thumbnail,
                 status
@@ -132,7 +136,7 @@ function UpdateSkills() {
                                                 className="form-control bg-transparent border border-white"
                                                 id="skillname"
                                                 placeholder="Skill Name"
-                                                //  value={email}
+                                                 value={skillName}
                                                 // onInput={(e) => {
                                                 //     setEmail(e.target.value)
                                                 // }
