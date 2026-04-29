@@ -7,7 +7,7 @@ const addRequestToDB = async (req, res) => {
         if (!incomingData.mentorId) validation += 'mentorId is Required';
         if (!incomingData.sessionId) validation += 'sessionId is Required';
         if (!incomingData.learnerId) validation += 'learnerId is Required';
-        if (!incomingData.date) validation += 'date is Required';
+        if (!incomingData.dateSlot) validation += 'dateSlot is Required';
         if (!incomingData.paymentStatus) validation += 'paymentStatus is Required';
         if (!incomingData.requestStatus) validation += 'requestStatus is Required';
 
@@ -22,12 +22,12 @@ const addRequestToDB = async (req, res) => {
 
             let totalDocs = await requestModel.countDocuments({});
 
-            const requestData = new request({
+            const requestData = new requestModel({
                 autoId: totalDocs + 1,
                 mentorId: incomingData.mentorId,
                 sessionId: incomingData.sessionId,
                 learnerId: incomingData.learnerId,
-                date: incomingData.date,
+                dateSlot: incomingData.dateSlot,
                 paymentStatus: incomingData.paymentStatus,
                 requestStatus: incomingData.requestStatus,
 
@@ -55,7 +55,7 @@ const addRequestToDB = async (req, res) => {
 // To GET ALL DOCUMENTS
 const getAllRequest = async (req, res) => {
     try {
-        const dbData = await requestModel.find({ isDelete: false }).populate("skillId").populate("mentorId").populate("sessionId");// to retrive all the documents
+        const dbData = await requestModel.find({ isDelete: false }).populate("mentorId").populate("sessionId");// to retrive all the documents
         const totalDocs = await requestModel.countDocuments({ isDelete: false });
         res.json({
             status: 200,
@@ -136,8 +136,8 @@ const updateRequest = async (req, res) => {
                 message: "No such requestnew exists"
             })
         } else {
-            if (incomingData.date) {
-                requestnew.date = incomingData.date
+            if (incomingData.dateSlot) {
+                requestnew.dateSlot = incomingData.dateSlot
             }
             if (incomingData.paymentStatus) {
                 requestnew.paymentStatus = incomingData.paymentStatus

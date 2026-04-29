@@ -8,8 +8,8 @@ router.get('/', (req, res)=>{
 
 
 router.post('/add', requestController.addRequestToDB)
-router.get('/all', requestController.getAllRequest)
-router.get('/single', requestController.getSingleRequest)
+router.post('/all', requestController.getAllRequest)
+router.post('/single', requestController.getSingleRequest)
 router.post('/update', requestController.updateRequest)
 router.post('/deleteSoft', requestController.deleteSoft)
 

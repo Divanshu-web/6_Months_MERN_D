@@ -104,9 +104,9 @@ function AdminHeader() {
               Learner-Mentor
             </a>
             <div className="dropdown-menu m-0">
-              <Link to={"/admin/addlearnermentor"} className="dropdown-item">
+              {/* <Link to={"/admin/addlearnermentor"} className="dropdown-item">
                 Add Learner-Mentor
-              </Link>
+              </Link> */}
               <Link to={"/admin/managelearnermentor"} className="dropdown-item">
                Manage Learner-Mentor
               </Link>

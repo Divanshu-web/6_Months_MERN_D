@@ -8,10 +8,10 @@ router.get('/', (req, res)=>{
 
 
 router.post('/add', chatController.addChatToDB)
-router.get('/all', chatController.getAllChat)
-router.get('/single', chatController.getSingleChat)
-router.post('/update', chatController.updateChat)
-router.post('/deleteSoft', chatController.deleteSoft)
+router.post('/all', chatController.getAllChat)
+router.post('/single', chatController.getSingleChat)
+// router.post('/update', chatController.updateChat)
+// router.post('/deleteSoft', chatController.deleteSoft)
 
 
 module.exports = router;

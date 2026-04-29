@@ -55,14 +55,44 @@ const addSkillToDB = async (req, res) => {
 // To GET ALL DOCUMENTS
 const getAllSkill = async (req, res) => {
     try {
-        const dbData = await skillModel.find({ isDelete: false });// to retrive all the documents
-        const totalDocs = await skillModel.countDocuments({ isDelete: false });
+
+         let formData = req.body || {}
+
+        console.log("Body: ", req.body)
+       
+
+        // skip and limit
+
+        // skip - start point
+        // limit - how many docs at once
+
+        let skip = 0;
+        let limit = 100000;
+
+        if(formData.startPoint !== undefined){
+            skip = formData.startPoint
+            delete formData.startPoint
+        }
+
+        if(formData.limit !== undefined){
+            limit = (formData.limit)
+            delete formData.limit
+        }
+
+
+        formData.isDelete = false
+
+
+
+        let dbData1 = await skillModel.find(formData).skip(skip).limit(limit)
+
+        const totalDocs = await skillModel.countDocuments(formData);
         res.json({
             status: 200,
             success: true,
             message: "skill loaded successfully",
             total: totalDocs,
-            data: dbData
+            data: dbData1
         })
     } catch (err) {
         res.json({

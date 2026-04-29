@@ -5,7 +5,7 @@ const addProgressToDB = async (req, res) => {
         const incomingData = req.body || {};
         let validation = "";
         if (!incomingData.mentorId) validation += 'mentorId is Required';
-        if (!incomingData.sessiontId) validation += 'sessiontId is Required';
+        if (!incomingData.sessionId) validation += 'sessiontId is Required';
         if (!incomingData.learnerId) validation += 'learnerId is Required';
         if (!incomingData.percentage) validation += 'percentage is Required';
         if (!incomingData.remarks) validation += 'remarks is Required';
@@ -21,7 +21,7 @@ const addProgressToDB = async (req, res) => {
 
             let totalDocs = await progressModel.countDocuments({});
 
-            const progressData = new progress({
+            const progressData = new progressModel({
                 autoId: totalDocs + 1,
                 mentorId: incomingData.mentorId,
                 sessionId: incomingData.sessionId,

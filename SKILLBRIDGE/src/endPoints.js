@@ -11,3 +11,13 @@ export const SINGLE_SKILLS = "skill/single"
 export const UPDATE_SKILLS = "skill/update"
 export const DELETE_SKILLS = "skill/deleteSoft"
 
+export const ALL_LEARNERMENTOR = "learnerMentor/all"
+export const SINGLE_LEARNERMENTOR = "learnerMentor/single"
+export const UPDATE_LEARNERMENTOR = "learnerMentor/update"
+export const DELETE_LEARNERMENTOR = "learnerMentor/deleteSoft"
+
+export const ADD_SESSION = "session/add"
+export const ALL_SESSION = "session/all"
+export const SINGLE_SESSION = "session/single"
+export const UPDATE_SESSION = "session/update"
+export const DELETE_SESSION = "session/deleteSoft"

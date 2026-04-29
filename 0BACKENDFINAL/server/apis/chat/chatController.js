@@ -7,7 +7,10 @@ const addChatToDB = async (req, res) => {
         if (!incomingData.mentorId) validation += 'mentorId is Required';
         if (!incomingData.requestId) validation += 'requestId is Required';
         if (!incomingData.learnerId) validation += 'learnerId is Required';
-        if (!incomingData.message) validation += 'message is Required';
+        if (!incomingData.senderId) validation += 'senderId is Required';
+        if (!incomingData.content) validation += 'content is Required';
+        if (!incomingData.isSeen) validation += 'isSeen is Required';
+        if (!incomingData.status) validation += 'status is Required';
 
 
         if (!!validation) {
@@ -16,21 +19,21 @@ const addChatToDB = async (req, res) => {
                 success: false,
                 message: validation
             })
-        }
-
+        }     
             let totalDocs = await chatModel.countDocuments({});
 
-            const chatData = new chat({
+            const chatData = new chatModel({
                 autoId: totalDocs + 1,
                 mentorId: incomingData.mentorId,
-                sessionId: incomingData.sessionId,
+                requestId: incomingData.requestId,
                 learnerId: incomingData.learnerId,
                 message : {
                     senderId: incomingData.senderId,
-                    chat:incomingData.chatId,
+                    content:incomingData.content,
+                    // chat:incomingData.chat,
                     isSeen: incomingData.isSeen,
                     status: incomingData.status,
-                    createdAt: incomingData.createdAt,
+                    // createdAt: incomingData.createdAt,
                 }
 
             })
@@ -141,8 +144,8 @@ const updateChat = async (req, res) => {
             if (incomingData.senderId) {
                 chatnew.senderId = incomingData.senderId
             }
-            if (incomingData.message) {
-                chatnew.message = incomingData.message
+            if (incomingData.content) {
+                chatnew.content = incomingData.content
             }
             if (incomingData.isSeen) {
                 chatnew.isSeen = incomingData.isSeen
@@ -160,7 +163,7 @@ const updateChat = async (req, res) => {
             res.json({
                 status: 200,
                 success: true,
-                message: "chatnew Updated",
+                message: "chat new Updated",
                 data: savedData
             })
 

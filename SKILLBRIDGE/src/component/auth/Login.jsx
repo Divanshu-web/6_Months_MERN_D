@@ -4,9 +4,18 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast, ToastContainer } from "react-toastify"
 import { login } from "../../services/userService";
+import { RingLoader } from "react-spinners";
 
+// const override = {
+//     display: "block",
+//     margin: "0 auto",
+//     borderColor: "red",
+// };
 
 function Login() {
+
+    let [color, setColor] = useState("#2BC5D4");
+    let [loading, setLoading] = useState(false);
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -23,7 +32,6 @@ function Login() {
 
     // function handleForm(e) {
     //     e.preventDefault()
-
     //     if (email == "" || password == "") {
     //         console.log("All fields are required!")
     //         toast.error("All fields are required!")
@@ -37,8 +45,6 @@ function Login() {
     //         setTimeout(() => {
     //             nav("/admin/home")
     //         }, 2000);
-
-
     //     }
     //     else {
     //         console.log("Invalid Credentials")
@@ -48,15 +54,20 @@ function Login() {
 
     const submit = async (e) => {
         e.preventDefault()
+        setLoading(true)
         try {
-            let formData = {
+            let payload = {
                 email: email,
                 password: password
             }
 
-            let res = await login(formData);
+
+            // let res = await login(formData);
+
+            login(payload).then((res) => {
 
             if (res.data.success) {
+                setLoading(false)
                 toast.success(res.data.message)
                 localStorage.setItem("userType", res.data.data.userType)
                 localStorage.setItem("token", res.data.token)
@@ -66,22 +77,54 @@ function Login() {
                 if(res.data.data.userType == 1){
                     nav('/admin/home')
                 }else if(res.data.data.userType == 2){
-                    nav('/')
+                    nav('/learnermentor/dashboard')
                 }else{
                     toast.error("Invalid UserType")
                 }
             } else {
+                 setLoading(false);
                 toast.error(res.data.message)
             }
-
-        } catch (err) {
-            console.log(err)
+        })
         }
+         catch (err) {
+           
+            console.log(err);
+            toast.error(err)
+        } 
+    
     }
 
-
     return (
+
         <>
+
+
+            {loading && (
+                 <div className="d-flex justify-content-center pt-3 align-item-center"
+                 style={{
+                    position:"fixed",
+                    display:"flex",
+                    justifyContent:"center",
+                    alignItems:"center",
+                    backgroundColor:"rgba(0,0,0,0.5)",
+                    height:"100%",
+                    width:"100%",
+                    zIndex:"9999",
+                    top: 0,
+                    left: 0,
+                 }}>
+                    <RingLoader
+                        color={color}
+                        // loading={loading}
+                        // cssOverride={override}
+                        size={100}
+                    />
+                    </div>
+            )}
+              
+          
+
             {/* Header Start */}
             <div className="container-fluid bg-breadcrumb">
                 <div className="container text-center py-5" style={{ maxWidth: 900 }}>
@@ -107,6 +150,8 @@ function Login() {
             </div>
             {/* Header End */}
             <ToastContainer></ToastContainer>
+        
+
             {/* Contact Start */}
             <div className="container-fluid contact py-5">
                 <div className="container py-5">
@@ -176,6 +221,10 @@ function Login() {
         </>
 
     )
+
+
+
+    
 }
 
 export default Login

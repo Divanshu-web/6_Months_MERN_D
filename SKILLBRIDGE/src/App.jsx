@@ -28,6 +28,13 @@ import { ToastContainer } from 'react-toastify'
 import UpdateSkills from './component/adminpages/UpdateSkill'
 import AddLearnerMentor from './component/adminpages/AddLearnerMentor'
 import ManageLearnerMentor from './component/adminpages/ManageLearnerMentor'
+import UpdateLearnerMentor from './component/adminpages/UpdateLearnerMentor'
+
+import LearnermentorMasterLayout from './component/learnermentor/LearnermentorMasterLayout'
+import Dashboard from './component/learnermentor/Dashboard'
+import Addsession from './component/learnermentor/Addsession'
+import Managesession from './component/learnermentor/Managesession'
+import UpdateSession from './component/learnermentor/Updatesession'
 
 
 function App() {
@@ -48,7 +55,6 @@ function App() {
             <Route path='/error404' element={<Error404 />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
-
           </Route>
 
           <Route path='/admin' element={<AdminMasterLayout />}>
@@ -62,11 +68,17 @@ function App() {
             <Route path='/admin/addskills' element={<AddSkills />}></Route>
             <Route path='/admin/manageskills' element={<ManageSkills />}></Route>
             <Route path='/admin/updateskills/:_id' element={<UpdateSkills />}></Route>
-            <Route path='/admin/addlearnermentor' element={<AddLearnerMentor />}></Route>
+            {/* <Route path='/admin/addlearnermentor' element={<AddLearnerMentor />}></Route> */}
             <Route path='/admin/managelearnermentor' element={<ManageLearnerMentor />}></Route>
+            <Route path='/admin/updatelearnermentor/:_id' element={<UpdateLearnerMentor />}></Route>
+          </Route>
 
-
-
+          <Route path='/learnermentor' element={<LearnermentorMasterLayout/>}>
+          <Route path='/learnermentor/dashboard' element={<Dashboard/>}></Route>
+          <Route path='/learnermentor/addsession' element={<Addsession/>}></Route>
+          <Route path='/learnermentor/managesession' element={<Managesession/>}></Route>
+          <Route path='/learnermentor/updataesession/:_id' element={<UpdateSession/>}></Route>
+          
           </Route>
 
         </Routes>

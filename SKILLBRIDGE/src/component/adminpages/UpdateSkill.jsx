@@ -170,7 +170,7 @@ function UpdateSkills() {
                                                 className="form-control bg-transparent border border-white"
                                                 id="status"
                                                 placeholder="Status"
-                                                //  value={email}
+                                                 value={status}
                                                 // onInput={(e) => {
                                                 //     setEmail(e.target.value)
                                                 // }

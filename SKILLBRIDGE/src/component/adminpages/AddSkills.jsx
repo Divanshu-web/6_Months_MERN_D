@@ -25,7 +25,7 @@ function AddSkills() {
             formData.append("thumbnail", thumbnail)
             formData.append("status", status)
 
-            console.log("Formdtaa: ", formData)
+            console.log("Formdata: ", formData)
 
             let res = await addSkills(formData)
 

@@ -2,7 +2,9 @@ const sessionModel = require('./sessionModel')
 
 const addSessionToDB = async (req, res) => {
     try {
+
         const incomingData = req.body || {};
+
         let validation = "";
         if (!incomingData.sessionName) validation += 'sessionName is Required';
         if (!incomingData.skillId) validation += 'skillId is Required';
@@ -20,6 +22,8 @@ const addSessionToDB = async (req, res) => {
         if (!incomingData.isPaid) validation += 'isPaid is Required';
 
 
+        console.log(req.body);
+
         if (!!validation) {
             res.json({
                 status: 400,
@@ -31,7 +35,7 @@ const addSessionToDB = async (req, res) => {
             const existingData = await sessionModel.findOne({ sessionName: incomingData.sessionName })
             if (!!existingData) {
                 return res.json({
-                    status: 400,
+                    status: 400,  
                     success: false,
                     message: "session already exists"
                 })
@@ -39,7 +43,7 @@ const addSessionToDB = async (req, res) => {
 
             let totalDocs = await sessionModel.countDocuments({});
 
-            const sessionData = new session({
+            const sessionData = new sessionModel({
                 autoId: totalDocs + 1,
 
                 sessionName: incomingData.sessionName,
@@ -179,6 +183,9 @@ const updateSession = async (req, res) => {
             }
             if (incomingData.duration) {
                 sessionnew.duration = incomingData.duration
+            }
+            if (incomingData.descryption) {
+                sessionnew.descryption = incomingData.descryption
             }
             if (incomingData.sessionType) {
                 sessionnew.sessionType = incomingData.sessionType

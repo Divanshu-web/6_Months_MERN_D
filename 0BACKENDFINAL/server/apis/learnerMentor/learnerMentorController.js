@@ -106,7 +106,7 @@ const getAllLearnerMentor = async (req, res) => {
         res.json({
             status: 200,
             success: true,
-            message: "Products loaded successfully",
+            message: "LearnerMentor loaded successfully",
             total: totalDocs,
             data: dbData
         })
@@ -122,7 +122,7 @@ const getAllLearnerMentor = async (req, res) => {
 const getSingleLearnerMentor = async (req, res) => {
     try {
         const learnerMentorId = req.body?._id || {};
-
+         console.log(req.body);
         if (!learnerMentorId) {
             res.json({
                 status: 400,
@@ -131,7 +131,7 @@ const getSingleLearnerMentor = async (req, res) => {
             })
         }
 
-        const learnerMentor = await learnerMentorModel.findOne({ _id: learnerMentorId, isDelete: false })
+        const learnerMentor = await learnerMentorModel.findOne({ _id: learnerMentorId, isDelete: false }).populate("userId");
 
         if (!learnerMentor) {
             res.json({
@@ -203,7 +203,7 @@ const updateLearnerMentor = async (req, res) => {
             res.json({
                 status: 200,
                 success: true,
-                message: "learnerMentornew Updated",
+                message: "learnerMentor new Updated",
                 data: savedData
             })
 

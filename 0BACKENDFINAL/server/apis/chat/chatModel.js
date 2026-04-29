@@ -10,7 +10,7 @@ const chatSchema = new mongoose.Schema({
         content: String,
         isSeen: Boolean,
         status: Boolean,
-        createdAt: Date,
+        // createdAt: Date,
     },
 
     isDelete: { type: Boolean, default: false },

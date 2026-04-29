@@ -26,7 +26,7 @@ const upload = multer({ storage: storage })
 router.post('/add',upload.single('thumbnail'), skillController.addSkillToDB)
 router.post('/all', skillController.getAllSkill)
 router.post('/single', skillController.getSingleSkill)
-router.post('/update', upload.single('profileImage'), skillController.updateSkill)
+router.post('/update', upload.single('thumbnail'), skillController.updateSkill)
 router.post('/deleteSoft', skillController.deleteSoft)
 
 

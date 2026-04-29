@@ -11,11 +11,11 @@ const sessionSchema = new mongoose.Schema({
 
     learnerMentorId: { type: mongoose.Schema.Types.ObjectId, ref: 'learnerMentor' },
 
-    duration: { type: Number, default: 0 },
+    duration: { type: String, default: "" },
     sessionType: { type: String, default: "" },
     meetingLink: { type: String, default: "" },
-    youtubeLink: { type: Number, default: 0 },
-    isPaid: { type: Boolean, default: "" },
+    youtubeLink: { type: String, default: "" },
+    isPaid: { type: Boolean, default: true },
 
     isDelete: { type: Boolean, default: false },
     isBlock: { type: Boolean, default: false },

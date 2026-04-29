@@ -5,7 +5,7 @@ const addReviewToDB = async (req, res) => {
         const incomingData = req.body || {};
         let validation = "";
         if (!incomingData.mentorId) validation += 'mentorId is Required';
-        if (!incomingData.requesttId) validation += 'requesttId is Required';
+        if (!incomingData.requestId) validation += 'requestId is Required';
         if (!incomingData.learnerId) validation += 'learnerId is Required';
         if (!incomingData.rating) validation += 'rating is Required';
         if (!incomingData.comment) validation += 'comment is Required';
@@ -21,7 +21,7 @@ const addReviewToDB = async (req, res) => {
 
             let totalDocs = await reviewModel.countDocuments({});
 
-            const reviewData = new review({
+            const reviewData = new reviewModel({
                 autoId: totalDocs + 1,
                 mentorId: incomingData.mentorId,
                 requestId: incomingData.requestId,
@@ -134,11 +134,11 @@ const updateReview = async (req, res) => {
                 message: "No such reviewnew exists"
             })
         } else {
-            if (incomingData.percentage) {
-                reviewnew.percentage = incomingData.percentage
+            if (incomingData.rating) {
+                reviewnew.rating = incomingData.rating
             }
-            if (incomingData.remarks) {
-                reviewnew.remarks = incomingData.remarks
+            if (incomingData.comment) {
+                reviewnew.comment = incomingData.comment
             }
 
             reviewnew.updatedAt = Date.now()

@@ -37,7 +37,7 @@ function AddLearnerMentor() {
 
             console.log("Formdata: ", formData)
 
-            let res = await addSkills(formData)
+            let res = await AddLearnerMentor(formData)
 
             if (res.data.success) {
                 toast.success(res.data.message);
@@ -200,7 +200,7 @@ function AddLearnerMentor() {
                                                 className="form-control bg-transparent border border-white"
                                                 id="Profile Image"
                                                 placeholder="Profile Image"
-                                                value={profileImage}
+                                                // value={profileImage}
                                                 onChange={((e) => setProfileImage(e.target.files[0]))}
                                             />
                                             <label htmlFor="Profile Image" className="text-dark">Profile Image</label>

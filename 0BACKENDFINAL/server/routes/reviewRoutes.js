@@ -8,8 +8,8 @@ router.get('/', (req, res)=>{
 
 
 router.post('/add', reviewController.addReviewToDB)
-router.get('/all', reviewController.getAllReview)
-router.get('/single', reviewController.getSingleReview)
+router.post('/all', reviewController.getAllReview)
+router.post('/single', reviewController.getSingleReview)
 router.post('/update', reviewController.updateReview)
 router.post('/deleteSoft', reviewController.deleteSoft)
 

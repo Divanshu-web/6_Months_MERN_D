@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_SKILLS, ADMIN_BASE_URL, ALL_SKILLS, BASE_URL, DELETE_SKILLS, SINGLE_SKILLS, UPDATE_SKILLS } from "../endPoints";
+import { ADMIN_BASE_URL, ALL_LEARNERMENTOR, BASE_URL, DELETE_LEARNERMENTOR, SINGLE_LEARNERMENTOR, UPDATE_LEARNERMENTOR } from "../endPoints";
 
 function getToken()
 {
@@ -12,24 +12,20 @@ function getToken()
    }
 }
 
-export function addSkills(data) {
-   return axios.post(ADMIN_BASE_URL + ADD_SKILLS, data, getToken())
+
+
+export function allLearnerMentor(data) {
+   return axios.post(ADMIN_BASE_URL + ALL_LEARNERMENTOR, data, getToken())
 }
 
 
-export function allSkills(data) {
-   return axios.post(ADMIN_BASE_URL + ALL_SKILLS, data, getToken())
+export function singleLearnerMentor(data) {
+   return axios.post(BASE_URL + SINGLE_LEARNERMENTOR, data, getToken())
 }
 
-
-
-export function singleSkills(data) {
-   return axios.post(BASE_URL + SINGLE_SKILLS, data, getToken())
+export function updateLearnerMentor(data) {
+   return axios.post(BASE_URL +UPDATE_LEARNERMENTOR, data, getToken())
 }
-
-export function updateSkills(data) {
-   return axios.post(BASE_URL +UPDATE_SKILLS, data, getToken())
-}
-export function deleteSkills(data) {
-   return axios.post(BASE_URL +DELETE_SKILLS, data, getToken())
+export function deleteLearnerMentor(data) {
+   return axios.post(BASE_URL +DELETE_LEARNERMENTOR, data, getToken())
 }

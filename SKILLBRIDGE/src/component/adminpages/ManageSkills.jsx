@@ -5,15 +5,34 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import { BASE_URL } from "../../endPoints";
+import ResponsivePagination from 'react-responsive-pagination';
+import 'react-responsive-pagination/themes/classic-light-dark.css';
 
 function ManageSkills() {
+    
 
     const [skills, setSkills] = useState([])
+     const [currentPage, setCurrentPage] = useState(1)
+    const [total, setTotal] = useState(0)
+    const [limit, setLimit] = useState(10)
+
+
+
     const getAllSkill = async () => {
         try {
-            let res = await allSkills()
+
+
+             let payload = {
+            limit,
+            startPoint: (currentPage - 1) * limit 
+        }
+
+
+            let res = await allSkills(payload)
             if (res.data.success) {
                 setSkills(res.data.data)
+                 setTotal(res.data.total)
+
             }
             else {
                 toast.error(res.data.message)
@@ -42,7 +61,7 @@ function ManageSkills() {
                 let res = await deleteSkills({ _id: _id })
                 if (res.data.success) {
                     toast.success(res.data.message);
-                    getAllSkills();
+                    getAllSkill();
                 } else {
                     toast.error(res.data.message);
                 }
@@ -56,7 +75,7 @@ function ManageSkills() {
 
     useEffect(() => {
         getAllSkill();
-    }, [])
+    }, [currentPage])
 
 
 
@@ -210,6 +229,14 @@ function ManageSkills() {
 
                                             </tbody>
                                         </table>
+
+
+                                        <ResponsivePagination
+                            current={currentPage}
+                            total={Math.ceil(total / limit)}
+                            onPageChange={setCurrentPage}
+                        />
+
 
 
 

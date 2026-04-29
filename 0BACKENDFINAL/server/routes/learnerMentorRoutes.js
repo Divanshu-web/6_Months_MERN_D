@@ -32,10 +32,11 @@ router.post('/login', userController.login);
 router.use(require('../middleware/tokenChecker'))
 
 
-router.get('/all', learnerMentorController.getAllLearnerMentor)
-router.get('/single', learnerMentorController.getSingleLearnerMentor)
+router.post('/all', learnerMentorController.getAllLearnerMentor)
+router.post('/single', learnerMentorController.getSingleLearnerMentor)
 router.post('/update', cloudUpload.single('profileImage'), learnerMentorController.updateLearnerMentor)
 router.post('/deleteSoft', learnerMentorController.deleteSoft)
+
 
 
 module.exports = router;

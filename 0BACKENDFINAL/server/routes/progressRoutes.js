@@ -8,8 +8,8 @@ router.get('/', (req, res)=>{
 
 
 router.post('/add', progressController.addProgressToDB)
-router.get('/all', progressController.getAllProgress)
-router.get('/single', progressController.getSingleProgress)
+router.post('/all', progressController.getAllProgress)
+router.post('/single', progressController.getSingleProgress)
 router.post('/update', progressController.updateProgress)
 router.post('/deleteSoft', progressController.deleteSoft)
 
