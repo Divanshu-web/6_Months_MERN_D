@@ -12,7 +12,7 @@ const sessionSchema = new mongoose.Schema({
     learnerMentorId: { type: mongoose.Schema.Types.ObjectId, ref: 'learnerMentor' },
 
     duration: { type: String, default: "" },
-    sessionType: { type: String, default: "" },
+    sessionType: { type: Boolean, default: 1 }, // 1= free , 2= paid
     meetingLink: { type: String, default: "" },
     youtubeLink: { type: String, default: "" },
     isPaid: { type: Boolean, default: true },
