@@ -35,6 +35,10 @@ import Dashboard from './component/learnermentor/Dashboard'
 import Addsession from './component/learnermentor/Addsession'
 import Managesession from './component/learnermentor/Managesession'
 import UpdateSession from './component/learnermentor/Updatesession'
+// import Addrequest from './component/learnermentor/Addrequest'
+import Managerequest from './component/learnermentor/Managerequest'
+import UpdateRequest from './component/learnermentor/UpdateRequest'
+import Learnermentorcontact from './component/learnermentor/Learnermentorcontact'
 
 
 function App() {
@@ -71,14 +75,24 @@ function App() {
             {/* <Route path='/admin/addlearnermentor' element={<AddLearnerMentor />}></Route> */}
             <Route path='/admin/managelearnermentor' element={<ManageLearnerMentor />}></Route>
             <Route path='/admin/updatelearnermentor/:_id' element={<UpdateLearnerMentor />}></Route>
+            <Route path='/admin/managesession' element={<Managesession />}></Route>
+
           </Route>
 
-          <Route path='/learnermentor' element={<LearnermentorMasterLayout/>}>
-          <Route path='/learnermentor/dashboard' element={<Dashboard/>}></Route>
-          <Route path='/learnermentor/addsession' element={<Addsession/>}></Route>
-          <Route path='/learnermentor/managesession' element={<Managesession/>}></Route>
-          <Route path='/learnermentor/updataesession/:_id' element={<UpdateSession/>}></Route>
-          
+          <Route path='/learnermentor' element={<LearnermentorMasterLayout />}>
+            <Route path='/learnermentor/dashboard' element={<Dashboard />}></Route>
+            <Route path='/learnermentor/addsession' element={<Addsession />}></Route>
+            <Route path='/learnermentor/managesession' element={<Managesession />}></Route>
+            <Route path='/learnermentor/updataesession/:_id' element={<UpdateSession />}></Route>
+            <Route path='/learnermentor/addskills' element={<AddSkills />}></Route>
+            <Route path='/learnermentor/manageskills' element={<ManageSkills />}></Route>
+            {/* <Route path='/learnermentor/addrequest' element={<Addrequest />}></Route> */}
+            <Route path='/learnermentor/managerequest' element={<Managerequest />}></Route>
+            <Route path='/learnermentor/updaterequest/:_id' element={<UpdateRequest />}></Route>
+            <Route path='/learnermentor/contact' element={<Learnermentorcontact />}></Route>
+
+
+
           </Route>
 
         </Routes>

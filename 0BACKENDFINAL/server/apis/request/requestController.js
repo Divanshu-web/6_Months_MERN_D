@@ -7,13 +7,13 @@ const addRequestToDB = async (req, res) => {
         if (!incomingData.mentorId) validation += 'mentorId is Required';
         if (!incomingData.sessionId) validation += 'sessionId is Required';
         if (!incomingData.learnerId) validation += 'learnerId is Required';
-        if (!incomingData.dateSlot) validation += 'dateSlot is Required';
+        if (!incomingData.date) validation += 'date is Required';
         if (!incomingData.paymentStatus) validation += 'paymentStatus is Required';
         if (!incomingData.requestStatus) validation += 'requestStatus is Required';
 
 
         if (!!validation) {
-            res.json({
+            return res.json({
                 status: 400,
                 success: false,
                 message: validation
@@ -27,7 +27,7 @@ const addRequestToDB = async (req, res) => {
                 mentorId: incomingData.mentorId,
                 sessionId: incomingData.sessionId,
                 learnerId: incomingData.learnerId,
-                dateSlot: incomingData.dateSlot,
+                date: incomingData.date,
                 paymentStatus: incomingData.paymentStatus,
                 requestStatus: incomingData.requestStatus,
 
@@ -137,7 +137,7 @@ const updateRequest = async (req, res) => {
             })
         } else {
             if (incomingData.dateSlot) {
-                requestnew.dateSlot = incomingData.dateSlot
+                requestnew.date = incomingData.date
             }
             if (incomingData.paymentStatus) {
                 requestnew.paymentStatus = incomingData.paymentStatus

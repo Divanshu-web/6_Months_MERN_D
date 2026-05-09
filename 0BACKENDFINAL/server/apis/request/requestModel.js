@@ -5,7 +5,7 @@ const requestSchema = new mongoose.Schema({
     mentorId:{type: mongoose.Schema.Types.ObjectId, ref: 'learnerMentor'},
     sessionId:{type: mongoose.Schema.Types.ObjectId, ref: 'session'},
     learnerId:{type: mongoose.Schema.Types.ObjectId, ref: 'learnerMentor'},
-    dateSlot : { type: String, default: "" },
+    date : { type: String, default: "" },
     paymentStatus: { type: Number, default:1 }, // 1= pending, 2 = confirm ,3 = rejected
     requestStatus: { type: Number, default:1 }, // 1= pending, 2 = confirm ,3 = rejected
 

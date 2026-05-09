@@ -84,7 +84,7 @@ function LearnermentorHeader() {
       </button>
       <div className="collapse navbar-collapse" id="navbarCollapse">
         <div className="navbar-nav ms-auto py-0">
-          <Link to={"/dashboard"} className="nav-item nav-link active">
+          <Link to={"/learnermentor/dashboard"} className="nav-item nav-link active">
             Dashboard
           </Link>
             <div className="nav-item dropdown">
@@ -114,11 +114,30 @@ function LearnermentorHeader() {
               Skills
             </a>
             <div className="dropdown-menu m-0">
-              <Link to={"/admin/addskills"} className="dropdown-item">
+              <Link to={"/learnermentor/addskills"} className="dropdown-item">
                 Add Skills
               </Link>
-              <Link to={"/admin/manageskills"} className="dropdown-item">
+              <Link to={"/learnermentor/manageskills"} className="dropdown-item">
                Manage Skills
+              </Link>
+            </div>
+          </div>
+
+
+          <div className="nav-item dropdown">
+            <a
+              href="#"
+              className="nav-link dropdown-toggle"
+              data-bs-toggle="dropdown"
+            >
+              Request
+            </a>
+            <div className="dropdown-menu m-0">
+              {/* <Link to={"/learnermentor/addrequest"} className="dropdown-item">
+                Add Request
+              </Link> */}
+              <Link to={"/learnermentor/managerequest"} className="dropdown-item">
+               Manage Request
               </Link>
             </div>
           </div>
@@ -153,7 +172,7 @@ function LearnermentorHeader() {
               </a> */}
             </div>
           </div>
-          <Link to={"/admin/contact"} className="nav-item nav-link">
+          <Link to={"/learnermentor/contact"} className="nav-item nav-link">
             Contact Us
           </Link>
         </div>
