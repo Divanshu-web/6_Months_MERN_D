@@ -137,7 +137,7 @@ function SessionCard({ session, index, viewMode, onDelete, onRequest, currentUse
                     )}
                 </div>
 
-                 <button className="btn btn-sm btn-primary" id="rzp-button1" onClick={payNow}>Pay now Razorpay with</button>
+                {/* <button className="btn btn-sm btn-primary" id="rzp-button1" onClick={payNow}>Pay now Razorpay with</button>
 
                 {(session.mentorId?._id !== currentUserId && session.mentorId !== currentUserId) && (
                     
@@ -146,9 +146,28 @@ function SessionCard({ session, index, viewMode, onDelete, onRequest, currentUse
                         onClick={() => onRequest(session)}
                         disabled={session.requested}
                     >
-                        Send Request
+                        Send Request 
                     </button>
-                )}
+                )} */}
+
+                {/* ============================SESSION BUTTON============================ */}
+
+                {(session.mentorId?._id !== currentUserId &&
+                    session.mentorId !== currentUserId) && (
+
+                        <button
+                            className="btn btn-sm btn-primary"
+                            onClick={() => onRequest(session)}
+                            disabled={session.requested}
+                        >
+
+                            {session.isPaid
+                                ? "Pay & Send Request"
+                                : "Send Request"}
+
+                        </button>
+                    )}
+
             </div>
         </div>
     );
@@ -174,36 +193,138 @@ function ManageSession() {
     };
 
 
+    
+
+
+
+    // ============================
+    // HANDLE REQUEST FUNCTION
+    // ============================
+
     const handleRequest = async (session) => {
+
         try {
-            console.log("Session: ", session)
-            const learnerId = localStorage.getItem("learnerMentorId"); // adjust as per your auth
+
+            const learnerId =
+                localStorage.getItem("learnerMentorId");
 
             const payload = {
-                mentorId: session.mentorId?._id,   // must exist in session
+
+                mentorId: session.mentorId?._id,
+
                 sessionId: session._id,
+
                 learnerId: learnerId,
-                date: Date.now(), // you can replace with date picker later
-                paymentStatus: 1, // pending
-                requestStatus: 1 //pending
+
+                date: Date.now(),
+
+                paymentStatus: session.isPaid ? 1 : 2,
+
+                requestStatus: 1
             };
 
-            console.log("Pay", payload)
+            // =================================
+            // FREE SESSION
+            // =================================
 
-            const res = await sendRequest(payload);
+            if (!session.isPaid) {
 
-            if (res.data.success) {
-                toast.success("Request sent successfully");
-            } else {
-                toast.error(res.data.message);
+                const res = await sendRequest(payload);
+
+                if (res.data.success) {
+
+                    toast.success(
+                        "Request sent successfully"
+                    );
+
+                } else {
+
+                    toast.error(
+                        res.data.message
+                    );
+                }
+
+                return;
             }
+
+            // =================================
+            // PAID SESSION
+            // =================================
+
+            const orderRes = await axios.post(
+                "http://localhost:3000/api/create-order",
+                {
+                    amount: session.price
+                }
+            );
+
+            console.log(
+                "Order Response:",
+                orderRes.data
+            );
+
+            const options = {
+
+                key: "rzp_test_Sn9n0GOiPb3a6S",
+
+                amount: session.price * 100,
+
+                currency: "INR",
+
+                name: "O7 Solutions",
+
+                description: "Session Payment",
+
+                order_id: orderRes.data.id,
+
+                handler: async function (response) {
+
+                    console.log(
+                        "Payment Success:",
+                        response
+                    );
+
+                    // PAYMENT SUCCESS KE BAAD
+                    // REQUEST SEND HOGI
+
+                    console.log("Payload in payment: ", payload)
+
+                    const res =
+                        await sendRequest(payload);
+
+                    if (res.data.success) {
+
+                        toast.success(
+                            "Payment Successful & Request Sent"
+                        );
+
+                    } else {
+
+                        toast.error(
+                            res.data.message
+                        );
+                    }
+                },
+
+                theme: {
+                    color: "#000"
+                }
+            };
+
+            const paymentObject =
+                new window.Razorpay(options);
+
+            paymentObject.open();
+
         } catch (err) {
+
             console.log(err);
-            toast.error("Something went wrong");
+
+            toast.error(
+                "Something went wrong"
+            );
         }
     };
-
-
 
 
     const handleDelete = async (_id) => {
@@ -357,8 +478,9 @@ function ManageSession() {
                                 index={index}
                                 viewMode={viewMode}
                                 onDelete={handleDelete}
-                                onRequest={() => handleRequest(session)}
-                                currentUserId={localStorage.getItem("learnerMentorId")}
+                                onRequest={handleRequest}
+                                currentUserId={
+                                    localStorage.getItem("learnerMentorId")}
                             />
                         ))}
                     </div>

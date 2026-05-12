@@ -40,6 +40,8 @@ import Managerequest from './component/learnermentor/Managerequest'
 import UpdateRequest from './component/learnermentor/UpdateRequest'
 import Learnermentorcontact from './component/learnermentor/Learnermentorcontact'
 import MyBookings from './component/learnermentor/MyBookings'
+import Learnermentoraddskills from './component/learnermentor/Learnermentoraddskills'
+import Learnermentormanageskills from './component/learnermentor/Learnermentormanageskills'
 
 
 function App() {
@@ -85,8 +87,8 @@ function App() {
             <Route path='/learnermentor/addsession' element={<Addsession />}></Route>
             <Route path='/learnermentor/managesession' element={<Managesession />}></Route>
             <Route path='/learnermentor/updataesession/:_id' element={<UpdateSession />}></Route>
-            <Route path='/learnermentor/addskills' element={<AddSkills />}></Route>
-            <Route path='/learnermentor/manageskills' element={<ManageSkills />}></Route>
+            <Route path='/learnermentor/addskills' element={<Learnermentoraddskills />}></Route>
+            <Route path='/learnermentor/manageskills' element={<Learnermentormanageskills />}></Route>
             {/* <Route path='/learnermentor/addrequest' element={<Addrequest />}></Route> */}
             <Route path='/learnermentor/managerequest' element={<Managerequest />}></Route>
             <Route path='/learnermentor/updaterequest/:_id' element={<UpdateRequest />}></Route>

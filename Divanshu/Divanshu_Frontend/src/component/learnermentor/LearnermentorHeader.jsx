@@ -86,7 +86,7 @@ function LearnermentorHeader() {
       </button>
       <div className="collapse navbar-collapse" id="navbarCollapse">
         <div className="navbar-nav ms-auto py-0">
-          <Link to={"/learnermentor/dashboard"} className="nav-item nav-link active">
+          <Link to={"/learnermentor/dashboard"} className="nav-item nav-link ">
             Dashboard
           </Link>
             <div className="nav-item dropdown">
@@ -148,35 +148,7 @@ function LearnermentorHeader() {
           </div>
 
 
-          <div className="nav-item dropdown">
-            <a
-              href="#"
-              className="nav-link dropdown-toggle"
-              data-bs-toggle="dropdown"
-            >
-             Many Skills 
-            </a>
-            <div className="dropdown-menu m-0">
-              <Link to={"/admin/beauty"} className="dropdown-item">
-                Beauty_and_Makeup
-              </Link>
-              <Link to={"/admin/animation"} className="dropdown-item">
-                Animation
-              </Link>
-              <Link to={"/admin/digitalmarketing"} className="dropdown-item">
-                Digital Marketing
-              </Link>
-              <Link to={"/admin/fashiondesigning"} className="dropdown-item">
-               FashionDesigning
-              </Link>
-              <Link to={"/admin/videoediting"} className="dropdown-item">
-                Video Editing
-              </Link>
-              {/* <a href="404.html" className="dropdown-item">
-                404 Page
-              </a> */}
-            </div>
-          </div>
+         
           <Link to={"/learnermentor/contact"} className="nav-item nav-link">
             Contact Us
           </Link>
