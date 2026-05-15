@@ -3,7 +3,7 @@
 // import { toast, ToastContainer } from "react-toastify";
 // import { useNavigate, useParams } from "react-router-dom";
 
-// function UpdateSkills() {
+// function Learnermentorupdateskills() {
 
 //     let params = useParams()
 //     const _id = params._id 
@@ -55,7 +55,7 @@
 
 //             if (res.data.success) {
 //                 toast.success(res.data.message);
-//                 nav('/admin/manageskills')
+//                 nav('/learnermentor/manageskills')
 //             } else {
 //                 toast.error(res.data.message);
 //             }
@@ -86,7 +86,7 @@
 //                             <a href="index.html">Home</a>
 //                         </li>
 //                         <li className="breadcrumb-item">
-//                             <a href="#">Admin</a>
+//                             <a href="#">Learner Mentor</a>
 //                         </li>
 //                         <li className="breadcrumb-item active text-primary">Update Skills</li>
 //                     </ol>
@@ -198,9 +198,7 @@
 //     )
 // }
 
-// export default UpdateSkills
-
-
+// export default Learnermentorupdateskills
 
 
 import { useEffect, useState } from "react";
@@ -215,175 +213,215 @@ import { BASE_URL } from "../../endPoints";
 const styles = `
   @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap');
 
-  .usk-root { font-family:'DM Sans',sans-serif; background:#f5f6fa; min-height:100vh; }
+  .usk-root {
+    font-family: 'DM Sans', sans-serif;
+    background: #f5f6fa;
+    min-height: 100vh;
+  }
 
   /* ── Hero ── */
   .usk-hero {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f2044 100%);
-    padding: 52px 24px 44px; position: relative; overflow: hidden;
+    padding: 52px 24px 44px;
+    position: relative; overflow: hidden;
   }
   .usk-hero::before {
-    content:''; position:absolute; inset:0;
+    content: '';
+    position: absolute; inset: 0;
     background:
       radial-gradient(ellipse 60% 70% at 90% 50%, rgba(245,158,11,.15) 0%, transparent 70%),
       radial-gradient(ellipse 35% 45% at 5%  80%, rgba(16,185,129,.10) 0%, transparent 60%);
-    pointer-events:none;
+    pointer-events: none;
   }
-  .usk-hero-inner { position:relative; max-width:560px; margin:0 auto; }
+  .usk-hero-inner { position: relative; max-width: 560px; margin: 0 auto; }
 
   .usk-breadcrumb {
-    display:flex; align-items:center; gap:6px;
-    font-size:11.5px; color:rgba(255,255,255,.45);
-    margin-bottom:16px; letter-spacing:.05em; text-transform:uppercase;
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11.5px; color: rgba(255,255,255,.45);
+    margin-bottom: 16px; letter-spacing: .05em; text-transform: uppercase;
   }
-  .usk-breadcrumb a { color:rgba(255,255,255,.45); text-decoration:none; }
-  .usk-breadcrumb a:hover { color:rgba(255,255,255,.75); }
-  .usk-breadcrumb .sep { color:rgba(255,255,255,.22); }
-  .usk-breadcrumb .active { color:#fbbf24; }
+  .usk-breadcrumb a { color: rgba(255,255,255,.45); text-decoration: none; }
+  .usk-breadcrumb a:hover { color: rgba(255,255,255,.75); }
+  .usk-breadcrumb .sep { color: rgba(255,255,255,.22); }
+  .usk-breadcrumb .active { color: #fbbf24; }
+
   .usk-hero h1 {
-    font-family:'Sora',sans-serif;
-    font-size:clamp(1.7rem,3.5vw,2.4rem); font-weight:700; color:#fff;
-    margin:0 0 6px; letter-spacing:-.02em;
+    font-family: 'Sora', sans-serif;
+    font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+    font-weight: 700; color: #fff;
+    margin: 0 0 6px; letter-spacing: -.02em;
   }
-  .usk-hero p { color:rgba(255,255,255,.48); font-size:13.5px; margin:0; font-weight:300; }
+  .usk-hero p { color: rgba(255,255,255,.48); font-size: 13.5px; margin: 0; font-weight: 300; }
 
   /* ── Body ── */
-  .usk-body { max-width:560px; margin:0 auto; padding:36px 20px 64px; }
+  .usk-body { max-width: 560px; margin: 0 auto; padding: 36px 20px 64px; }
 
   /* ── Card ── */
   .usk-card {
-    background:#fff; border-radius:20px; border:1.5px solid #e8eaf0;
-    overflow:hidden; box-shadow:0 4px 24px rgba(15,23,42,.06);
+    background: #fff;
+    border-radius: 20px;
+    border: 1.5px solid #e8eaf0;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(15,23,42,.06);
   }
   .usk-card-header {
-    padding:22px 28px 20px; border-bottom:1px solid #f1f5f9;
-    display:flex; align-items:center; gap:14px;
+    padding: 22px 28px 20px;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex; align-items: center; gap: 14px;
   }
   .usk-card-icon {
-    width:44px; height:44px; border-radius:12px;
-    background:linear-gradient(135deg,#f59e0b,#fbbf24);
-    display:flex; align-items:center; justify-content:center; flex-shrink:0;
-    box-shadow:0 4px 12px rgba(245,158,11,.25);
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(245,158,11,.25);
   }
-  .usk-card-header-text { flex:1; }
+  .usk-card-header-text { flex: 1; }
   .usk-card-header h2 {
-    font-family:'Sora',sans-serif; font-size:17px; font-weight:600; color:#0f172a; margin:0 0 2px;
+    font-family: 'Sora', sans-serif;
+    font-size: 17px; font-weight: 600; color: #0f172a; margin: 0 0 2px;
   }
-  .usk-card-header p { font-size:12.5px; color:#94a3b8; margin:0; }
+  .usk-card-header p { font-size: 12.5px; color: #94a3b8; margin: 0; }
 
   /* Editing badge */
   .usk-edit-badge {
-    display:inline-flex; align-items:center; gap:6px;
-    background:#fef3c7; color:#d97706;
-    font-size:11px; font-weight:600; padding:4px 10px; border-radius:100px;
-    letter-spacing:.04em; text-transform:uppercase; white-space:nowrap;
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fef3c7; color: #d97706;
+    font-size: 11px; font-weight: 600;
+    padding: 4px 10px; border-radius: 100px;
+    letter-spacing: .04em; text-transform: uppercase;
+    white-space: nowrap;
   }
   .usk-edit-badge .dot {
-    width:6px; height:6px; border-radius:50%; background:#f59e0b;
-    box-shadow:0 0 6px #f59e0b;
-    animation:usk-glow 2s ease-in-out infinite alternate;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #f59e0b;
+    box-shadow: 0 0 6px #f59e0b;
+    animation: usk-glow 2s ease-in-out infinite alternate;
   }
   @keyframes usk-glow {
-    from { box-shadow:0 0 3px #f59e0b; }
-    to   { box-shadow:0 0 10px #f59e0b, 0 0 20px rgba(245,158,11,.3); }
+    from { box-shadow: 0 0 3px #f59e0b; }
+    to   { box-shadow: 0 0 10px #f59e0b, 0 0 20px rgba(245,158,11,.3); }
   }
 
-  .usk-card-body { padding:28px; }
+  .usk-card-body { padding: 28px; }
 
   /* ── Section label ── */
   .usk-section-label {
-    font-family:'Sora',sans-serif; font-size:11px; font-weight:600;
-    letter-spacing:.08em; text-transform:uppercase; color:#94a3b8;
-    margin:0 0 14px; padding-bottom:8px; border-bottom:1px solid #f1f5f9;
+    font-family: 'Sora', sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: .08em; text-transform: uppercase;
+    color: #94a3b8; margin: 0 0 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f1f5f9;
   }
 
   /* ── Fields ── */
-  .usk-field { display:flex; flex-direction:column; gap:5px; margin-bottom:20px; }
-  .usk-field:last-of-type { margin-bottom:0; }
+  .usk-field { display: flex; flex-direction: column; gap: 5px; margin-bottom: 20px; }
+  .usk-field:last-of-type { margin-bottom: 0; }
   .usk-label {
-    font-size:12.5px; font-weight:500; color:#475569;
-    display:flex; align-items:center; gap:6px;
+    font-size: 12.5px; font-weight: 500; color: #475569;
+    display: flex; align-items: center; gap: 6px;
   }
-  .usk-label svg { color:#94a3b8; flex-shrink:0; }
-  .usk-required { color:#f87171; }
+  .usk-label svg { color: #94a3b8; flex-shrink: 0; }
+  .usk-required { color: #f87171; }
 
   .usk-input {
-    width:100%; padding:11px 13px;
-    border:1.5px solid #e2e8f0; border-radius:10px;
-    font-size:13.5px; font-family:'DM Sans',sans-serif;
-    background:#fafbfc; color:#1e293b;
-    outline:none; transition:border-color .18s, box-shadow .18s;
-    box-sizing:border-box; appearance:none;
+    width: 100%;
+    padding: 11px 13px;
+    border: 1.5px solid #e2e8f0; border-radius: 10px;
+    font-size: 13.5px; font-family: 'DM Sans', sans-serif;
+    background: #fafbfc; color: #1e293b;
+    outline: none; transition: border-color .18s, box-shadow .18s;
+    box-sizing: border-box; appearance: none;
   }
   .usk-input:focus {
-    border-color:#f59e0b; box-shadow:0 0 0 3px rgba(245,158,11,.12); background:#fff;
+    border-color: #f59e0b;
+    box-shadow: 0 0 0 3px rgba(245,158,11,.12);
+    background: #fff;
   }
-  .usk-input::placeholder { color:#cbd5e1; }
-  .usk-input[type="file"] { padding:8px 13px; cursor:pointer; }
+  .usk-input::placeholder { color: #cbd5e1; }
+  .usk-input[type="file"] { padding: 8px 13px; cursor: pointer; }
   .usk-input[type="file"]::-webkit-file-upload-button {
-    background:#fef3c7; color:#d97706; border:none; border-radius:6px;
-    padding:5px 12px; font-size:12px; font-family:'DM Sans',sans-serif; font-weight:500;
-    cursor:pointer; margin-right:10px; transition:background .15s;
+    background: #fef3c7; color: #d97706;
+    border: none; border-radius: 6px;
+    padding: 5px 12px; font-size: 12px;
+    font-family: 'DM Sans', sans-serif; font-weight: 500;
+    cursor: pointer; margin-right: 10px; transition: background .15s;
   }
-  .usk-input[type="file"]::-webkit-file-upload-button:hover { background:#fde68a; }
+  .usk-input[type="file"]::-webkit-file-upload-button:hover { background: #fde68a; }
 
   /* ── Status toggle ── */
-  .usk-status-group { display:flex; gap:8px; }
+  .usk-status-group { display: flex; gap: 8px; }
   .usk-status-btn {
-    flex:1; padding:10px 0; border-radius:10px; border:1.5px solid #e2e8f0; background:#fafbfc;
-    font-family:'DM Sans',sans-serif; font-size:13.5px; font-weight:500; color:#64748b;
-    cursor:pointer; transition:all .18s; display:flex; align-items:center; justify-content:center; gap:6px;
+    flex: 1; padding: 10px 0;
+    border-radius: 10px; border: 1.5px solid #e2e8f0;
+    background: #fafbfc;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13.5px; font-weight: 500; color: #64748b;
+    cursor: pointer; transition: all .18s;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
   }
-  .usk-status-btn:hover { border-color:#fcd34d; color:#d97706; }
-  .usk-status-btn.active-pending   { background:#fef3c7; border-color:#fbbf24; color:#d97706; }
-  .usk-status-btn.active-completed { background:#d1fae5; border-color:#34d399; color:#059669; }
+  .usk-status-btn:hover { border-color: #fcd34d; color: #d97706; }
+  .usk-status-btn.active-pending   { background: #fef3c7; border-color: #fbbf24; color: #d97706; }
+  .usk-status-btn.active-completed { background: #d1fae5; border-color: #34d399; color: #059669; }
 
   /* ── Thumbnail preview ── */
-  .usk-preview-wrap { display:flex; align-items:center; gap:14px; margin-top:10px; }
+  .usk-preview-wrap {
+    display: flex; align-items: center; gap: 14px; margin-top: 10px;
+  }
   .usk-preview-img {
-    width:72px; height:72px; border-radius:14px;
-    object-fit:cover; border:2px solid #e2e8f0; display:block; flex-shrink:0; background:#f1f5f9;
+    width: 72px; height: 72px; border-radius: 14px;
+    object-fit: cover; border: 2px solid #e2e8f0;
+    display: block; flex-shrink: 0; background: #f1f5f9;
   }
   .usk-preview-placeholder {
-    width:72px; height:72px; border-radius:14px;
-    border:2px dashed #e2e8f0; display:flex; align-items:center; justify-content:center;
-    flex-shrink:0; background:#f8fafc; color:#cbd5e1;
+    width: 72px; height: 72px; border-radius: 14px;
+    border: 2px dashed #e2e8f0;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; background: #f8fafc; color: #cbd5e1;
   }
-  .usk-preview-meta { font-size:12px; color:#94a3b8; line-height:1.5; }
-  .usk-preview-name { font-size:12.5px; font-weight:500; color:#475569; margin-bottom:2px; }
+  .usk-preview-meta { font-size: 12px; color: #94a3b8; line-height: 1.5; }
+  .usk-preview-name { font-size: 12.5px; font-weight: 500; color: #475569; margin-bottom: 2px; }
+
+  /* ── Divider ── */
+  .usk-divider { border: none; border-top: 1px solid #f1f5f9; margin: 22px 0; }
 
   /* ── Info banner ── */
   .usk-info-banner {
-    display:flex; align-items:flex-start; gap:10px;
-    background:#fef3c7; border:1px solid #fde68a; border-radius:10px;
-    padding:12px 14px; margin-bottom:22px;
-    font-size:12.5px; color:#92400e; line-height:1.5;
+    display: flex; align-items: flex-start; gap: 10px;
+    background: #fef3c7; border: 1px solid #fde68a;
+    border-radius: 10px; padding: 12px 14px;
+    margin-bottom: 22px;
+    font-size: 12.5px; color: #92400e; line-height: 1.5;
   }
-  .usk-info-banner svg { flex-shrink:0; margin-top:1px; color:#d97706; }
-
-  /* ── Divider ── */
-  .usk-divider { border:none; border-top:1px solid #f1f5f9; margin:22px 0; }
+  .usk-info-banner svg { flex-shrink: 0; margin-top: 1px; color: #d97706; }
 
   /* ── Submit ── */
   .usk-submit {
-    width:100%; padding:13px; border-radius:12px; border:none;
-    background:linear-gradient(135deg,#f59e0b,#fbbf24); color:#fff;
-    font-family:'Sora',sans-serif; font-size:15px; font-weight:600;
-    cursor:pointer; transition:opacity .18s, transform .15s;
-    display:flex; align-items:center; justify-content:center; gap:8px;
-    margin-top:24px; box-shadow:0 4px 16px rgba(245,158,11,.28);
+    width: 100%; padding: 13px;
+    border-radius: 12px; border: none;
+    background: linear-gradient(135deg, #f59e0b, #fbbf24);
+    color: #fff;
+    font-family: 'Sora', sans-serif;
+    font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: opacity .18s, transform .15s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    margin-top: 24px;
+    box-shadow: 0 4px 16px rgba(245,158,11,.28);
   }
-  .usk-submit:hover:not(:disabled) { opacity:.92; transform:translateY(-1px); }
-  .usk-submit:disabled { opacity:.6; cursor:not-allowed; transform:none; }
+  .usk-submit:hover:not(:disabled) { opacity: .92; transform: translateY(-1px); }
+  .usk-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
 
   /* ── Skeleton ── */
   @keyframes usk-shimmer {
-    0%   { background-position:-600px 0; }
-    100% { background-position:600px 0; }
+    0%   { background-position: -600px 0; }
+    100% { background-position:  600px 0; }
   }
   .usk-skel {
-    background:linear-gradient(90deg,#f1f5f9 25%,#e2e8f0 50%,#f1f5f9 75%);
-    background-size:600px 100%; animation:usk-shimmer 1.4s infinite; border-radius:10px;
+    background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+    background-size: 600px 100%;
+    animation: usk-shimmer 1.4s infinite;
+    border-radius: 10px;
   }
 `;
 
@@ -425,9 +463,8 @@ function UpdateSkills() {
                 setSkillName(d.skillName || "");
                 setStatus(d.status ?? 1);
                 if (d.thumbnail) {
-                    const url = BASE_URL + d.thumbnail;
-                    setExistingThumb(url);
-                    setThumbPreview(url);
+                    setExistingThumb(BASE_URL + d.thumbnail);
+                    setThumbPreview(BASE_URL + d.thumbnail);
                 }
             } else {
                 toast.error(res.data.message);
@@ -496,7 +533,7 @@ function UpdateSkills() {
                             <a href="index.html">Home</a>
                         </li>
                         <li className="breadcrumb-item">
-                            <a href="#">Admin</a>
+                            <a href="#">Learner Mentor</a>
                         </li>
                         <li className="breadcrumb-item active text-primary">Update Skills</li>
                     </ol>
@@ -512,7 +549,7 @@ function UpdateSkills() {
                         <div className="usk-card-icon">{Icon.skill}</div>
                         <div className="usk-card-header-text">
                             <h2>Edit Skill</h2>
-                            <p>Changes are applied immediately after saving</p>
+                            <p>Changes are saved immediately after submitting</p>
                         </div>
                         <span className="usk-edit-badge">
                             <span className="dot" /> Editing
@@ -520,11 +557,12 @@ function UpdateSkills() {
                     </div>
 
                     <div className="usk-card-body">
+
                         {fetching ? (
                             /* Loading skeleton */
                             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                                {[80, 44, 44, 44].map((h, i) => (
-                                    <div key={i} className="usk-skel" style={{ height: h }} />
+                                {[...Array(4)].map((_, i) => (
+                                    <div key={i} className="usk-skel" style={{ height: i === 1 ? 80 : 44 }} />
                                 ))}
                             </div>
                         ) : (
@@ -581,7 +619,7 @@ function UpdateSkills() {
                                                     {existingThumb && !thumbnail
                                                         ? "Current thumbnail shown · upload to replace"
                                                         : thumbnail
-                                                            ? "New thumbnail selected · will replace existing"
+                                                            ? "New thumbnail selected"
                                                             : "Recommended: 400×400 px · JPG or PNG · max 2 MB"}
                                                 </div>
                                             </div>
@@ -594,9 +632,7 @@ function UpdateSkills() {
                                     <div className="usk-section-label">Status</div>
 
                                     <div className="usk-field">
-                                        <label className="usk-label">
-                                            {Icon.status} Skill Status <span className="usk-required">*</span>
-                                        </label>
+                                        <label className="usk-label">{Icon.status} Current Status <span className="usk-required">*</span></label>
                                         <div className="usk-status-group">
                                             <button
                                                 type="button"

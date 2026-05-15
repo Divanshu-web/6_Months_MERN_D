@@ -6,6 +6,8 @@ const addSkillToDB = async (req, res) => {
         let validation = "";
         if (!incomingData.skillName) validation += 'skillName is Required';
         if (!req.file) validation += 'thumbnail is Required';
+        if (!incomingData.learnermentorId) validation += 'learnermentorId is Required';
+
 
         if (!!validation) {
             res.json({
@@ -30,6 +32,8 @@ const addSkillToDB = async (req, res) => {
                 autoId: totalDocs + 1,
                 skillName: incomingData.skillName,
                 thumbnail: 'skill/' + req.file.filename,
+                learnermentorId: incomingData.learnermentorId,
+
             })
             await skillData.save();
 
@@ -56,10 +60,10 @@ const addSkillToDB = async (req, res) => {
 const getAllSkill = async (req, res) => {
     try {
 
-         let formData = req.body || {}
+        let formData = req.body || {}
 
         console.log("Body: ", req.body)
-       
+
 
         // skip and limit
 
@@ -69,12 +73,12 @@ const getAllSkill = async (req, res) => {
         let skip = 0;
         let limit = 100000;
 
-        if(formData.startPoint !== undefined){
+        if (formData.startPoint !== undefined) {
             skip = formData.startPoint
             delete formData.startPoint
         }
 
-        if(formData.limit !== undefined){
+        if (formData.limit !== undefined) {
             limit = (formData.limit)
             delete formData.limit
         }

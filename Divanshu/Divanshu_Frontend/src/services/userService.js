@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, LOGIN, REGISTER } from "../endPoints";
+import { BASE_URL, DASHBOARD, LOGIN, REGISTER } from "../endPoints";
 
 export function register(data) {
    return axios.post(BASE_URL + REGISTER, data)
@@ -12,5 +12,7 @@ export function login(data) {
 
 
 
-
+export function dashboard(){
+   return axios.post(BASE_URL + DASHBOARD)
+}
 

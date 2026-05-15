@@ -28,3 +28,7 @@ export const LEARNER_BOOKINGS = "request/learner-bookings"
 export const SINGLE_REQUEST = "request/single"
 export const UPDATE_REQUEST = "request/update"
 export const DELETE_REQUEST = "request/deleteSoft"
+
+
+export const DASHBOARD = "api/dashboard"
+// export const LEARNERDASHBOARD = "api/dashboard/learnermentor"

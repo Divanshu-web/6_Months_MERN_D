@@ -7,6 +7,7 @@ import { BASE_URL } from "../../endPoints";
 import ResponsivePagination from 'react-responsive-pagination';
 import 'react-responsive-pagination/themes/classic-light-dark.css';
 
+
 /* ─────────────────────────────────────────────
    Styles
 ───────────────────────────────────────────── */
@@ -30,7 +31,7 @@ const Icon = {
 /* ─────────────────────────────────────────────
    Skill Card
 ───────────────────────────────────────────── */
-function SkillCard({ skill, globalIndex, onDelete }) {
+function SkillCard({ skill, globalIndex, onDelete, currentUserId }) {
     const isPending = skill.status == 1;
     const statusKey = isPending ? 'pending' : 'completed';
     const statusLabel = isPending ? 'Pending' : 'Completed';
@@ -75,12 +76,28 @@ function SkillCard({ skill, globalIndex, onDelete }) {
             <div className="msk-card-footer">
                 <span className="msk-idx">#{String(globalIndex).padStart(2, '0')}</span>
                 <div className="msk-actions">
-                    <Link to={`/admin/updateskills/${skill._id}`} className="msk-btn" title="Edit skill">
-                        {Icon.edit}
-                    </Link>
-                    <button className="msk-btn danger" onClick={() => onDelete(skill._id)} title="Delete skill">
-                        {Icon.trash}
-                    </button>
+
+                    {(skill.learnermentorId?._id === currentUserId ||
+                        skill.learnermentorId === currentUserId) && (
+                            <>
+                                <Link
+                                    to={`/learnermentor/updateskills/${skill._id}`}
+                                    className="msk-btn"
+                                    title="Edit skill"
+                                >
+                                    {Icon.edit}
+                                </Link>
+
+                                <button
+                                    className="msk-btn danger"
+                                    onClick={() => onDelete(skill._id)}
+                                    title="Delete skill"
+                                >
+                                    {Icon.trash}
+                                </button>
+                            </>
+                        )}
+
                 </div>
             </div>
         </div>
@@ -99,6 +116,9 @@ function Learnermentormanageskills() {
     const [search, setSearch] = useState('');
     const [statusFilter, setStatusFilter] = useState('all'); // 'all' | 'pending' | 'completed'
     const [viewMode, setViewMode] = useState('grid');
+
+    const currentUserId = localStorage.getItem("learnerMentorId");
+
 
     const getAllSkill = async () => {
         try {
@@ -162,23 +182,6 @@ function Learnermentormanageskills() {
 
     return (
         <div className="msk-root">
-            {/* <style>{styles}</style> */}
-
-            {/* ── Hero ── */}
-            {/* <div className="msk-hero">
-        <div className="msk-hero-inner">
-          <div className="msk-breadcrumb">
-            <a href="/">Home</a>
-            <span className="sep">/</span>
-            <a href="#">Admin</a>
-            <span className="sep">/</span>
-            <span className="active">Manage Skills</span>
-          </div>
-          <h1>Manage Skills</h1>
-          <p>Organise, update, and track all learner skills in one place.</p>
-          
-        </div>
-      </div> */}
 
 
             <div className="container-fluid bg-breadcrumb">
@@ -292,6 +295,7 @@ function Learnermentormanageskills() {
                                 skill={skill}
                                 globalIndex={(currentPage - 1) * limit + index + 1}
                                 onDelete={handleDelete}
+                                currentUserId={currentUserId}
                             />
                         ))}
                     </div>

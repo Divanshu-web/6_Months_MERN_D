@@ -42,6 +42,7 @@ import Learnermentorcontact from './component/learnermentor/Learnermentorcontact
 import MyBookings from './component/learnermentor/MyBookings'
 import Learnermentoraddskills from './component/learnermentor/Learnermentoraddskills'
 import Learnermentormanageskills from './component/learnermentor/Learnermentormanageskills'
+import Learnermentorupdateskills from './component/learnermentor/Learnermentorupdateskills'
 
 
 function App() {
@@ -94,6 +95,7 @@ function App() {
             <Route path='/learnermentor/updaterequest/:_id' element={<UpdateRequest />}></Route>
             <Route path='/learnermentor/mybookings' element={<MyBookings />}></Route>
             <Route path='/learnermentor/contact' element={<Learnermentorcontact />}></Route>
+            <Route path='/learnermentor/updateskills/:_id' element={<Learnermentorupdateskills />}></Route>
 
 
 

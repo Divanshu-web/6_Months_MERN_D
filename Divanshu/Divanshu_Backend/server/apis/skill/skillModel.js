@@ -4,6 +4,8 @@ const skillSchema = new mongoose.Schema({
     autoId:{type: Number, default: 0},
     skillName: { type: String, default: "" },
     thumbnail: { type: String, default: "" },
+    learnermentorId :{ type: mongoose.Schema.Types.ObjectId, ref: 'learnerMentor' },
+    
     // status: { type: Number, default:1 }, // 1= pending,2=complete,
 
     isDelete: { type: Boolean, default: false },
